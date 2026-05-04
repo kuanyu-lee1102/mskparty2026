@@ -1,0 +1,45 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="390" height="844" rx="32" fill="#F9F8F4"/>
+  <rect x="18" y="18" width="354" height="808" rx="28" fill="#FFFDF7" stroke="#DED9C8"/>
+  <text x="36" y="58" font-family="Arial, sans-serif" font-size="14" fill="#6E6A58">搜尋優先模式</text>
+  <text x="36" y="88" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#3E6F50">找我的節目</text>
+  <text x="36" y="113" font-family="Arial, sans-serif" font-size="13" fill="#6E6A58">先搜尋學生，再顯示所屬老師、時間與曲目。</text>
+
+  <rect x="30" y="140" width="330" height="56" rx="18" fill="#FFFFFF" stroke="#BFD3BA"/>
+  <text x="54" y="174" font-family="Arial, sans-serif" font-size="16" fill="#6E6A58">輸入學生姓名或曲目</text>
+  <circle cx="329" cy="168" r="12" stroke="#3E6F50" stroke-width="2"/>
+  <line x1="338" y1="177" x2="348" y2="187" stroke="#3E6F50" stroke-width="2" stroke-linecap="round"/>
+
+  <rect x="30" y="218" width="102" height="34" rx="17" fill="#3E6F50"/>
+  <text x="81" y="240" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">全部</text>
+  <rect x="144" y="218" width="102" height="34" rx="17" fill="#F0F5EA" stroke="#BFD3BA"/>
+  <text x="195" y="240" font-family="Arial, sans-serif" font-size="13" fill="#3E6F50" text-anchor="middle">上午場</text>
+  <rect x="258" y="218" width="102" height="34" rx="17" fill="#F0F5EA" stroke="#BFD3BA"/>
+  <text x="309" y="240" font-family="Arial, sans-serif" font-size="13" fill="#3E6F50" text-anchor="middle">下午場</text>
+
+  <rect x="30" y="278" width="330" height="118" rx="18" fill="#FFFFFF" stroke="#BFD3BA"/>
+  <text x="52" y="310" font-family="Arial, sans-serif" font-size="14" fill="#6E6A58">10:00 - 10:20・Miss. Candy 蔡老師</text>
+  <text x="52" y="342" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#2F332C">小星星</text>
+  <text x="52" y="369" font-family="Arial, sans-serif" font-size="15" fill="#2F332C">鍵盤團班：何禹昕、高筠晴、施柏安...</text>
+  <rect x="284" y="324" width="50" height="34" rx="17" fill="#F0F5EA"/>
+  <text x="309" y="346" font-family="Arial, sans-serif" font-size="13" fill="#3E6F50" text-anchor="middle">01</text>
+
+  <rect x="30" y="412" width="330" height="104" rx="18" fill="#FFFFFF" stroke="#BFD3BA"/>
+  <text x="52" y="444" font-family="Arial, sans-serif" font-size="14" fill="#6E6A58">10:50 - 11:10・Miss. Khristin 黃老師</text>
+  <text x="52" y="476" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#2F332C">Lemon</text>
+  <text x="52" y="501" font-family="Arial, sans-serif" font-size="15" fill="#2F332C">劉婕汙</text>
+  <rect x="284" y="458" width="50" height="34" rx="17" fill="#F0F5EA"/>
+  <text x="309" y="480" font-family="Arial, sans-serif" font-size="13" fill="#3E6F50" text-anchor="middle">02</text>
+
+  <rect x="30" y="532" width="330" height="104" rx="18" fill="#FFFFFF" stroke="#BFD3BA"/>
+  <text x="52" y="564" font-family="Arial, sans-serif" font-size="14" fill="#6E6A58">11:30 - 12:25・Miss. Lucy 張老師</text>
+  <text x="52" y="596" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#2F332C">Windy Hill</text>
+  <text x="52" y="621" font-family="Arial, sans-serif" font-size="15" fill="#2F332C">顏宇潔</text>
+  <rect x="284" y="578" width="50" height="34" rx="17" fill="#F0F5EA"/>
+  <text x="309" y="600" font-family="Arial, sans-serif" font-size="13" fill="#3E6F50" text-anchor="middle">07</text>
+
+  <rect x="30" y="668" width="330" height="96" rx="18" fill="#F0F5EA" stroke="#BFD3BA"/>
+  <text x="52" y="699" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#3E6F50">呈現重點</text>
+  <text x="52" y="727" font-family="Arial, sans-serif" font-size="13" fill="#55624D">對家長最直覺，但需要搜尋資料完整。</text>
+  <text x="52" y="749" font-family="Arial, sans-serif" font-size="13" fill="#55624D">建議作為加分功能，不取代老師 accordion。</text>
+</svg>

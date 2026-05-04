@@ -1,0 +1,628 @@
+{
+  "eventId": "dounan-2026-05-24",
+  "eventName": "斗南場音樂會",
+  "date": "2026-05-24",
+  "venue": "虎尾建國眷村 C 區",
+  "programs": [
+    {
+      "id": "dounan-morning-miss-candy",
+      "session": "上午場",
+      "sessionStartTime": "10:00",
+      "teacherName": "Miss. Candy",
+      "teacherDisplayName": "Miss. Candy 蔡老師",
+      "teacherLocalName": "蔡老師",
+      "startTime": "10:00",
+      "endTime": "10:20",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_1.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "鍵盤團班",
+          "performers": [
+            "何禹昕",
+            "高筠晴",
+            "施柏安",
+            "劉采恩",
+            "王若宏"
+          ],
+          "title": "小星星",
+          "type": "group"
+        },
+        {
+          "order": "02",
+          "performer": "郭芊妤",
+          "title": "幸福在唱歌"
+        },
+        {
+          "order": "03",
+          "performer": "吳映潔",
+          "title": "再見的時候"
+        },
+        {
+          "order": "04",
+          "performer": "李冠宇",
+          "title": "Passacaglia"
+        }
+      ]
+    },
+    {
+      "id": "dounan-morning-mr-vincent",
+      "session": "上午場",
+      "sessionStartTime": "10:00",
+      "teacherName": "Mr. Vincent",
+      "teacherDisplayName": "Mr. Vincent 林文祥老師",
+      "teacherLocalName": "林文祥老師",
+      "startTime": "10:20",
+      "endTime": "10:50",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_18.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "陳彥儒",
+          "title": "Mozart - Sonate KN545"
+        },
+        {
+          "order": "02",
+          "performer": "林永昕 & Vincent",
+          "performers": [
+            "林永昕",
+            "Vincent"
+          ],
+          "title": "動物村的運動會",
+          "type": "ensemble"
+        },
+        {
+          "order": "03",
+          "performer": "李珣安",
+          "title": "仙履奇緣"
+        },
+        {
+          "order": "04",
+          "performer": "李珣嘉",
+          "title": "魔女宅急便（能看見海的街道）"
+        },
+        {
+          "order": "05",
+          "performer": "林駿豪",
+          "title": "River flows in you"
+        },
+        {
+          "order": "06",
+          "performer": "鄭柚佳 & Vincent",
+          "performers": [
+            "鄭柚佳",
+            "Vincent"
+          ],
+          "title": "崖上的波妞",
+          "type": "ensemble"
+        },
+        {
+          "order": "07",
+          "performer": "林駿豪 & Vincent",
+          "performers": [
+            "林駿豪",
+            "Vincent"
+          ],
+          "title": "前前前世",
+          "type": "ensemble"
+        }
+      ]
+    },
+    {
+      "id": "dounan-morning-miss-khristin",
+      "session": "上午場",
+      "sessionStartTime": "10:00",
+      "teacherName": "Miss. Khristin",
+      "teacherDisplayName": "Miss. Khristin 黃老師",
+      "teacherLocalName": "黃老師",
+      "startTime": "10:50",
+      "endTime": "11:10",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_2.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "郭宓靜",
+          "title": "小星星"
+        },
+        {
+          "order": "02",
+          "performer": "劉姷汘",
+          "title": "Lemon"
+        },
+        {
+          "order": "03",
+          "performer": "王宣允",
+          "title": "動物村的運動會"
+        },
+        {
+          "order": "04",
+          "performer": "劉姷汘、劉芛辰、劉洧岓",
+          "performers": [
+            "劉姷汘",
+            "劉芛辰",
+            "劉洧岓"
+          ],
+          "title": "追光者",
+          "type": "ensemble"
+        }
+      ]
+    },
+    {
+      "id": "dounan-morning-miss-wanda",
+      "session": "上午場",
+      "sessionStartTime": "10:00",
+      "teacherName": "Miss. Wanda",
+      "teacherDisplayName": "Miss. Wanda 許老師",
+      "teacherLocalName": "許老師",
+      "startTime": "11:10",
+      "endTime": "11:30",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_2.png",
+      "items": [
+        {
+          "order": "01",
+          "performer": "吳季恩、吳紹宏",
+          "performers": [
+            "吳季恩",
+            "吳紹宏"
+          ],
+          "title": "The friendly echo 朋友的回音",
+          "type": "ensemble"
+        },
+        {
+          "order": "02",
+          "performer": "沈昕妍",
+          "title": "By the river’s edge沿著河畔"
+        },
+        {
+          "order": "03",
+          "performer": "張樵泌",
+          "title": "隱形的翅膀"
+        },
+        {
+          "order": "04",
+          "performer": "林芊妤",
+          "title": "奧斯汀"
+        },
+        {
+          "order": "05",
+          "performer": "劉旂英",
+          "title": "Lumiose"
+        },
+        {
+          "order": "06",
+          "performer": "郭語嫣",
+          "title": "小步舞曲"
+        },
+        {
+          "order": "07",
+          "performer": "吳昀芮",
+          "title": "掀起你的頭蓋來"
+        },
+        {
+          "order": "08",
+          "performer": "李彥勳",
+          "title": "嘉禾舞曲"
+        },
+        {
+          "order": "09",
+          "performer": "謝姉芳",
+          "title": "說謊"
+        },
+        {
+          "order": "10",
+          "performer": "鍾宜茹",
+          "title": "小奏鳴曲NO7"
+        }
+      ]
+    },
+    {
+      "id": "dounan-morning-miss-lucy",
+      "session": "上午場",
+      "sessionStartTime": "10:00",
+      "teacherName": "Miss. Lucy",
+      "teacherDisplayName": "Miss. Lucy 張老師",
+      "teacherLocalName": "張老師",
+      "startTime": "11:30",
+      "endTime": "12:25",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_7.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "林品彤",
+          "title": "（魔女宅急便）季節的迴轉"
+        },
+        {
+          "order": "02",
+          "performer": "沈依岑",
+          "title": "（神隱少女）生命之名"
+        },
+        {
+          "order": "03",
+          "performer": "王錦聰",
+          "title": "My heart will go on"
+        },
+        {
+          "order": "04",
+          "performer": "鍾蕓竹",
+          "title": "野草莓"
+        },
+        {
+          "order": "05",
+          "performer": "張芯芮、楊佳瑜",
+          "performers": [
+            "張芯芮",
+            "楊佳瑜"
+          ],
+          "title": "紅鼻子馴鹿魯道夫",
+          "type": "ensemble"
+        },
+        {
+          "order": "06",
+          "performer": "王錦聰",
+          "title": "卡農"
+        },
+        {
+          "order": "07",
+          "performer": "顏宇潔",
+          "title": "Windy Hill"
+        },
+        {
+          "order": "10",
+          "performer": "劉洧岓、鍾蕓竹、徐慧玲",
+          "performers": [
+            "劉洧岓",
+            "鍾蕓竹",
+            "徐慧玲"
+          ],
+          "title": "喔！蘇珊娜",
+          "type": "ensemble"
+        },
+        {
+          "order": "11",
+          "performer": "林品彤、Miss. Lucy-小提合奏",
+          "performers": [
+            "林品彤",
+            "Miss. Lucy"
+          ],
+          "title": "前前前世",
+          "type": "ensemble"
+        }
+      ]
+    },
+    {
+      "id": "dounan-morning-miss-linda",
+      "session": "上午場",
+      "sessionStartTime": "10:00",
+      "teacherName": "Miss. Linda",
+      "teacherDisplayName": "Miss. Linda 陳老師",
+      "teacherLocalName": "陳老師",
+      "startTime": "12:25",
+      "endTime": "12:50",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_19.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "藍亭鈞",
+          "title": "印地安人"
+        },
+        {
+          "order": "02",
+          "performer": "藍筠喬",
+          "title": "Can You Feel The Love Tonight"
+        },
+        {
+          "order": "02",
+          "performer": "劉芛辰",
+          "title": "Golden"
+        },
+        {
+          "order": "03",
+          "performer": "劉欣瑜",
+          "title": "轉圈圈之歌"
+        },
+        {
+          "order": "04",
+          "performer": "廖竹君",
+          "title": "打上花火"
+        },
+        {
+          "order": "05",
+          "performer": "高欣彤",
+          "title": "終究還是因為愛"
+        },
+        {
+          "order": "06",
+          "performer": "沈彥翎",
+          "title": "千本櫻"
+        }
+      ]
+    },
+    {
+      "id": "dounan-morning-miss-vivian",
+      "session": "上午場",
+      "sessionStartTime": "10:00",
+      "teacherName": "Miss. Vivian",
+      "teacherDisplayName": "Miss. Vivian 李老師",
+      "teacherLocalName": "李老師",
+      "startTime": "12:50",
+      "endTime": "13:05",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_8.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "曾喬暄",
+          "title": "嗡嗡嗡"
+        },
+        {
+          "order": "02",
+          "performer": "李彥琪",
+          "title": "水上天鵝"
+        },
+        {
+          "order": "03",
+          "performer": "林芳余",
+          "title": "喜愛的圓舞曲"
+        },
+        {
+          "order": "04",
+          "performer": "黃弘齊",
+          "title": "郵遞馬車"
+        },
+        {
+          "order": "05",
+          "performer": "郭泱豔",
+          "title": "龍貓主題曲-豆豆龍"
+        },
+        {
+          "order": "06",
+          "performer": "林芳余",
+          "title": "奮起歌"
+        },
+        {
+          "order": "07",
+          "performer": "吳嘉惠",
+          "title": "洞庭新歌"
+        }
+      ]
+    },
+    {
+      "id": "dounan-afternoon-mr-orange",
+      "session": "下午場",
+      "sessionStartTime": "13:30",
+      "teacherName": "Mr. Orange",
+      "teacherDisplayName": "Mr. Orange 呂老師",
+      "teacherLocalName": "呂老師",
+      "startTime": "13:30",
+      "endTime": "13:40",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_16.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "沈郁展",
+          "title": "蘑菇濃湯"
+        },
+        {
+          "order": "02",
+          "performer": "張品堯",
+          "title": "童話"
+        },
+        {
+          "order": "03",
+          "performer": "劉芓圻",
+          "title": "傷心的人別聽慢歌"
+        }
+      ]
+    },
+    {
+      "id": "dounan-afternoon-mr-stone",
+      "session": "下午場",
+      "sessionStartTime": "13:30",
+      "teacherName": "Mr. Stone",
+      "teacherDisplayName": "Mr. Stone 石老師",
+      "teacherLocalName": "石老師",
+      "startTime": "13:40",
+      "endTime": "14:10",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_15.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "郭萬語",
+          "title": "聽媽媽的話"
+        },
+        {
+          "order": "02",
+          "performer": "高凡鈞",
+          "title": "Last Christmas"
+        },
+        {
+          "order": "03",
+          "performer": "謝孟廷",
+          "title": "我的秘密"
+        },
+        {
+          "order": "04",
+          "performer": "宋侑洛",
+          "title": "夢中做憨人"
+        },
+        {
+          "order": "05",
+          "performer": "韓耀聰",
+          "title": "小城夏天"
+        },
+        {
+          "order": "06",
+          "performer": "陳禹叡",
+          "title": "山海"
+        }
+      ]
+    },
+    {
+      "id": "dounan-afternoon-mr-ben",
+      "session": "下午場",
+      "sessionStartTime": "13:30",
+      "teacherName": "Mr. Ben",
+      "teacherDisplayName": "Mr. Ben 廖老師",
+      "teacherLocalName": "廖老師",
+      "startTime": "14:10",
+      "endTime": "14:25",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_14.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "吳映潔",
+          "title": "理想混蛋-平衡木"
+        },
+        {
+          "order": "02",
+          "performer": "黃萱語",
+          "title": "告五人-愛在夏天"
+        }
+      ]
+    },
+    {
+      "id": "dounan-afternoon-mr-nick",
+      "session": "下午場",
+      "sessionStartTime": "13:30",
+      "teacherName": "Mr. Nick",
+      "teacherDisplayName": "Mr. Nick 張老師",
+      "teacherLocalName": "張老師",
+      "startTime": "14:25",
+      "endTime": "14:50",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_13.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "王茗宏",
+          "title": "Fantastic baby"
+        },
+        {
+          "order": "02",
+          "performer": "游子麟",
+          "title": "Soda Pop"
+        },
+        {
+          "order": "03",
+          "performer": "高楷鈞",
+          "title": "Crooked"
+        },
+        {
+          "order": "04",
+          "performer": "鍾宥鈞",
+          "title": "打開太陽"
+        },
+        {
+          "order": "05",
+          "performer": "黃愷祐",
+          "title": "完全感覺"
+        }
+      ]
+    },
+    {
+      "id": "dounan-afternoon-mr-kevin",
+      "session": "下午場",
+      "sessionStartTime": "13:30",
+      "teacherName": "Mr. Kevin",
+      "teacherDisplayName": "Mr. Kevin 張老師",
+      "teacherLocalName": "張老師",
+      "startTime": "14:50",
+      "endTime": "15:40",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_12.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "歐昕澄",
+          "title": "Good Mood"
+        },
+        {
+          "order": "02",
+          "performer": "林紘寬",
+          "title": "Sugar"
+        },
+        {
+          "order": "03",
+          "performer": "黃芷琳",
+          "title": "You=I"
+        },
+        {
+          "order": "04",
+          "performer": "李健誠",
+          "title": "孤獨的人"
+        },
+        {
+          "order": "05",
+          "performer": "施怡秀",
+          "title": "Zoo"
+        },
+        {
+          "order": "06",
+          "performer": "賴柏硯",
+          "title": "Drip"
+        },
+        {
+          "order": "07",
+          "performer": "李恩碩",
+          "title": "勇者"
+        },
+        {
+          "order": "08",
+          "performer": "吳柏緯",
+          "title": "Beggin"
+        },
+        {
+          "order": "09",
+          "performer": "李健誠、李宥宏",
+          "performers": [
+            "李健誠",
+            "李宥宏"
+          ],
+          "title": "Home Sweet Home",
+          "type": "ensemble"
+        }
+      ]
+    },
+    {
+      "id": "dounan-afternoon-mr-yang",
+      "session": "下午場",
+      "sessionStartTime": "13:30",
+      "teacherName": "Mr. Yang",
+      "teacherDisplayName": "Mr. Yang 李老師",
+      "teacherLocalName": "李老師",
+      "startTime": "15:40",
+      "endTime": "16:05",
+      "sourceImage": "文案素材庫/斗南場/節目表/LINE_ALBUM_2026屬於我的這首歌-斗南節目單_260504_11.jpg",
+      "items": [
+        {
+          "order": "01",
+          "performer": "李宥宏",
+          "title": "CROOKED"
+        },
+        {
+          "order": "03",
+          "performer": "吳芮蓁",
+          "title": "Chase"
+        },
+        {
+          "order": "04",
+          "performer": "鐘宥鈞",
+          "title": "大家來跳舞"
+        },
+        {
+          "order": "05",
+          "performer": "楊楷定父子",
+          "title": "物語",
+          "type": "family"
+        },
+        {
+          "order": "06",
+          "performer": "吳晨楷",
+          "title": "有些"
+        },
+        {
+          "order": "07",
+          "performer": "劉兆凱",
+          "title": "再見的時候"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="390" height="844" rx="32" fill="#FAF7F2"/>
+  <rect x="18" y="18" width="354" height="808" rx="28" fill="#FFFDFC" stroke="#E8D8CD"/>
+  <text x="36" y="58" font-family="Arial, sans-serif" font-size="14" fill="#9A4D3B">5/24 雲林場</text>
+  <text x="36" y="88" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#C93620">節目表</text>
+  <text x="36" y="113" font-family="Arial, sans-serif" font-size="13" fill="#6F625C">依場次與老師收合，現場快速找自己的節目。</text>
+
+  <rect x="30" y="136" width="330" height="44" rx="14" fill="#F7ECE5" stroke="#E7C4B9"/>
+  <text x="52" y="164" font-family="Arial, sans-serif" font-size="14" fill="#8B5A4D">搜尋老師、學生或曲目</text>
+  <circle cx="332" cy="158" r="11" stroke="#C93620" stroke-width="2"/>
+  <line x1="340" y1="166" x2="348" y2="174" stroke="#C93620" stroke-width="2" stroke-linecap="round"/>
+
+  <rect x="30" y="198" width="158" height="38" rx="19" fill="#C93620"/>
+  <text x="109" y="222" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="white" text-anchor="middle">上午場</text>
+  <rect x="202" y="198" width="158" height="38" rx="19" fill="#FFF7F0" stroke="#E4C7BA"/>
+  <text x="281" y="222" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#9A4D3B" text-anchor="middle">下午場</text>
+
+  <rect x="30" y="256" width="330" height="88" rx="16" fill="#C93620"/>
+  <text x="52" y="286" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white">Miss. Candy 蔡老師</text>
+  <text x="52" y="314" font-family="Arial, sans-serif" font-size="15" fill="#FFE7DE">10:00 - 10:20・4 組節目</text>
+  <text x="330" y="308" font-family="Arial, sans-serif" font-size="26" fill="white" text-anchor="middle">⌄</text>
+
+  <rect x="42" y="360" width="306" height="72" rx="14" fill="#FFF8F4" stroke="#E7C4B9"/>
+  <text x="62" y="387" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#C93620">01</text>
+  <text x="106" y="386" font-family="Arial, sans-serif" font-size="14" fill="#695D58">鍵盤團班</text>
+  <text x="106" y="411" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#2E2825">小星星</text>
+  <text x="300" y="400" font-family="Arial, sans-serif" font-size="12" fill="#9A4D3B" text-anchor="middle">團體</text>
+
+  <rect x="42" y="444" width="306" height="72" rx="14" fill="#FFFFFF" stroke="#E7C4B9"/>
+  <text x="62" y="471" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#C93620">02</text>
+  <text x="106" y="470" font-family="Arial, sans-serif" font-size="14" fill="#695D58">郭芊妤</text>
+  <text x="106" y="495" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#2E2825">幸福在唱歌</text>
+
+  <rect x="42" y="528" width="306" height="72" rx="14" fill="#FFFFFF" stroke="#E7C4B9"/>
+  <text x="62" y="555" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#C93620">03</text>
+  <text x="106" y="554" font-family="Arial, sans-serif" font-size="14" fill="#695D58">吳映潔</text>
+  <text x="106" y="579" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#2E2825">再見的時候</text>
+
+  <rect x="30" y="622" width="330" height="72" rx="16" fill="#FFFDFC" stroke="#E7C4B9"/>
+  <text x="52" y="651" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#2E2825">Miss. Khristin 黃老師</text>
+  <text x="52" y="677" font-family="Arial, sans-serif" font-size="14" fill="#8B5A4D">10:50 - 11:10・4 組節目</text>
+  <text x="330" y="667" font-family="Arial, sans-serif" font-size="24" fill="#C93620" text-anchor="middle">›</text>
+
+  <rect x="30" y="710" width="330" height="72" rx="16" fill="#FFFDFC" stroke="#E7C4B9"/>
+  <text x="52" y="739" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#2E2825">Miss. Lucy 張老師</text>
+  <text x="52" y="765" font-family="Arial, sans-serif" font-size="14" fill="#8B5A4D">11:30 - 12:25・9 組節目</text>
+  <text x="330" y="755" font-family="Arial, sans-serif" font-size="24" fill="#C93620" text-anchor="middle">›</text>
+</svg>
