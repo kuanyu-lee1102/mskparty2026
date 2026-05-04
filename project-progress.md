@@ -27,11 +27,14 @@
 
 - `event-website-spec.md`：活動網站主要需求規格
 - `engineering-plan.md`：工程架構與部署規劃
+- `data/events.json`：全站品牌、活動名稱、場次路由與資料檔索引
 - `data/venue.dounan.json`：斗南場場地資訊
 - `data/venue.zhubei.json`：竹北場場地資訊
 - `data/contacts.json`：聯絡資訊
 - `data/programs.dounan.json`：斗南場節目表資料
 - `data/schedules.public.json`：斗南 / 竹北公開版時間表圖片設定
+- `visual-style-guide.md`：最新視覺方向與 UI 設計規範
+- `gemini-visual-prompt.md`：依最新視覺方向整理的視覺生成提示
 - `source-materials/`：整理後的素材來源資料夾
 - `mockups/`：節目表搜尋與 accordion 視覺參考
 
@@ -125,6 +128,19 @@
     - LINE ID 目前待定。
     - 未補連結時仍顯示該項目與「待補」文字，不隱藏。
 
+12. **Visual Direction**
+    - 最新主視覺方向改為「優雅草地音樂會邀請函」。
+    - 新方向以白底留白、朱紅主色、細線植物、鋼琴線稿、古典襯線標題、活動手冊 / 節目冊感為核心。
+    - `hueixin-music-club-poster.pdf` 不再作為主要視覺來源，只保留品牌名稱與音樂元素參考。
+    - `visual-direction-mobile.png` / `visual-direction-wide.png` 不再作為主要視覺方向，避免回到高彩度青春復古社團感。
+    - 首頁需要保留品牌名稱與活動名稱，不只顯示場次分流；但第一屏主要動作仍是選擇「斗南場 / 竹北場」。
+    - 詳細規範見 `visual-style-guide.md`。
+
+13. **Data Flow**
+    - 新增 `data/events.json` 作為首頁與頁面外框的活動基本資料來源。
+    - `data/events.json` 只索引品牌、活動名稱、場次 route、eventId 與各資料檔位置，不取代場地、時間表、節目或聯絡資料檔。
+    - `engineering-plan.md` 已補上前端元件與資料來源對照表。
+
 ## Do Not Override
 
 - 不要把「時間表圖片」拿來替代「場地資訊」。
@@ -134,6 +150,10 @@
 - 不要將工作人員 / 老師內部流程顯示在網站。
 - 不要為竹北節目表建立 `programs` JSON 或搜尋欄。
 - 不要直接引用中文舊路徑或 `source-materials/...` 作為正式前端資產路徑。
+- 不要把全站視覺做回高彩度、彩虹、復古社團海報感。
+- 不要以 `hueixin-music-club-poster.pdf` 作為主要版面或色彩來源。
+- 不要讓首頁只剩工具式場次分流而完全沒有活動名稱與品牌儀式感。
+- 不要在首頁或頁面外框 hardcode 第二份品牌、活動名稱、場次 route；請從 `data/events.json` 讀取或衍生。
 
 ## Next Open Questions
 
@@ -143,26 +163,19 @@
    - 電梯樓層與出電梯後指引是什麼？
    - 對應圖文說明與圖片素材。
 
-2. **首頁與視覺方向**
-   - 要以哪一張 `visual-direction-*.png` 作主要視覺參考？
-   - 是否要更明確引用 `hueixin-music-club-poster.pdf` 的品牌元素？
-
-3. **圖片呈現細節**
+2. **圖片呈現細節**
    - 斗南時間表兩張圖是否都顯示？
    - 竹北時間表兩張圖是否都顯示？
    - 圖片 caption 是否需改成正式文案？
 
-4. **資料檔補齊**
-   - 是否新增 `data/events.json`？
-
-5. **實作驗收**
+3. **實作驗收**
    - 375px 手機不破版。
    - sticky nav 不遮擋內容。
    - 圖片 lightbox 可開關且不裁切重要內容。
    - `/dounan`、`/zhubei` 重新整理不 404。
    - `npm run build` 成功。
 
-6. **部署**
+4. **部署**
    - GitHub remote / branch 策略。
    - Cloudflare Pages 設定。
    - 正式 domain。
@@ -170,10 +183,8 @@
 
 ## Next Suggested Action
 
-1. 決定首頁與整體視覺方向。
-2. 決定時間表圖片呈現細節。
-3. 決定是否新增 `data/events.json`。
-4. 整理最終 Claude implementation prompt，或直接開始 Vite + React 實作。
+1. 決定時間表圖片呈現細節。
+2. 整理最終 implementation prompt，或直接開始 Vite + React 實作。
 
 ## Verification Notes
 
@@ -181,5 +192,10 @@
 - `data/schedules.public.json` 中四張時間表圖片路徑已驗證存在。
 - 已新增 `data/venue.zhubei.json`，並已驗證為合法 JSON。
 - 已新增 `data/contacts.json`，並已驗證為合法 JSON。
+- 已新增 `visual-style-guide.md`，並已更新 `gemini-visual-prompt.md` 與 `event-website-spec.md` 改採新視覺方向。
+- 已新增 `data/events.json`，並已在 `engineering-plan.md` 補上資料來源與前端元件對照。
+- 已驗證 `data/events.json`、場地資料、時間表資料、節目資料、聯絡資料皆為合法 JSON。
+- 已驗證 `data/events.json` 的 `eventId` 可對上 `data/venue.*.json` 與 `data/schedules.public.json`。
+- 已驗證資料檔中目前引用的 `source-materials/...` 圖片路徑都存在；正式前端實作時仍需複製到 `public/assets` 後引用公開路徑。
 - 最近一次 commit 後工作樹曾確認乾淨。
 - 本文件建立後尚未 commit。

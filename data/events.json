@@ -1,0 +1,51 @@
+{
+  "siteId": "museeksoul-2026-recital",
+  "brand": {
+    "englishName": "Museeksoul",
+    "chineseName": "惠歆音樂社",
+    "displayName": "Museeksoul 惠歆音樂社"
+  },
+  "event": {
+    "year": "2026",
+    "title": "屬於我的這首歌",
+    "displayTitle": "2026 屬於我的這首歌",
+    "subtitle": "選擇您參加的場次，查看時間、地點、節目與交通資訊",
+    "themeLine": "這不是一場表演，是孩子為自己完成的一段成長。"
+  },
+  "visualStyle": {
+    "sourceOfTruth": "visual-style-guide.md",
+    "direction": "優雅草地音樂會邀請函",
+    "primaryReference": "new-boss-reference-images",
+    "legacyPosterUsage": "brand-and-music-theme-only"
+  },
+  "routes": {
+    "home": "/",
+    "events": [
+      {
+        "id": "dounan",
+        "eventId": "dounan-2026-05-24",
+        "displayName": "斗南場",
+        "route": "/dounan",
+        "date": "2026-05-24",
+        "venueData": "data/venue.dounan.json",
+        "scheduleData": "data/schedules.public.json#events.dounan",
+        "programData": "data/programs.dounan.json",
+        "hasLostSection": true
+      },
+      {
+        "id": "zhubei",
+        "eventId": "zhubei-2026-05-31",
+        "displayName": "竹北場",
+        "route": "/zhubei",
+        "date": "2026-05-31",
+        "venueData": "data/venue.zhubei.json",
+        "scheduleData": "data/schedules.public.json#events.zhubei",
+        "programImage": "source-materials/zhubei/programs/zhubei-program-sheet-01.png",
+        "hasLostSection": false
+      }
+    ]
+  },
+  "sharedData": {
+    "contacts": "data/contacts.json"
+  }
+}
