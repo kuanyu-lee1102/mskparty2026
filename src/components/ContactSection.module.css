@@ -1,0 +1,165 @@
+/* ContactSection 樣式
+ * 規格依據：
+ *  - visual-style-guide.md §九 卡片：白 / 暖白底、米棕細線、輕陰影、中等圓角
+ *  - visual-style-guide.md §六 色彩 / §七 字體
+ *  - event-website-spec.md「6. 聯絡我們」
+ *  - project-progress.md §11 Contacts：未補連結時仍顯示項目與「待補」文字
+ * 顏色 / 間距 / 字型 / 圓角一律使用 token。
+ */
+
+.section {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
+  }
+}
+
+/* ===== 區塊標題 ===== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.divider {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-vermilion);
+  opacity: 0.85;
+}
+
+/* ===== 聯絡項目卡片清單 ===== */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.item {
+  display: block;
+  background-color: var(--bg-white);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-md) var(--space-lg);
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.item:hover {
+  border-color: var(--color-vermilion);
+  background-color: var(--bg-card);
+}
+
+/* ===== 單一列：手機單欄、寬版兩欄 ===== */
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  align-items: flex-start;
+}
+
+@media (min-width: 640px) {
+  .row {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+}
+
+.labelGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex: 0 0 auto;
+}
+
+@media (min-width: 640px) {
+  .labelGroup {
+    /* 寬版固定 label 寬度，讓 value 對齊 */
+    flex: 0 0 8.5rem;
+  }
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .label {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== 值（可點擊或純文字） ===== */
+.value {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-vermilion);
+  text-decoration: none;
+  word-break: break-all; /* 連結 / LINE ID 過長時不爆版 */
+  min-height: 32px;
+  line-height: 1.4;
+}
+
+a.value:hover,
+a.value:focus-visible {
+  color: var(--color-vermilion-deep);
+  text-decoration: underline;
+}
+
+.valueText {
+  display: inline-block;
+}
+
+.externalIcon {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.85;
+  flex: 0 0 auto;
+}
+
+/* ===== 待補 / 待定 placeholder 容器 ===== */
+.placeholderWrap {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+@media (min-width: 640px) {
+  .placeholderWrap {
+    /* 寬版時讓 placeholder 不要拉滿，避免顯得太重 */
+    max-width: 18rem;
+  }
+}
