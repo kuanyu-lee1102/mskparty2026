@@ -16,7 +16,7 @@
   },
   "guideImage": {
     "status": "ready",
-    "path": "文案素材庫/斗南場/場地資訊/dounan-zone-map.jpg",
+    "path": "source-materials/dounan/venue/dounan-zone-map.jpg",
     "alt": "斗南場虎尾建國眷村 C 區草地會場引導圖",
     "caption": "請依園區圖示尋找已棟蓄水池周邊的 C 區草地。"
   },
@@ -24,13 +24,13 @@
     {
       "id": "map-screenshot",
       "label": "Google Maps 座標截圖",
-      "path": "文案素材庫/斗南場/場地資訊/dounan-map-screenshot.png",
+      "path": "source-materials/dounan/venue/dounan-map-screenshot.png",
       "alt": "斗南場虎尾建國眷村 Google Maps 座標截圖"
     },
     {
       "id": "venue-photo",
       "label": "場地照片",
-      "path": "文案素材庫/斗南場/場地資訊/dounan-venue-photo.png",
+      "path": "source-materials/dounan/venue/dounan-venue-photo.png",
       "alt": "斗南場虎尾建國眷村 C 區草地現場照片"
     }
   ],
