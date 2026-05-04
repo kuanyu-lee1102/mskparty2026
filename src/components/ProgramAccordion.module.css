@@ -1,0 +1,252 @@
+/* ProgramAccordion 樣式
+ *
+ * 規格依據：
+ *  - visual-style-guide.md §九「節目 accordion」
+ *      標題列借鑑節目表細線表格感；老師名稱與時間清楚；右側 icon 表示展開
+ *      展開內容用節目卡片
+ *  - visual-style-guide.md §六（色彩）/§七（字體）
+ *  - event-website-spec.md「節目表 UI 要求」：手機版優先、折疊標題大且好點擊
+ *  - 視覺參考：mockups/program-option-1-accordion-cards.svg
+ *  - 海報配色：source-materials/dounan/programs/dounan-program-01.png
+ *      session 內順序對應主視覺色（紅/橘/黃/綠/藍/紫/深靛），
+ *      由父層以 inline `--accent-color` 注入。
+ *
+ * --accent-color：未注入時 fallback 至朱紅；確保色彩無設定時仍可運作。
+ */
+
+.accordion {
+  --accent-color: var(--color-vermilion);
+
+  width: 100%;
+  background-color: var(--bg-white);
+  border: 1px solid var(--color-line-beige);
+  border-left: 4px solid var(--accent-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.accordion:hover {
+  box-shadow: 0 2px 6px rgba(31, 27, 24, 0.06);
+}
+
+/* 展開時整張卡片背景換成 accent 色的極淡版本 */
+.accordionOpen {
+  background-color: color-mix(in srgb, var(--accent-color) 8%, var(--bg-white));
+}
+
+.headerWrap {
+  margin: 0;
+}
+
+/* ===== 標題列 ===== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  min-height: 64px;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.header:hover,
+.header:focus-visible {
+  background-color: color-mix(in srgb, var(--accent-color) 6%, transparent);
+}
+
+/* 開啟時標題與內容間以細線分隔，呼應節目表細線表格感 */
+.accordionOpen .header {
+  border-bottom-color: color-mix(in srgb, var(--accent-color) 25%, var(--color-line-beige));
+}
+
+/* ===== 序號徽章（呼應海報配色） ===== */
+.seqBadge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--bg-white);
+  background-color: var(--accent-color);
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.teacher {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.time {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 480px) {
+  .teacher {
+    font-size: 1.125rem;
+  }
+  .time {
+    font-size: 0.9375rem;
+  }
+}
+
+/* ===== chevron 展開圖示 ===== */
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--accent-color);
+  transition: transform 0.18s ease;
+  flex: 0 0 auto;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ===== 展開內容區 ===== */
+.panel {
+  background-color: transparent;
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panelInner {
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+}
+
+/* ===== 學生節目明細卡片列 ===== */
+.itemList {
+  --accent-color: var(--color-vermilion);
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.item {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-md);
+  background-color: var(--bg-white);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.item:hover {
+  border-color: var(--accent-color);
+  background-color: color-mix(in srgb, var(--accent-color) 4%, var(--bg-white));
+}
+
+/* 序號：使用 accent 色，呼應海報「序號大字」感 */
+.order {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--accent-color);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.itemDivider {
+  flex: 0 0 auto;
+  width: 1px;
+  background-color: var(--color-line-beige);
+  align-self: stretch;
+}
+
+.itemBody {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: var(--space-sm);
+}
+
+.performer {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  word-break: break-word;
+}
+
+.title {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+@media (min-width: 480px) {
+  .item {
+    align-items: center;
+  }
+  .itemBody {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--space-md);
+  }
+  .performer {
+    flex: 0 0 7.5rem;
+  }
+  .title {
+    flex: 1 1 auto;
+  }
+}

@@ -1,0 +1,200 @@
+/* ZhubeiVenueSection 樣式
+ *
+ * 規格依據：
+ *  - visual-style-guide.md §六（色彩 token）/§七（宋體標題、黑體 UI）
+ *  - visual-style-guide.md §九 卡片：白 / 暖白底、米棕細線、輕陰影、中等圓角
+ *  - visual-style-guide.md §十「竹北場：商辦內動線用步驟卡呈現」
+ *  - event-website-spec.md「竹北場場地資訊」步驟式文字配圖
+ *  - gemini-visual-prompt.md「卡片」「按鈕」UI 規範
+ *
+ * 顏色 / 間距 / 字型 / 圓角一律使用 token，不寫死數值（除少量視覺微調如 stepNumber 大小）。
+ */
+
+.section {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  scroll-margin-top: var(--space-3xl); /* 留 sticky nav 補償空間 */
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
+  }
+}
+
+/* ===== 區塊標題（與 ContactSection 維持同一語言） ===== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.divider {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-vermilion);
+  opacity: 0.85;
+}
+
+/* ===== 抵達摘要卡：大樓名稱 / 地址 / Google Maps 按鈕 ===== */
+.summaryCard {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.buildingName {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+}
+
+.address {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+.mapButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+/* ===== 步驟列表 ===== */
+.stepList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.stepItem {
+  display: block;
+}
+
+/* ===== 單一步驟卡 ===== */
+.stepCard {
+  background-color: var(--bg-white);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-md) var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .stepCard {
+    padding: var(--space-lg);
+  }
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* 序號圓形膠囊：呼應視覺指南的「圓形或膠囊狀重點標籤」 */
+.stepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 0.5rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-vermilion);
+  color: var(--bg-white);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.stepTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: 1.125rem;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 640px) {
+  .stepTitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* ===== 圖片 / 圖片 placeholder 區 ===== */
+.stepMedia {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stepImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-line-beige);
+}
+
+/* ===== 步驟描述 / 描述 placeholder ===== */
+.stepBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepDescription {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+@media (min-width: 640px) {
+  .stepDescription {
+    font-size: 1rem;
+  }
+}

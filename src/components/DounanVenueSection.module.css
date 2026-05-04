@@ -1,0 +1,282 @@
+/* DounanVenueSection 樣式
+ *
+ * 規格依據：
+ *  - visual-style-guide.md §六（色彩 token）/§七（中文宋體標題 + 黑體內文）
+ *    /§九（卡片：白或淡米白底、米棕細線、輕陰影、中等圓角）
+ *    /§十（斗南場可更強調草地、戶外、家庭參與感）
+ *  - event-website-spec.md「2. 場地資訊」「斗南場場地資訊」
+ *  - 不使用海報密集排版；以節目冊式分區呈現
+ *
+ * 顏色 / 字型 / 間距 / 圓角一律走 Wave 1 token。
+ */
+
+.section {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: var(--space-2xl) var(--space-lg);
+    gap: var(--space-xl);
+  }
+}
+
+/* ===== 區塊標題 ===== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-bottom: 0;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.divider {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-vermilion);
+  opacity: 0.85;
+}
+
+/* ===== 會場名稱與目標區域 ===== */
+.venueIntro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.venueName {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+.targetArea {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-vermilion);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.targetDescription {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.primaryGoal {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* ===== 地址 + 座標卡片 ===== */
+.infoCard {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.infoRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+@media (min-width: 640px) {
+  .infoRow {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--space-md);
+  }
+}
+
+.infoLabel {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  flex: 0 0 auto;
+}
+
+@media (min-width: 640px) {
+  .infoLabel {
+    flex: 0 0 7.5rem;
+  }
+}
+
+.infoValue {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  font-size: 0.875rem;
+  background-color: var(--bg-warm);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  letter-spacing: 0;
+}
+
+/* ===== 圖片 figure（引導圖 / 補充圖共用） ===== */
+.figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.imageButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.imageButton:hover,
+.imageButton:focus-visible {
+  border-color: var(--color-vermilion);
+  box-shadow: var(--shadow-soft);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background-color: var(--bg-card);
+}
+
+.zoomHint {
+  position: absolute;
+  right: var(--space-sm);
+  bottom: var(--space-sm);
+  padding: 4px var(--space-sm);
+  background-color: rgba(255, 253, 248, 0.92);
+  color: var(--color-vermilion);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line-beige);
+  pointer-events: none;
+}
+
+.caption {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ===== 地圖按鈕群組 ===== */
+.mapButtonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: stretch;
+}
+
+@media (min-width: 480px) {
+  .mapButtonGroup {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+}
+
+/* ===== 抵達建議 ===== */
+.notes {
+  background-color: var(--bg-warm);
+  border: 1px solid var(--color-line-beige);
+  border-left: 3px solid var(--color-vermilion);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.notesTitle {
+  margin: 0 0 var(--space-xs);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-vermilion);
+  letter-spacing: 0.1em;
+}
+
+.notesList {
+  margin: 0;
+  padding-left: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.notesItem {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* ===== 補充圖片格子 ===== */
+.supportingGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .supportingGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+}
