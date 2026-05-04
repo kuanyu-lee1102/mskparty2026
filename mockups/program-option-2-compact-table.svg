@@ -1,0 +1,53 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="390" height="844" rx="32" fill="#F7FAFC"/>
+  <rect x="18" y="18" width="354" height="808" rx="28" fill="#FFFFFF" stroke="#D7E2EA"/>
+  <text x="36" y="58" font-family="Arial, sans-serif" font-size="14" fill="#526978">資料表模式</text>
+  <text x="36" y="88" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#1D5F8C">Miss. Lucy 張老師</text>
+  <text x="36" y="113" font-family="Arial, sans-serif" font-size="13" fill="#5F6D75">11:30 - 12:25・適合一次看完整名單</text>
+
+  <rect x="30" y="136" width="330" height="40" rx="12" fill="#EAF4FA"/>
+  <text x="48" y="161" font-family="Arial, sans-serif" font-size="13" fill="#1D5F8C">上午場</text>
+  <text x="116" y="161" font-family="Arial, sans-serif" font-size="13" fill="#5F6D75">老師分組</text>
+  <text x="210" y="161" font-family="Arial, sans-serif" font-size="13" fill="#5F6D75">可左右滑動資料表</text>
+
+  <rect x="30" y="200" width="330" height="52" rx="14" fill="#1D5F8C"/>
+  <text x="52" y="232" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white">節目明細</text>
+  <text x="308" y="232" font-family="Arial, sans-serif" font-size="13" fill="#DCEFF9" text-anchor="middle">9 筆</text>
+
+  <rect x="30" y="268" width="330" height="42" rx="10" fill="#F1F6F9"/>
+  <text x="49" y="294" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#526978">序</text>
+  <text x="91" y="294" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#526978">演出者</text>
+  <text x="205" y="294" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#526978">曲目</text>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="30" y="310" width="330" height="58" fill="#FFFFFF" stroke="#E1E8ED"/>
+    <text x="48" y="345" font-size="19" font-weight="700" fill="#1D5F8C">01</text>
+    <text x="91" y="340" font-size="14" fill="#252B2F">林品彤</text>
+    <text x="205" y="340" font-size="14" fill="#252B2F">季節的迴轉</text>
+    <rect x="30" y="368" width="330" height="58" fill="#FAFCFD" stroke="#E1E8ED"/>
+    <text x="48" y="403" font-size="19" font-weight="700" fill="#1D5F8C">02</text>
+    <text x="91" y="398" font-size="14" fill="#252B2F">沈依芩</text>
+    <text x="205" y="398" font-size="14" fill="#252B2F">生命之名</text>
+    <rect x="30" y="426" width="330" height="58" fill="#FFFFFF" stroke="#E1E8ED"/>
+    <text x="48" y="461" font-size="19" font-weight="700" fill="#1D5F8C">03</text>
+    <text x="91" y="456" font-size="14" fill="#252B2F">王錦聰</text>
+    <text x="205" y="456" font-size="14" fill="#252B2F">My heart will go on.</text>
+    <rect x="30" y="484" width="330" height="58" fill="#FAFCFD" stroke="#E1E8ED"/>
+    <text x="48" y="519" font-size="19" font-weight="700" fill="#1D5F8C">04</text>
+    <text x="91" y="514" font-size="14" fill="#252B2F">鍾藝竹</text>
+    <text x="205" y="514" font-size="14" fill="#252B2F">野草莓</text>
+    <rect x="30" y="542" width="330" height="58" fill="#FFFFFF" stroke="#E1E8ED"/>
+    <text x="48" y="577" font-size="19" font-weight="700" fill="#1D5F8C">05</text>
+    <text x="91" y="572" font-size="14" fill="#252B2F">張芯芮、楊佳瑜</text>
+    <text x="205" y="572" font-size="14" fill="#252B2F">紅鼻子馴鹿魯道夫</text>
+    <rect x="30" y="600" width="330" height="58" fill="#FAFCFD" stroke="#E1E8ED"/>
+    <text x="48" y="635" font-size="19" font-weight="700" fill="#1D5F8C">06</text>
+    <text x="91" y="630" font-size="14" fill="#252B2F">王錦聰</text>
+    <text x="205" y="630" font-size="14" fill="#252B2F">卡農</text>
+  </g>
+
+  <rect x="30" y="684" width="330" height="92" rx="16" fill="#F1F6F9" stroke="#D7E2EA"/>
+  <text x="52" y="713" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#1D5F8C">呈現重點</text>
+  <text x="52" y="741" font-family="Arial, sans-serif" font-size="13" fill="#526978">資料密度高，但手機上欄位較擠。</text>
+  <text x="52" y="763" font-family="Arial, sans-serif" font-size="13" fill="#526978">適合工作人員核對，不一定最適合家長查找。</text>
+</svg>
