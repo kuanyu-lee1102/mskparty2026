@@ -5,7 +5,7 @@
 
 ## 一、目前需求摘要
 
-依據 [活動網頁.md](/Users/kuan-yu/Documents/2026%20音樂會/活動網頁.md) 的內容，網站目前定位如下：
+依據 [event-website-spec.md](/Users/kuan-yu/Documents/2026%20音樂會/event-website-spec.md) 的內容，網站目前定位如下：
 
 - 純前端網站
 - 不需要後端
@@ -15,12 +15,26 @@
 - 各場次頁面為一頁式資訊頁
 - 以手機版操作體驗為優先
 - 目前多數內容可先以 placeholder 或假資料呈現
-- 雲林場節目表需支援「場次 > 老師與時間 > 學生節目明細」的折疊列表結構
+- 斗南場節目表需支援「場次 > 老師與時間 > 學生節目明細」的折疊列表結構
 - 斗南場場地資訊第一版以「會場引導圖片」與「Google Maps 座標轉跳」為核心，不細分報到區、急救站、補水區等站點
 
 ## 二、已確認的工程方向
 
-目前已經明確要思考的主題：
+目前已經確認的工程決策：
+
+- 技術方案：使用 `Vite + React`，不採純 HTML / CSS / JS 作為主實作方式
+- 路由方式：使用正常路由，不使用 hash route
+- 頁面路由：
+  - `/`：首頁
+  - `/dounan`：斗南場
+  - `/zhubei`：竹北場
+- 場次命名：
+  - 使用者介面顯示「斗南場」與「竹北場」，主標題與首頁按鈕不包含日期
+  - 程式、資料、元件命名使用 `dounan` 與 `zhubei`
+  - 日期若需要顯示，放在活動資訊補充文字或時間資訊中，不放進主要場次名稱與首頁按鈕
+- 部署目標以 Cloudflare Pages 為主，需處理 SPA fallback，避免直接開啟 `/dounan` 或 `/zhubei` 時出現 404
+
+仍需後續確認的主題：
 
 - GitHub repo
 - domain
@@ -51,7 +65,7 @@
 - Google Maps / Apple Maps 連結
 - 聯絡資訊
 
-節目表資料需與 UI 分離。雲林場 / 斗南場因為資料層級較複雜，建議資料結構保留：
+節目表資料需與 UI 分離。斗南場因為資料層級較複雜，建議資料結構保留：
 
 - 場次名稱：上午場 / 下午場
 - 場次開始時間
@@ -65,8 +79,8 @@
 
 竹北場節目表不納入 `programs` JSON 資料化流程，前端直接呈現單張節目表圖片：
 
-- 資料夾：`文案素材庫/竹北場/節目表`
-- 圖片：`LINE_ALBUM_2026屬於我的這首歌-竹北節目單_260504_1.png`
+- 資料夾：`source-materials/zhubei/programs`
+- 圖片：`zhubei-program-sheet-01.png`
 
 竹北場不需要節目搜尋欄位，也不需要 accordion 展開結構。
 
@@ -87,8 +101,8 @@
 建議使用清楚、可分享、可做 QR code 的網址結構：
 
 - `/`：首頁
-- `/yunlin`：5/24 雲林場
-- `/zhubei`：5/31 竹北場
+- `/dounan`：斗南場
+- `/zhubei`：竹北場
 
 這樣有幾個好處：
 
@@ -99,11 +113,23 @@
 
 ### 3. 檔案與資產管理
 
-雖然目前可用 placeholder，但之後需要被替換的內容最好先列清單。
+第一版圖片素材策略已確認：**已有素材直接使用，其他未確認內容才使用 placeholder**。現有素材可作為第一版預覽與實作使用，日後仍可替換，不視為最終定稿。
+
+第一版可使用的現有素材：
+
+- 斗南場場地資訊：
+  - `source-materials/dounan/venue/dounan-zone-map.jpg`
+  - `source-materials/dounan/venue/dounan-map-screenshot.png`
+  - `source-materials/dounan/venue/dounan-venue-photo.png`
+- 竹北場節目表：
+  - `source-materials/zhubei/programs/zhubei-program-sheet-01.png`
+
+前端實作時，請將需要使用的圖片複製到 `public/assets` 或等效的公開資產資料夾，並使用清楚的英文檔名。不要直接從 `source-materials/...` 作為正式前端引用路徑。
+
+雖然目前已有部分素材，但之後需要被替換或補齊的內容仍需列清單。
 
 建議建立上線前待補項目清單：
 
-- 場地引導圖片
 - 活動時間表
 - 節目表 OCR 文字資料
 - 老師場次與節目明細對應
@@ -214,17 +240,7 @@
 
 ## 七、建議的初始工程架構
 
-可先採以下其中一種：
-
-### 方案 A：純 HTML / CSS / JS
-
-適合條件：
-
-- 希望最容易預覽
-- 希望檔案直觀
-- 維護者偏向非工程背景也能直接看懂
-
-### 方案 B：Vite + React
+### Vite + React（已決定採用）
 
 適合條件：
 
@@ -232,19 +248,18 @@
 - 希望後續更容易擴充頁面區塊
 - 希望資料與 UI 更清楚分離
 
-目前以需求來看，兩種都可行。  
-若以「未來容易替換內容」與「結構清楚」來看，**Vite + React 會是比較穩妥的選擇**。  
-若以「最單純、最少工具依賴」來看，**純 HTML / CSS / JS 也完全足夠**。
+目前已決定採用 **Vite + React**。  
+原因是此專案包含兩個場次頁、斗南場節目表 accordion、搜尋互動、資料 JSON 與後續內容替換需求，使用 React 較容易將資料、頁面、元件與互動邏輯分離。
 
 ### 建議的資料檔方向
 
-若採 React，建議至少拆出以下資料檔或資料模組：
+建議至少拆出以下資料檔或資料模組：
 
 - `events`：兩個場次基本資料
 - `dounanVenue`：斗南場場地資訊，包含會場名稱、C 區位置描述、Google Maps 座標、地圖連結與場地引導圖片
 - `zhubeiVenue`：竹北場場地資訊，依竹北場實際場地條件獨立整理，不沿用斗南場欄位
 - `dailySchedules`：整日活動流程
-- `programs`：節目表資料，支援雲林場的上午/下午與老師折疊層級
+- `programs`：節目表資料，支援斗南場的上午/下午與老師折疊層級
 - `programSearch` 或同等 helper：由 `programs` 衍生搜尋結果，依老師群組回傳符合項目
 - `contacts`：LINE、Facebook、LINE ID 等聯絡資訊
 
@@ -257,14 +272,14 @@
 
 斗南場節目資料已先整理為 `data/programs.dounan.json`。若後續需要修正節目內容，應直接更新此 JSON，並讓任何匯出、試算表或檢查報告都從此 JSON 重新產生，避免多份資料來源互相漂移。
 
-若採純 HTML / CSS / JS，也建議把資料集中在一段清楚的 JavaScript data object，不要散落在 HTML 版面中。
+純 HTML / CSS / JS 不作為第一版主實作方案。
 
 ## 八、目前最建議的組合
 
 若以這個專案目前規模來看，建議優先採用：
 
 - `GitHub repository`
-- `Vite + React` 或 `純 HTML/CSS/JS`
+- `Vite + React`
 - `Cloudflare Pages`
 - `自購網域`
 - `main branch 自動部署`
