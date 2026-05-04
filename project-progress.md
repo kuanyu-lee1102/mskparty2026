@@ -104,17 +104,25 @@
 8. **Schedule**
    - 使用 `DounanScheduleSection` / `ZhubeiScheduleSection`。
    - 資料來源為 `data/schedules.public.json`。
-   - 直接呈現對外版時間表圖片，不另外拆資料重做 timeline 或卡片。
+   - 直接呈現公開參加者版時間表圖片，不另外拆資料重做 timeline 或卡片。
+   - 斗南場公開網站只顯示 `source-materials/dounan/schedule/dounan-schedule-participant.jpg`。
+   - 竹北場公開網站只顯示 `source-materials/zhubei/schedule/zhubei-schedule-participant.jpg`。
+   - 老師版時間表改名為 `source-materials/dounan/schedule/dounan-schedule-teacher.jpg` 與 `source-materials/zhubei/schedule/zhubei-schedule-teacher.jpg`，只保留為素材，不顯示於公開網站。
    - 圖片需可點擊放大，使用 lightbox / modal，並提供明顯關閉按鈕。
+   - Lightbox 不需要左右切換圖片，不需要下載圖片按鈕。
+   - 圖片 caption 貼齊原本圖片用途，不另外加正式文案。
    - 工作人員與老師內部流程不放網站，另外在工作 LINE 群發布。
 
 9. **Programs**
-   - 斗南場使用 `data/programs.dounan.json`。
+   - 斗南場使用 `data/programs.dounan.json`，並視為第一版正式資料。
    - 斗南場節目表需支援 accordion 與搜尋。
-   - 搜尋範圍包含老師、學生、曲目，搜尋在 input blur 後執行。
+   - 斗南場 accordion 預設全部收起。
+   - 搜尋範圍包含老師、學生、曲目，搜尋在 input blur 後執行，不做即時搜尋。
+   - 搜尋結果只顯示符合搜尋條件的節目卡片，不保留完整 accordion。
    - 竹北場節目表只呈現圖片 `source-materials/zhubei/programs/zhubei-program-sheet-01.png`。
    - 竹北場節目表不做 JSON、不做 accordion、不做搜尋。
    - 竹北節目表圖片需可點擊放大，並預留少量文字說明空間。
+   - 竹北場節目表說明文字第一版顯示「節目表說明待補」。
 
 10. **Nav**
     - 斗南場導覽列：場地資訊、時間表、節目表、我迷路了、聯絡我們。
@@ -148,7 +156,11 @@
 - 不要讓竹北場出現「我迷路了」區塊或 tab。
 - 不要從圖片或常識猜竹北商辦地址、座標、樓層、換證流程。
 - 不要將工作人員 / 老師內部流程顯示在網站。
+- 不要將老師版時間表圖片放入公開網站 schedule gallery。
+- 不要為時間表 lightbox 加左右切換或下載按鈕。
 - 不要為竹北節目表建立 `programs` JSON 或搜尋欄。
+- 不要讓斗南節目搜尋即時過濾；只在搜尋欄 blur 後執行。
+- 不要在斗南搜尋結果狀態保留完整 accordion；只顯示符合項目。
 - 不要直接引用中文舊路徑或 `source-materials/...` 作為正式前端資產路徑。
 - 不要把全站視覺做回高彩度、彩虹、復古社團海報感。
 - 不要以 `hueixin-music-club-poster.pdf` 作為主要版面或色彩來源。
@@ -163,19 +175,14 @@
    - 電梯樓層與出電梯後指引是什麼？
    - 對應圖文說明與圖片素材。
 
-2. **圖片呈現細節**
-   - 斗南時間表兩張圖是否都顯示？
-   - 竹北時間表兩張圖是否都顯示？
-   - 圖片 caption 是否需改成正式文案？
-
-3. **實作驗收**
+2. **實作驗收**
    - 375px 手機不破版。
    - sticky nav 不遮擋內容。
    - 圖片 lightbox 可開關且不裁切重要內容。
    - `/dounan`、`/zhubei` 重新整理不 404。
    - `npm run build` 成功。
 
-4. **部署**
+3. **部署**
    - GitHub remote / branch 策略。
    - Cloudflare Pages 設定。
    - 正式 domain。
@@ -183,13 +190,12 @@
 
 ## Next Suggested Action
 
-1. 決定時間表圖片呈現細節。
-2. 整理最終 implementation prompt，或直接開始 Vite + React 實作。
+1. 整理最終 implementation prompt，或直接開始 Vite + React 實作。
 
 ## Verification Notes
 
 - `data/schedules.public.json` 已驗證為合法 JSON。
-- `data/schedules.public.json` 中四張時間表圖片路徑已驗證存在。
+- `data/schedules.public.json` 中公開參加者版與 excluded 老師版時間表圖片路徑已於本輪改名後重新驗證存在。
 - 已新增 `data/venue.zhubei.json`，並已驗證為合法 JSON。
 - 已新增 `data/contacts.json`，並已驗證為合法 JSON。
 - 已新增 `visual-style-guide.md`，並已更新 `gemini-visual-prompt.md` 與 `event-website-spec.md` 改採新視覺方向。

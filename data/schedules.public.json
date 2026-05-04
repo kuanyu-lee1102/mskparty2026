@@ -9,7 +9,9 @@
       "Do not crop important content.",
       "Allow users to tap an image to view it larger in a lightbox / modal.",
       "The enlarged view must have a clear close button and must be usable on mobile.",
-      "Use concise text captions or notes around the image only when useful."
+      "Do not add image carousel navigation.",
+      "Do not add a download button.",
+      "Keep captions close to the original image purpose; do not add extra formal copy."
     ],
     "avoid": [
       "Rebuilding the schedule as a separate timeline UI",
@@ -28,16 +30,19 @@
       "displayMode": "image-gallery",
       "images": [
         {
-          "id": "dounan-schedule-summary",
-          "path": "source-materials/dounan/schedule/dounan-schedule-04.jpg",
+          "id": "dounan-schedule-participant",
+          "audience": "participant",
+          "path": "source-materials/dounan/schedule/dounan-schedule-participant.jpg",
           "alt": "斗南場草地音樂會流程表與重要提醒",
           "caption": "斗南場參加者流程與注意事項"
-        },
+        }
+      ],
+      "excludedImages": [
         {
-          "id": "dounan-schedule-detail",
-          "path": "source-materials/dounan/schedule/dounan-schedule-06.jpg",
-          "alt": "斗南場正式演出日流程表",
-          "caption": "斗南場活動流程詳細版"
+          "id": "dounan-schedule-teacher",
+          "audience": "teacher",
+          "path": "source-materials/dounan/schedule/dounan-schedule-teacher.jpg",
+          "reason": "老師版時間表不顯示於公開網站。"
         }
       ],
       "publicNotes": [
@@ -64,16 +69,19 @@
       "displayMode": "image-gallery",
       "images": [
         {
-          "id": "zhubei-schedule-summary",
-          "path": "source-materials/zhubei/schedule/zhubei-schedule-02.jpg",
+          "id": "zhubei-schedule-participant",
+          "audience": "participant",
+          "path": "source-materials/zhubei/schedule/zhubei-schedule-participant.jpg",
           "alt": "竹北場室內音樂會流程表與重要提醒",
           "caption": "竹北場參加者流程與注意事項"
-        },
+        }
+      ],
+      "excludedImages": [
         {
-          "id": "zhubei-schedule-detail",
-          "path": "source-materials/zhubei/schedule/zhubei-schedule-03.jpg",
-          "alt": "竹北場正式演出流程表",
-          "caption": "竹北場活動流程詳細版"
+          "id": "zhubei-schedule-teacher",
+          "audience": "teacher",
+          "path": "source-materials/zhubei/schedule/zhubei-schedule-teacher.jpg",
+          "reason": "老師版時間表不顯示於公開網站。"
         }
       ],
       "publicNotes": [
