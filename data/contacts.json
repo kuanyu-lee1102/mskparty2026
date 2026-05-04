@@ -1,0 +1,45 @@
+{
+  "contactId": "hueixin-music-club-2026",
+  "displayName": "慧心音樂教室",
+  "items": [
+    {
+      "id": "line-official",
+      "label": "LINE 官方帳號",
+      "value": "@ykh1020h",
+      "href": "https://line.me/R/ti/p/@ykh1020h",
+      "status": "ready",
+      "linkBehavior": "link"
+    },
+    {
+      "id": "facebook",
+      "label": "Facebook 粉絲專頁",
+      "value": "Museek Soul",
+      "href": "https://www.facebook.com/museeksoul/?locale=zh_TW",
+      "status": "ready",
+      "linkBehavior": "link"
+    },
+    {
+      "id": "line-id",
+      "label": "LINE ID",
+      "value": "待定",
+      "href": null,
+      "status": "pending",
+      "linkBehavior": "show-pending"
+    },
+    {
+      "id": "phone",
+      "label": "電話",
+      "value": "05 596 6996",
+      "href": "tel:055966996",
+      "status": "ready",
+      "linkBehavior": "link"
+    }
+  ],
+  "pendingDisplayText": "待補",
+  "notes": [
+    "未補連結時，前端仍顯示該項目與「待補」文字，不隱藏。",
+    "LINE 官方帳號連結已確認為 https://line.me/R/ti/p/@ykh1020h。",
+    "LINE ID 目前待定。",
+    "電話已確認為 05 596 6996。"
+  ]
+}
