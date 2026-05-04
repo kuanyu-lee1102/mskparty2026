@@ -1,0 +1,94 @@
+{
+  "purpose": "Public participant-facing schedule image configuration for the event website. The schedule source images are already clear, so the website should display the images directly instead of rebuilding the schedule as structured timeline data.",
+  "renderingGuidance": {
+    "primaryMode": "image",
+    "instruction": "Render the schedule source images directly as the main schedule content.",
+    "styleIntent": "Preserve the original poster-style schedule design, including warm cream backgrounds, orange/brown accents, icon labels, and illustrated music-event tone.",
+    "imageBehavior": [
+      "Show each image at full container width on mobile.",
+      "Do not crop important content.",
+      "Allow users to tap an image to view it larger in a lightbox / modal.",
+      "The enlarged view must have a clear close button and must be usable on mobile.",
+      "Use concise text captions or notes around the image only when useful."
+    ],
+    "avoid": [
+      "Rebuilding the schedule as a separate timeline UI",
+      "Transcribing the schedule image into duplicated structured schedule cards",
+      "Dense desktop tables",
+      "Showing staff-only preparation or teardown workflows as separate public website content"
+    ]
+  },
+  "events": {
+    "dounan": {
+      "eventId": "dounan-2026-05-24",
+      "displayName": "斗南場",
+      "date": "2026-05-24",
+      "component": "DounanScheduleSection",
+      "publicOnly": true,
+      "displayMode": "image-gallery",
+      "images": [
+        {
+          "id": "dounan-schedule-summary",
+          "path": "source-materials/dounan/schedule/dounan-schedule-04.jpg",
+          "alt": "斗南場草地音樂會流程表與重要提醒",
+          "caption": "斗南場參加者流程與注意事項"
+        },
+        {
+          "id": "dounan-schedule-detail",
+          "path": "source-materials/dounan/schedule/dounan-schedule-06.jpg",
+          "alt": "斗南場正式演出日流程表",
+          "caption": "斗南場活動流程詳細版"
+        }
+      ],
+      "publicNotes": [
+        "工作人員與老師內部流程會在工作 LINE 群發布，不另外轉成網站文字區塊。",
+        "若圖片內容後續更新，請替換圖片檔或新增新版圖片，不要在網站另建一份平行時間表資料。"
+      ],
+      "excludedInternalItems": [
+        "樂器裝車",
+        "樂器搬運",
+        "場地布置",
+        "音控定位或設備確認",
+        "老師集合或行前會議",
+        "工作人員就定位",
+        "收尾作業",
+        "物品上車"
+      ]
+    },
+    "zhubei": {
+      "eventId": "zhubei-2026-05-31",
+      "displayName": "竹北場",
+      "date": "2026-05-31",
+      "component": "ZhubeiScheduleSection",
+      "publicOnly": true,
+      "displayMode": "image-gallery",
+      "images": [
+        {
+          "id": "zhubei-schedule-summary",
+          "path": "source-materials/zhubei/schedule/zhubei-schedule-02.jpg",
+          "alt": "竹北場室內音樂會流程表與重要提醒",
+          "caption": "竹北場參加者流程與注意事項"
+        },
+        {
+          "id": "zhubei-schedule-detail",
+          "path": "source-materials/zhubei/schedule/zhubei-schedule-03.jpg",
+          "alt": "竹北場正式演出流程表",
+          "caption": "竹北場活動流程詳細版"
+        }
+      ],
+      "publicNotes": [
+        "工作人員與老師內部流程會在工作 LINE 群發布，不另外轉成網站文字區塊。",
+        "若圖片內容後續更新，請替換圖片檔或新增新版圖片，不要在網站另建一份平行時間表資料。"
+      ],
+      "excludedInternalItems": [
+        "樂器裝車",
+        "樂器搬運",
+        "場地布置",
+        "工作人員或老師前置作業",
+        "收尾作業",
+        "器材整理",
+        "物品上車"
+      ]
+    }
+  }
+}
