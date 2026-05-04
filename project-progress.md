@@ -28,6 +28,8 @@
 - `event-website-spec.md`：活動網站主要需求規格
 - `engineering-plan.md`：工程架構與部署規劃
 - `data/venue.dounan.json`：斗南場場地資訊
+- `data/venue.zhubei.json`：竹北場場地資訊
+- `data/contacts.json`：聯絡資訊
 - `data/programs.dounan.json`：斗南場節目表資料
 - `data/schedules.public.json`：斗南 / 竹北公開版時間表圖片設定
 - `source-materials/`：整理後的素材來源資料夾
@@ -86,9 +88,15 @@
 7. **Zhubei Venue**
    - 使用 `ZhubeiVenueSection`。
    - 商辦內部抵達流程，文字配圖。
+   - 使用 `data/venue.zhubei.json`。
+   - 商辦 / 商場正式名稱為「暐順經貿大樓」。
+   - 正式地址為「新竹縣竹北市復興三路二段168號 9號樓之5室」。
+   - Google Maps 連結為 `https://maps.app.goo.gl/n4jS88sTgs6sUhNe7`。
+   - 竹北場不需要 Apple Maps 連結。
    - 包含 Google Maps 圖或座標、商場地址、換證流程、電梯樓層、出電梯後找會場。
    - 不顯示「我迷路了」。
-   - 缺資料時顯示「待補」，不可自行編造商辦地址、座標、樓層或換證規則。
+   - 換證流程、入口或電梯、樓層、出電梯後指引與對應圖片會後續提供圖文說明。
+   - 缺資料時顯示「待補」，不可自行編造樓層、換證規則或動線細節。
 
 8. **Schedule**
    - 使用 `DounanScheduleSection` / `ZhubeiScheduleSection`。
@@ -109,6 +117,14 @@
     - 斗南場導覽列：場地資訊、時間表、節目表、我迷路了、聯絡我們。
     - 竹北場導覽列：場地資訊、時間表、節目表、聯絡我們。
 
+11. **Contacts**
+    - 使用 `data/contacts.json`。
+    - LINE 官方帳號連結為 `https://line.me/R/ti/p/@ykh1020h`，顯示名稱可用 `@ykh1020h`。
+    - Facebook 粉絲專頁連結為 `https://www.facebook.com/museeksoul/?locale=zh_TW`。
+    - 電話為 `05 596 6996`，前端可使用 `tel:055966996`。
+    - LINE ID 目前待定。
+    - 未補連結時仍顯示該項目與「待補」文字，不隱藏。
+
 ## Do Not Override
 
 - 不要把「時間表圖片」拿來替代「場地資訊」。
@@ -122,40 +138,31 @@
 ## Next Open Questions
 
 1. **竹北場地資訊**
-   - 商辦 / 商場正式地址是什麼？
-   - Google Maps 連結或座標是什麼？
    - 換證流程細節是什麼？
+   - 搭哪一部電梯或哪個入口？
    - 電梯樓層與出電梯後指引是什麼？
-   - 是否已有對應圖片素材，或需先用 placeholder？
+   - 對應圖文說明與圖片素材。
 
-2. **聯絡資訊**
-   - LINE 官方帳號
-   - Facebook 粉絲專頁
-   - LINE ID
-   - 未補連結時，按鈕要 disabled 還是顯示「待補」？
-
-3. **首頁與視覺方向**
+2. **首頁與視覺方向**
    - 要以哪一張 `visual-direction-*.png` 作主要視覺參考？
    - 是否要更明確引用 `hueixin-music-club-poster.pdf` 的品牌元素？
 
-4. **圖片呈現細節**
+3. **圖片呈現細節**
    - 斗南時間表兩張圖是否都顯示？
    - 竹北時間表兩張圖是否都顯示？
    - 圖片 caption 是否需改成正式文案？
 
-5. **資料檔補齊**
+4. **資料檔補齊**
    - 是否新增 `data/events.json`？
-   - 是否新增 `data/contacts.json`？
-   - 是否新增 `data/venue.zhubei.json`？
 
-6. **實作驗收**
+5. **實作驗收**
    - 375px 手機不破版。
    - sticky nav 不遮擋內容。
    - 圖片 lightbox 可開關且不裁切重要內容。
    - `/dounan`、`/zhubei` 重新整理不 404。
    - `npm run build` 成功。
 
-7. **部署**
+6. **部署**
    - GitHub remote / branch 策略。
    - Cloudflare Pages 設定。
    - 正式 domain。
@@ -163,14 +170,16 @@
 
 ## Next Suggested Action
 
-1. 先決定竹北場場地資訊的資料來源與 placeholder 策略。
-2. 補 `data/venue.zhubei.json` 或確認先不建資料檔。
-3. 決定聯絡資訊 placeholder 與按鈕行為。
-4. 整理最終 Claude implementation prompt。
+1. 決定首頁與整體視覺方向。
+2. 決定時間表圖片呈現細節。
+3. 決定是否新增 `data/events.json`。
+4. 整理最終 Claude implementation prompt，或直接開始 Vite + React 實作。
 
 ## Verification Notes
 
 - `data/schedules.public.json` 已驗證為合法 JSON。
 - `data/schedules.public.json` 中四張時間表圖片路徑已驗證存在。
+- 已新增 `data/venue.zhubei.json`，並已驗證為合法 JSON。
+- 已新增 `data/contacts.json`，並已驗證為合法 JSON。
 - 最近一次 commit 後工作樹曾確認乾淨。
 - 本文件建立後尚未 commit。

@@ -257,13 +257,17 @@
 - LINE 官方帳號
 - Facebook 粉絲專頁
 - LINE ID
+- 電話
 
-先用 placeholder 資訊即可，例如：
-- LINE 官方帳號：待補
-- Facebook：待補
-- LINE ID：待補
+聯絡資訊請統一從 `data/contacts.json` 讀取，不要在 `ContactSection` 或頁面元件中另外 hardcode 第二份聯絡資料。
 
-並保留可點擊連結的結構。
+目前已確認資料：
+- LINE 官方帳號：`@ykh1020h`，連結 `https://line.me/R/ti/p/@ykh1020h`
+- Facebook 粉絲專頁：`https://www.facebook.com/museeksoul/?locale=zh_TW`
+- 電話：`05 596 6996`
+- LINE ID：待定
+
+未補連結或待定資料請仍顯示「待補」或「待定」，不要隱藏項目。已確認連結需保留可點擊結構。
 
 ## 技術與輸出需求
 請直接產出一個可執行、可預覽的前端頁面版本。
@@ -291,7 +295,8 @@
   - 節目明細待補
   - Google Maps 連結待補
   - Apple Maps 連結待補
-  - LINE / Facebook / LINE ID 待補
+  - LINE ID 待定
+  - 其他未補聯絡資訊待補
 
 ## 檔案與程式碼要求
 請提供完整程式碼，並讓我能快速看懂結構。

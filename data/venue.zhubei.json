@@ -1,0 +1,57 @@
+{
+  "eventId": "zhubei-2026-05-31",
+  "venueName": "暐順經貿大樓",
+  "displayAddress": "新竹縣竹北市復興三路二段168號 9號樓之5室",
+  "primaryGoal": "協助使用者抵達暐順經貿大樓後，完成入館流程並找到竹北場會場。",
+  "mapLinks": {
+    "googleMaps": "https://maps.app.goo.gl/n4jS88sTgs6sUhNe7",
+    "appleMaps": null
+  },
+  "arrivalSummary": {
+    "buildingName": "暐順經貿大樓",
+    "address": "新竹縣竹北市復興三路二段168號 9號樓之5室",
+    "checkIn": "待補",
+    "entranceOrElevator": "待補",
+    "floor": "待補",
+    "afterElevator": "待補"
+  },
+  "arrivalSteps": [
+    {
+      "id": "map-and-building",
+      "title": "抵達暐順經貿大樓",
+      "description": "請先依 Google Maps 導航至暐順經貿大樓。詳細入口與抵達圖片待補。",
+      "image": null,
+      "imageStatus": "pending",
+      "placeholderLabel": "圖片待補"
+    },
+    {
+      "id": "check-in",
+      "title": "換證流程",
+      "description": "待補",
+      "image": null,
+      "imageStatus": "pending",
+      "placeholderLabel": "圖片待補"
+    },
+    {
+      "id": "elevator",
+      "title": "電梯與樓層指引",
+      "description": "待補",
+      "image": null,
+      "imageStatus": "pending",
+      "placeholderLabel": "圖片待補"
+    },
+    {
+      "id": "after-elevator",
+      "title": "出電梯後找到會場",
+      "description": "待補",
+      "image": null,
+      "imageStatus": "pending",
+      "placeholderLabel": "圖片待補"
+    }
+  ],
+  "notes": [
+    "Apple Maps 連結不需要提供。",
+    "換證流程、入口或電梯、樓層、出電梯後指引與對應圖片皆待後續提供圖文說明。",
+    "資料未補齊前，前端第一版請顯示「待補」，不要隱藏步驟或自行編造內容。"
+  ]
+}

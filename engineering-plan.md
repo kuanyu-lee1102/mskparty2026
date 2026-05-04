@@ -63,7 +63,7 @@
 - 活動時間表
 - 節目表
 - Google Maps / Apple Maps 連結
-- 聯絡資訊
+- 聯絡資訊，資料來源為 `data/contacts.json`
 
 場地資訊需依場次拆開處理：
 
@@ -169,8 +169,6 @@
 - 老師場次與節目明細對應
 - Google Maps 正式連結
 - Apple Maps 正式連結
-- LINE 官方帳號
-- Facebook 粉絲頁
 - LINE ID
 
 ### 4. 發布流程與權限
@@ -286,19 +284,19 @@
 目前已決定採用 **Vite + React**。  
 原因是此專案包含兩個場次頁、斗南場節目表 accordion、搜尋互動、資料 JSON 與後續內容替換需求，使用 React 較容易將資料、頁面、元件與互動邏輯分離。
 
-### 建議的資料檔方向
+### 資料檔對應表
 
-建議至少拆出以下資料檔或資料模組：
+目前 `data/` 內已有多份 JSON。實作功能時請先查這張表，找到對應資料檔，再實作元件；不要在頁面元件中 hardcode 第二份資料，也不要從圖片或舊文件重新猜內容。
 
-- `events`：兩個場次基本資料
-- `dounanVenue`：斗南場場地資訊，包含會場名稱、C 區位置描述、Google Maps 座標、地圖連結與場地引導圖片
-- `zhubeiVenue`：竹北場商辦內部抵達流程，包含 Google Maps 圖或座標、商場地址、換證流程、電梯樓層、出電梯後會場指引，不沿用斗南場欄位
-- `dounanSchedule`：斗南場公開參加者版時間表圖片設定，不包含網站重建的文字版時間表
-- `zhubeiSchedule`：竹北場公開參加者版時間表圖片設定，不包含網站重建的文字版時間表
-- `schedules.public.json`：斗南與竹北公開參加者版時間表圖片設定，含圖片路徑、caption、alt、排除的內部工作資訊與 lightbox 呈現規則
-- `programs`：節目表資料，支援斗南場的上午/下午與老師折疊層級
-- `programSearch` 或同等 helper：由 `programs` 衍生搜尋結果，依老師群組回傳符合項目
-- `contacts`：LINE、Facebook、LINE ID 等聯絡資訊
+| 資料檔 | 對應功能 | 主要使用元件 / helper | 實作注意事項 |
+| --- | --- | --- | --- |
+| `data/venue.dounan.json` | 斗南場場地資訊、斗南場「我迷路了」地圖按鈕 | `DounanVenueSection`、`DounanLostSection`、`MapButton` | 包含會場名稱、C 區位置描述、座標、Google / Apple Maps 連結、會場引導圖與輔助圖片。斗南場是戶外園區導引，不要套用竹北商辦步驟格式。 |
+| `data/venue.zhubei.json` | 竹北場場地資訊與商辦抵達流程 | `ZhubeiVenueSection`、`ArrivalStepList` 或同等步驟式 UI | 包含暐順經貿大樓、地址、Google Maps 連結、換證流程、電梯與出電梯後指引。Apple Maps 不需要。待補資料需顯示「待補」或「圖片待補」，不可自行編造。 |
+| `data/schedules.public.json` | 斗南 / 竹北公開版時間表圖片 | `DounanScheduleSection`、`ZhubeiScheduleSection`、`ScheduleImageGallery`、`ImageLightbox` | 直接呈現圖片，不重建 timeline 或文字版時間表。依 `events.dounan.images` / `events.zhubei.images` 分場次讀取。工作人員與老師內部流程不可轉進網站。 |
+| `data/programs.dounan.json` | 斗南場節目表 accordion 與搜尋 | `DounanProgramSection`、`ProgramAccordion`、`programSearch` helper | 斗南節目表唯一資料來源。搜尋老師、學生、曲目時必須從此 JSON 衍生，不維護第二份搜尋資料。竹北場不得使用此檔建立節目表。 |
+| `data/contacts.json` | 斗南 / 竹北共用聯絡我們區塊 | `ContactSection`、`ContactLinkList` | `ContactSection` 的唯一聯絡資訊來源。依 `status` / `linkBehavior` 判斷是否呈現可點擊連結；未補連結或待定資料仍需顯示「待補」或「待定」，不要隱藏。 |
+
+目前尚未建立 `data/events.json`。若後續需要把首頁卡片、場次日期、場次頁 hero 文案集中管理，再新增此檔；在新增前，不要假設它已存在。
 
 場地資訊不建議做成單一共用 `VenueSection` 後用資料切換，因為斗南場與竹北場場地差異大，若硬共用會產生太多 optional 欄位與條件判斷。建議拆成：
 
