@@ -11,12 +11,13 @@
 - 不需要後端
 - 不需要資料庫
 - 不需要登入功能
-- 首頁作為場次分流入口
+- 首頁作為品牌儀式感入口與場次分流入口
 - 各場次頁面為一頁式資訊頁
 - 以手機版操作體驗為優先
 - 目前多數內容可先以 placeholder 或假資料呈現
 - 斗南場節目表需支援「場次 > 老師與時間 > 學生節目明細」的折疊列表結構
 - 斗南場場地資訊第一版以「會場引導圖片」與「Google Maps 座標轉跳」為核心，不細分報到區、急救站、補水區等站點
+- 整體視覺依 `visual-style-guide.md`，採「優雅草地音樂會邀請函」方向
 
 ## 二、已確認的工程方向
 
@@ -29,9 +30,15 @@
   - `/dounan`：斗南場
   - `/zhubei`：竹北場
 - 場次命名：
-  - 使用者介面顯示「斗南場」與「竹北場」，主標題與首頁按鈕不包含日期
+  - 使用者介面顯示「斗南場」與「竹北場」，首頁場次按鈕不包含日期
+  - 首頁需顯示品牌名稱、年份與活動名稱：「Museeksoul 惠歆音樂社」、「2026」、「屬於我的這首歌」
   - 程式、資料、元件命名使用 `dounan` 與 `zhubei`
   - 日期若需要顯示，放在活動資訊補充文字或時間資訊中，不放進主要場次名稱與首頁按鈕
+- 視覺方向：
+  - 主要視覺來源為 `visual-style-guide.md`
+  - `gemini-visual-prompt.md` 是依同一方向整理的視覺生成提示
+  - `hueixin-music-club-poster.pdf` 只作品牌名稱與音樂元素參考，不作主要版面或色彩來源
+  - `visual-direction-mobile.png` / `visual-direction-wide.png` 不作為主要視覺方向
 - 部署目標以 Cloudflare Pages 為主，需處理 SPA fallback，避免直接開啟 `/dounan` 或 `/zhubei` 時出現 404
 
 仍需後續確認的主題：
@@ -55,8 +62,30 @@
 - 版型與資料分離
 - 未來只修改資料內容，不動主要頁面結構
 
+目前資料來源與前端使用關係如下：
+
+| 前端範圍 | 元件 / 頁面 | 資料來源 | 備註 |
+| --- | --- | --- | --- |
+| 首頁品牌與場次分流 | `HomePage` | `data/events.json` | 包含品牌名稱、年份、活動名稱、首頁輔助文字、場次路由 |
+| 斗南場頁面外框 | `EventPage` / `DounanPage` | `data/events.json#routes.events[id=dounan]` | 取得場次名稱、日期、route、是否顯示我迷路了 |
+| 竹北場頁面外框 | `EventPage` / `ZhubeiPage` | `data/events.json#routes.events[id=zhubei]` | 取得場次名稱、日期、route、是否顯示我迷路了 |
+| 斗南場地資訊 | `DounanVenueSection` | `data/venue.dounan.json` | 戶外園區 / 草地會場導引，不套用竹北結構 |
+| 竹北場地資訊 | `ZhubeiVenueSection` | `data/venue.zhubei.json` | 商辦抵達流程，不套用斗南戶外導航結構 |
+| 時間表圖片 | `DounanScheduleSection` / `ZhubeiScheduleSection` | `data/schedules.public.json` | 各場讀取自己的 `events.dounan` / `events.zhubei` 設定 |
+| 斗南節目表 | `DounanProgramSection` / `ProgramAccordion` | `data/programs.dounan.json` | accordion 與搜尋都從同一份 JSON 衍生 |
+| 竹北節目表 | `ZhubeiProgramSection` | `source-materials/zhubei/programs/zhubei-program-sheet-01.png` | 實作時複製到 `public/assets` 後引用公開路徑 |
+| 聯絡我們 | `ContactSection` | `data/contacts.json` | 不在元件內 hardcode 第二份聯絡資訊 |
+
+資料邊界：
+
+- `data/events.json` 只放全站共用的活動基本資料、品牌、路由與資料檔索引。
+- `data/events.json` 不放場地細節、節目明細、時間表圖片陣列或聯絡項目，避免變成難維護的大雜燴。
+- 場地、時間表、節目與聯絡資訊由各自資料檔維護。
+- 前端若需要組合頁面資料，應以 `eventId` / `id` 對應，不靠顯示文字比對。
+
 可管理的內容包含：
 
+- 首頁品牌、活動名稱、場次入口與路由，資料來源為 `data/events.json`
 - 場次名稱
 - 場地引導圖
 - 周邊設施資訊
