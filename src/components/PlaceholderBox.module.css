@@ -1,0 +1,54 @@
+/* PlaceholderBox
+ * 視覺：暖白/米白底、米棕細虛線框、次要文字色，輕圓角。
+ * 用虛線是為了區隔「正式內容」與「等待補齊」狀態，且避免被誤讀為 error 警示。
+ */
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-line-beige);
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-align: left;
+  width: 100%;
+}
+
+.pending {
+  background-color: var(--bg-warm);
+}
+
+/* info：稍微更白底，給「待定」這種更中性的場景 */
+.info {
+  background-color: var(--bg-card);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* 用一個小菱形點作為前綴，呼應「細線分隔與菱形點」裝飾語言 */
+.label::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-line-beige);
+  transform: rotate(45deg);
+  flex: 0 0 auto;
+}
+
+.body {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}

@@ -1,0 +1,81 @@
+/* ScheduleImageGallery
+ * 設計理由說明：原指示說「不需要 module.css 也可內建」，
+ * 但為避免 ImageLightbox 樣式與 gallery 自身耦合（縮圖按鈕需要自己的 hover/focus
+ * 狀態與「點擊放大」提示），仍另開一份輕量 module.css 維持元件邊界。
+ *
+ * 規範：
+ * - 手機滿版、不裁切（object-fit: contain，不用 cover）
+ * - 點擊圖片開啟 ImageLightbox
+ * - 不做左右切換、不做下載按鈕
+ * - 圖片下方為 caption，用 figcaption 維持語意
+ */
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  width: 100%;
+}
+
+.figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.imageButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.imageButton:hover,
+.imageButton:focus-visible {
+  border-color: var(--color-vermilion);
+  box-shadow: var(--shadow-soft);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* 圖片背景填淡卡片底，避免不同寬高比的圖片留白突兀 */
+  background-color: var(--bg-card);
+}
+
+/* 「點擊放大」提示：右下角小膠囊，朱紅文字、白底，輕量不搶戲 */
+.zoomHint {
+  position: absolute;
+  right: var(--space-sm);
+  bottom: var(--space-sm);
+  padding: 4px var(--space-sm);
+  background-color: rgba(255, 253, 248, 0.92);
+  color: var(--color-vermilion);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line-beige);
+  pointer-events: none;
+}
+
+.caption {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-align: center;
+}

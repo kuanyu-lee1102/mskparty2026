@@ -1,0 +1,108 @@
+/* ImageLightbox
+ * 深色僅限 modal 內（visual-style-guide §9 圖片 lightbox / §11 避免事項）。
+ * 使用 rgba(31, 27, 24, 0.85) — 文字黑為基底的半透明遮罩。
+ */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(31, 27, 24, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  overflow: auto;
+  /* 給關閉按鈕留出右上角的空間，避免 figure 緊貼按鈕 */
+  padding-top: calc(var(--space-md) + 56px);
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-vermilion);
+  color: var(--bg-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.15s ease;
+  z-index: 1;
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+  background-color: var(--color-vermilion-deep);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--bg-white);
+  outline-offset: 2px;
+}
+
+.figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.image {
+  max-width: 100%;
+  /* 預留關閉按鈕與 caption 空間 */
+  max-height: calc(100vh - 160px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-white);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  user-select: none;
+}
+
+.caption {
+  color: var(--bg-white);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-align: center;
+  max-width: min(720px, 100%);
+  margin: 0;
+  /* caption 略帶半透明，讓圖片仍是視覺主角 */
+  opacity: 0.92;
+}
+
+@media (min-width: 600px) {
+  .backdrop {
+    padding: var(--space-xl);
+    padding-top: calc(var(--space-xl) + 56px);
+  }
+
+  .closeButton {
+    top: var(--space-lg);
+    right: var(--space-lg);
+    width: 48px;
+    height: 48px;
+  }
+
+  .image {
+    max-height: calc(100vh - 200px);
+  }
+}
