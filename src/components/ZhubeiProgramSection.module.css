@@ -1,0 +1,108 @@
+/* ZhubeiProgramSection 樣式
+ *
+ * 規格依據：
+ *  - visual-style-guide.md §九 圖片 lightbox / 卡片 / §六 色彩 / §七 字體
+ *  - event-website-spec.md「竹北場節目表結構」：
+ *    完整顯示、不裁切、可點擊放大、預留少量文字說明空間
+ *  - 風格與 ScheduleImageGallery 維持一致（皆為「點擊放大」的圖片容器）
+ */
+
+.section {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  scroll-margin-top: var(--space-3xl);
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
+  }
+}
+
+/* ===== 區塊標題（與其他 section 維持同一語言） ===== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.divider {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-vermilion);
+  opacity: 0.85;
+}
+
+/* ===== 節目表圖片容器（沿用 ScheduleImageGallery 視覺語言） ===== */
+.figure {
+  margin: 0 0 var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.imageButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.imageButton:hover,
+.imageButton:focus-visible {
+  border-color: var(--color-vermilion);
+  box-shadow: var(--shadow-soft);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background-color: var(--bg-card);
+}
+
+/* 「點擊放大」提示 */
+.zoomHint {
+  position: absolute;
+  right: var(--space-sm);
+  bottom: var(--space-sm);
+  padding: 4px var(--space-sm);
+  background-color: rgba(255, 253, 248, 0.92);
+  color: var(--color-vermilion);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line-beige);
+  pointer-events: none;
+}
+
+/* ===== 圖片下方說明區（第一版顯示「節目表說明待補」） ===== */
+.descriptionWrap {
+  width: 100%;
+}

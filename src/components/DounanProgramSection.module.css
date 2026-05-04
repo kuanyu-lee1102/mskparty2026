@@ -1,0 +1,304 @@
+/* DounanProgramSection 樣式
+ *
+ * 規格依據：
+ *  - visual-style-guide.md §六（色彩）/§七（字體）/§九（節目 accordion / 卡片 / 搜尋）
+ *  - event-website-spec.md「節目表 UI 要求」「節目表搜尋互動」
+ *  - 視覺參考：mockups/program-option-1-accordion-cards.svg
+ *
+ * 顏色 / 間距 / 字型 / 圓角 / 陰影一律走 token。
+ */
+
+.section {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: var(--space-2xl) var(--space-lg);
+    gap: var(--space-xl);
+  }
+}
+
+/* ===== 區塊標題 ===== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.divider {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-vermilion);
+  opacity: 0.85;
+}
+
+/* ===== 搜尋欄 ===== */
+.searchWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.searchLabel {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.searchInputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-white);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-pill);
+  padding: 0 var(--space-md);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.searchInputWrap:focus-within {
+  border-color: var(--color-vermilion);
+  box-shadow: 0 0 0 2px rgba(217, 54, 22, 0.12);
+}
+
+.searchIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  flex: 0 0 auto;
+  margin-right: var(--space-xs);
+}
+
+.searchInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  padding: var(--space-sm) 0;
+  min-height: 44px;
+  width: 100%;
+}
+
+/* 覆蓋 global.css 的 :focus-visible 紅色 outline；
+   外框已由 .searchInputWrap:focus-within 提供視覺指示 */
+.searchInput:focus,
+.searchInput:focus-visible {
+  outline: none;
+}
+
+/* 隱藏 Safari/Chrome 預設的 search clear icon，由 clearButton 取代 */
+.searchInput::-webkit-search-cancel-button,
+.searchInput::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+.clearButton {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  color: var(--color-text-secondary);
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  margin-left: var(--space-xs);
+}
+
+.clearButton:hover,
+.clearButton:focus-visible {
+  background-color: var(--bg-warm);
+  color: var(--color-vermilion);
+}
+
+.searchHelper {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ===== Accordion 預設模式 ===== */
+.sessions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.sessionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.sessionTitle {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-line-beige);
+}
+
+.sessionLabel {
+  /* 主標：上午場 / 下午場 */
+}
+
+.sessionStartTime {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* ===== 搜尋結果 ===== */
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.resultsTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--color-vermilion);
+  letter-spacing: 0.04em;
+}
+
+.resultsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.resultGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.resultGroupTitle {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  flex-wrap: wrap;
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px dashed var(--color-line-beige);
+}
+
+.resultTeacher {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+.resultSeparator {
+  color: var(--color-line-beige);
+  margin: 0 2px;
+}
+
+.resultTime {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-vermilion);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 空狀態 / fallback ===== */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-2xl) var(--space-lg);
+  background-color: var(--bg-warm);
+  border: 1px dashed var(--color-line-beige);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.emptyTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-text);
+}
+
+.emptyHelper {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.empty {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+}

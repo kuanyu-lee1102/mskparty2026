@@ -1,0 +1,52 @@
+/* DounanScheduleSection 樣式
+ *
+ * 為何另開 module.css？
+ *  - ScheduleImageGallery 是共用元件，不該耦合 section header 樣式。
+ *  - 與其他 Dounan section（Venue / Program / Lost / Contact）維持相同
+ *    section header / divider 視覺語言，方便視覺統一。
+ *  - 樣式量很少，只負責 section wrapper 與標題列。
+ *
+ * 顏色 / 間距 / 字型 / 圓角一律走 Wave 1 token。
+ */
+
+.section {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: var(--space-2xl) var(--space-lg);
+    gap: var(--space-xl);
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.divider {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-vermilion);
+  opacity: 0.85;
+}
