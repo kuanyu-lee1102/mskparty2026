@@ -1,0 +1,296 @@
+/* HomePage 樣式
+ * 規格依據：
+ *  - visual-style-guide.md §五（首頁方向）、§六（色彩）、§七（字體）、§八（裝飾）、§十（首頁套用）
+ *  - gemini-visual-prompt.md「首頁內容」「視覺風格」「圖形與裝飾」
+ *  - event-website-spec.md「首頁需求」
+ * 所有 colour / spacing / radius / font 一律走 Wave 1 的 CSS variables。
+ */
+
+.page {
+  position: relative;
+  flex: 1 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--space-2xl) var(--space-md) var(--space-2xl);
+  background-color: var(--bg-white);
+  overflow: hidden; /* 防止角落裝飾在小螢幕產生橫向捲軸 */
+  display: flex;
+  flex-direction: column;
+}
+
+.inner {
+  position: relative;
+  z-index: 1; /* 保證內容永遠在角落裝飾之上、可點擊 */
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--max-content);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  flex: 1 0 auto;
+}
+
+/* ===== 角落裝飾（細線植物 + 品牌 logo）— 不影響點擊區 ===== */
+.cornerOrnament {
+  position: absolute;
+  pointer-events: none; /* 確保不擋住任何按鈕 */
+  z-index: 0;
+  display: block;
+  height: auto; /* 由 width 主導，img 自動維持原始長寬比 */
+  user-select: none;
+}
+
+/* 左上：細線植物（PNG 174x272，aspect ~0.64） */
+.cornerTopLeft {
+  top: var(--space-md);
+  left: var(--space-md);
+  width: 72px;
+  opacity: 0.85;
+  /* PNG 來源為螢幕截圖，留白可能偏白但非純白；
+     darken 取「源 vs 背景」中較深的像素 → 偏白留白被頁面暖白吸收，朱紅線稿保留。
+     比 multiply 更寬容於非純白背景。 */
+  mix-blend-mode: darken;
+}
+
+/* 右下：Museeksoul 品牌 logo（JPG 500x500，正方形） */
+.cornerBottomRight {
+  bottom: var(--space-lg);
+  right: var(--space-md);
+  width: 92px;
+  opacity: 0.92;
+  /* 因為 logo 為 jpg 白底，視覺上會多一個方塊；用 mix-blend-mode 讓白底融入暖白頁面 */
+  mix-blend-mode: multiply;
+}
+
+@media (min-width: 640px) {
+  .cornerTopLeft {
+    width: 110px;
+    top: var(--space-lg);
+    left: var(--space-lg);
+  }
+
+  .cornerBottomRight {
+    width: 132px;
+    bottom: var(--space-xl);
+    right: var(--space-xl);
+  }
+}
+
+/* ===== 品牌標題區 ===== */
+.brandHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding-top: var(--space-xl);
+}
+
+.brandName {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  letter-spacing: 0.18em;
+  color: var(--color-text-secondary);
+  text-transform: none;
+}
+
+@media (min-width: 640px) {
+  .brandName {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+  }
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.year {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  letter-spacing: 0.32em;
+  color: var(--color-vermilion);
+  font-weight: 500;
+  /* 大字距復刻參考圖年份氣質（visual-style-guide §三 Image #1） */
+  padding-left: 0.32em; /* 補足 letter-spacing 視覺置中 */
+}
+
+.titleDivider {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-line-beige);
+}
+
+.eventTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.subtitle {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 28em;
+  padding: 0 var(--space-sm);
+}
+
+@media (min-width: 640px) {
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* ===== 場次入口卡片 ===== */
+.eventList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+@media (min-width: 720px) {
+  .eventList {
+    flex-direction: row;
+    gap: var(--space-lg);
+    align-items: stretch;
+  }
+}
+
+.eventCard {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    'label . arrow'
+    'name name name'
+    'date date date';
+  align-items: center;
+  gap: var(--space-xs) var(--space-md);
+  padding: var(--space-lg) var(--space-lg);
+  min-height: 132px;
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-white);
+  color: var(--color-text);
+  text-decoration: none;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+}
+
+@media (min-width: 720px) {
+  .eventCard {
+    flex: 1 1 0;
+    min-height: 168px;
+    padding: var(--space-xl);
+  }
+}
+
+.eventCard:hover,
+.eventCard:focus-visible {
+  border-color: var(--color-vermilion);
+  background-color: var(--bg-card);
+  box-shadow: 0 4px 12px rgba(31, 27, 24, 0.08);
+  transform: translateY(-1px);
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.eventCard:active {
+  transform: translateY(0);
+}
+
+.eventCardLabel {
+  grid-area: label;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18em 0.7em;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: var(--color-vermilion);
+  background-color: var(--bg-warm);
+  border-radius: var(--radius-pill);
+  width: max-content;
+}
+
+.eventCardName {
+  grid-area: name;
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 5.5vw, 1.875rem);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.eventCardDate {
+  grid-area: date;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.eventCardArrow {
+  grid-area: arrow;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-vermilion);
+  transition: transform 0.18s ease;
+  line-height: 1;
+}
+
+.eventCard:hover .eventCardArrow,
+.eventCard:focus-visible .eventCardArrow {
+  transform: translateX(4px);
+}
+
+/* ===== 主題句呼吸區（角落式裝飾，不搶眼） ===== */
+.themeWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: auto; /* 推到底部，但仍在內容流中，不擋按鈕 */
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.themeRule {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background-color: var(--color-line-beige);
+  flex: 0 0 auto;
+}
+
+.themeLine {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-style: normal;
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 640px) {
+  .themeLine {
+    font-size: 1.05rem;
+  }
+
+  .themeRule {
+    width: 48px;
+  }
+}

@@ -1,0 +1,111 @@
+/* SectionNav 樣式
+ * 規格依據：
+ *  - visual-style-guide.md §九「Sticky nav」：
+ *    手機橫向可滑、暖白或半透明白底、選中狀態使用朱紅底或朱紅底線、不使用深色 navbar
+ *  - gemini-visual-prompt.md「Sticky nav：橫向可滑 tab，暖白背景，選中狀態使用朱紅底或朱紅底線」
+ *  - CLAUDE_CODE_FRONTEND_HANDOFF.md「Mobile-First Requirements」：tab 文字不可 overflow
+ * 不可：深色 navbar、SaaS dashboard 風格。
+ */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  width: 100%;
+  /* 半透明暖白：選擇半透明以維持「暖白或半透明白」的視覺指南，並讓 hero 朱紅標題若被滑動經過時仍能透出輕微質感 */
+  background-color: rgba(255, 253, 248, 0.92);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--color-line-beige);
+  /* 細微下方陰影：避免被誤認為內容卡片，而是「navigator 與內容之間的隔線」 */
+  box-shadow: 0 1px 0 rgba(31, 27, 24, 0.02);
+}
+
+.tabList {
+  list-style: none;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-xs);
+  width: 100%;
+  max-width: var(--max-content);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* 隱藏捲軸，但仍可滑動 */
+  scrollbar-width: none;
+  /* 兩側留 padding 給 tab 不貼邊 */
+  padding: 0 var(--space-md);
+}
+
+.tabList::-webkit-scrollbar {
+  display: none;
+}
+
+.tabItem {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+/* 在內容寬度容得下時自動置中；
+   當內容寬度超過容器（如手機 5 tab）auto margin 計算為 0，
+   tab 仍從左方開始並可橫向捲動，第一顆不會被裁掉。 */
+.tabItem:first-child {
+  margin-left: auto;
+}
+
+.tabItem:last-child {
+  margin-right: auto;
+}
+
+/* 單一 tab：手機點擊面積 ≥ 44px */
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* 不可 overflow → 換成橫向捲動 */
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  padding: 0.85rem var(--space-md);
+  min-height: 44px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.tab:hover {
+  color: var(--color-vermilion);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--color-vermilion);
+  outline-offset: -4px;
+}
+
+/* 選中狀態：朱紅底線（visual-style-guide §九 sticky nav 指定） */
+.tabActive {
+  color: var(--color-vermilion);
+  font-weight: 600;
+  border-bottom-color: var(--color-vermilion);
+}
+
+.tabActive:hover {
+  color: var(--color-vermilion-deep);
+}
+
+@media (min-width: 640px) {
+  .tab {
+    font-size: 1rem;
+    padding: 0.95rem var(--space-lg);
+  }
+}

@@ -1,0 +1,138 @@
+/* EventHero 樣式
+ * 規格依據：
+ *  - visual-style-guide.md §六（色彩，白底/朱紅）、§七（中文宋體大標題）、§十（頁面套用）、§十一（避免事項）
+ *  - gemini-visual-prompt.md「斗南場活動資訊頁內容 → 頁面頂部」「視覺風格」
+ *  - event-website-spec.md「1. 頁面頂部資訊」（場次名稱 + 簡短說明 + 醒目返回首頁按鈕）
+ * 顏色 / 字型 / 間距一律走 Wave 1 token。
+ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-white);
+  /* 上下使用較大留白，呼應節目冊感的 hero 留白；左右用 md 與其他區塊保持齊頭 */
+  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 640px) {
+  .hero {
+    padding: var(--space-2xl) var(--space-lg) var(--space-2xl);
+    gap: var(--space-md);
+  }
+}
+
+/* ===== 返回首頁連結（次要按鈕語言：白底 / 朱紅文字 / 朱紅細框） ===== */
+.backLink {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-vermilion);
+  background-color: var(--bg-white);
+  border: 1px solid var(--color-vermilion);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  line-height: 1.2;
+  min-height: 36px;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+  /* 與 hero 主標題拉開一點距離 */
+  margin-bottom: var(--space-md);
+}
+
+.backLink:hover,
+.backLink:focus-visible {
+  background-color: var(--bg-warm);
+  color: var(--color-vermilion-deep);
+  border-color: var(--color-vermilion-deep);
+  text-decoration: none;
+}
+
+.backArrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.backText {
+  display: inline-block;
+}
+
+/* ===== 活動名稱（小字、來自 events.json） ===== */
+.eventTitle {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+@media (min-width: 640px) {
+  .eventTitle {
+    font-size: 0.9375rem;
+    letter-spacing: 0.2em;
+  }
+}
+
+/* ===== 場次名稱（宋體大標題） ===== */
+.sectionName {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: clamp(1.875rem, 7vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+/* ===== 細線分隔（細線米棕） ===== */
+.divider {
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background-color: var(--color-line-beige);
+  margin: var(--space-xs) 0;
+}
+
+/* ===== 日期 ===== */
+.date {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 640px) {
+  .date {
+    font-size: 1rem;
+  }
+}
+
+/* ===== 副標：簡短說明 ===== */
+.subtitle {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 28em;
+}
+
+@media (min-width: 640px) {
+  .subtitle {
+    font-size: 0.95rem;
+  }
+}
