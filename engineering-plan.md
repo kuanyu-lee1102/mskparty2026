@@ -109,6 +109,9 @@
 - 竹北場使用 `ZhubeiScheduleSection`
 - 時間表資料來源為 `data/schedules.public.json`
 - 時間表以圖片直接呈現，不另外拆資料重做 timeline 或卡片
+- 斗南場公開網站只顯示參加者版圖片 `source-materials/dounan/schedule/dounan-schedule-participant.jpg`
+- 竹北場公開網站只顯示參加者版圖片 `source-materials/zhubei/schedule/zhubei-schedule-participant.jpg`
+- 老師版時間表圖片保留在 `source-materials/*/schedule/*-teacher.jpg`，不顯示於公開網站
 - 兩場可共用底層小型 UI 元件，例如 `ScheduleImageGallery`、`ImageLightbox`
 - 不建立單一 generic `ScheduleSection` 硬塞兩場資料
 - 不共用同一份 schedule image config
@@ -126,7 +129,7 @@
 - 收尾作業
 - 物品上車
 
-時間表圖片需以 responsive image gallery 呈現：手機優先、容器滿版、不可裁切關鍵內容、可點擊放大、lightbox / modal 需有明顯關閉按鈕。圖片周邊可放簡短 caption 或說明文字，但不要建立另一份平行文字版時間表。若圖片後續更新，請替換圖片檔或新增新版圖片。
+時間表圖片需以 responsive image gallery 呈現：手機優先、容器滿版、不可裁切關鍵內容、可點擊放大、lightbox / modal 需有明顯關閉按鈕。圖片周邊 caption 貼齊原本圖片用途，不另外加正式文案，也不要建立另一份平行文字版時間表。Lightbox 不需要左右切換圖片，不需要下載圖片按鈕。若圖片後續更新，請替換圖片檔或新增新版圖片。
 
 節目表資料需與 UI 分離。斗南場因為資料層級較複雜，建議資料結構保留：
 
@@ -136,14 +139,15 @@
 - 老師演出時段
 - 學生節目明細
 
-斗南場前端 UI 以 accordion 呈現，預設收起。折疊標題顯示「老師名稱 + 時間」，展開後顯示學生節目明細。若某位老師底下暫時沒有節目明細資料，展開內容可顯示「節目明細待補」。
+斗南場前端 UI 以 accordion 呈現，所有 accordion 預設全部收起。折疊標題顯示「老師名稱 + 時間」，展開後顯示學生節目明細。若某位老師底下暫時沒有節目明細資料，展開內容可顯示「節目明細待補」。
 
-斗南場目前唯一節目資料來源為 `data/programs.dounan.json`。前端節目表、accordion 與搜尋結果都應從此 JSON 讀取或衍生，不另外維護 CSV、報名表或圖片轉文字副本。節目表圖片與正式報名表可作為人工校對來源，但不作為前端資料來源。
+斗南場目前唯一節目資料來源為 `data/programs.dounan.json`，並視為第一版正式資料。前端節目表、accordion 與搜尋結果都應從此 JSON 讀取或衍生，不另外維護 CSV、報名表或圖片轉文字副本。節目表圖片與正式報名表可作為人工校對來源，但不作為前端資料來源。
 
 竹北場節目表不納入 `programs` JSON 資料化流程，前端直接呈現單張節目表圖片，並預留文字說明空間：
 
 - 資料夾：`source-materials/zhubei/programs`
 - 圖片：`zhubei-program-sheet-01.png`
+- 說明文字第一版顯示「節目表說明待補」
 
 竹北場不需要節目搜尋欄位，也不需要 accordion 展開結構。竹北節目表圖片需可點擊放大，以 lightbox / modal 方式完整檢視，並提供明顯關閉按鈕。
 
@@ -155,8 +159,9 @@
 - 跨上午場 / 下午場搜尋
 - 搜尋結果依老師分組
 - 搜尋結果卡片沿用節目明細的最小 UI 單位：演出順序、演出者名稱、曲目
-- 搜尋欄失焦（blur / unfocus）時才執行搜尋
+- 搜尋欄失焦（blur / unfocus）時才執行搜尋，確定不做即時搜尋
 - 搜尋文字清空後恢復 accordion 全資料顯示
+- 有搜尋文字且找到結果時，只顯示符合搜尋條件的節目卡片，不保留完整 accordion
 - 搜尋無結果時顯示「查無結果」空狀態
 
 ### 2. URL 與頁面策略
@@ -321,11 +326,11 @@
 | --- | --- | --- | --- |
 | `data/venue.dounan.json` | 斗南場場地資訊、斗南場「我迷路了」地圖按鈕 | `DounanVenueSection`、`DounanLostSection`、`MapButton` | 包含會場名稱、C 區位置描述、座標、Google / Apple Maps 連結、會場引導圖與輔助圖片。斗南場是戶外園區導引，不要套用竹北商辦步驟格式。 |
 | `data/venue.zhubei.json` | 竹北場場地資訊與商辦抵達流程 | `ZhubeiVenueSection`、`ArrivalStepList` 或同等步驟式 UI | 包含暐順經貿大樓、地址、Google Maps 連結、換證流程、電梯與出電梯後指引。Apple Maps 不需要。待補資料需顯示「待補」或「圖片待補」，不可自行編造。 |
-| `data/schedules.public.json` | 斗南 / 竹北公開版時間表圖片 | `DounanScheduleSection`、`ZhubeiScheduleSection`、`ScheduleImageGallery`、`ImageLightbox` | 直接呈現圖片，不重建 timeline 或文字版時間表。依 `events.dounan.images` / `events.zhubei.images` 分場次讀取。工作人員與老師內部流程不可轉進網站。 |
-| `data/programs.dounan.json` | 斗南場節目表 accordion 與搜尋 | `DounanProgramSection`、`ProgramAccordion`、`programSearch` helper | 斗南節目表唯一資料來源。搜尋老師、學生、曲目時必須從此 JSON 衍生，不維護第二份搜尋資料。竹北場不得使用此檔建立節目表。 |
+| `data/schedules.public.json` | 斗南 / 竹北公開版時間表圖片 | `DounanScheduleSection`、`ZhubeiScheduleSection`、`ScheduleImageGallery`、`ImageLightbox` | 直接呈現參加者版圖片，不重建 timeline 或文字版時間表。依 `events.dounan.images` / `events.zhubei.images` 分場次讀取。老師版時間表只保留在 `excludedImages` 與素材資料夾，不顯示於公開網站。 |
+| `data/programs.dounan.json` | 斗南場節目表 accordion 與搜尋 | `DounanProgramSection`、`ProgramAccordion`、`programSearch` helper | 斗南節目表唯一資料來源，並視為第一版正式資料。搜尋老師、學生、曲目時必須從此 JSON 衍生，不維護第二份搜尋資料。accordion 預設全收起；搜尋只在 blur 後執行；搜尋結果只顯示符合項目。竹北場不得使用此檔建立節目表。 |
 | `data/contacts.json` | 斗南 / 竹北共用聯絡我們區塊 | `ContactSection`、`ContactLinkList` | `ContactSection` 的唯一聯絡資訊來源。依 `status` / `linkBehavior` 判斷是否呈現可點擊連結；未補連結或待定資料仍需顯示「待補」或「待定」，不要隱藏。 |
 
-目前尚未建立 `data/events.json`。若後續需要把首頁卡片、場次日期、場次頁 hero 文案集中管理，再新增此檔；在新增前，不要假設它已存在。
+`data/events.json` 已建立，作為首頁品牌、場次路由與各資料檔位置索引；不要把場地細節、時間表圖片陣列、節目明細或聯絡項目搬進此檔。
 
 場地資訊不建議做成單一共用 `VenueSection` 後用資料切換，因為斗南場與竹北場場地差異大，若硬共用會產生太多 optional 欄位與條件判斷。建議拆成：
 
