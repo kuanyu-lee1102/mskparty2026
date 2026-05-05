@@ -6,3 +6,12 @@ dist-ssr
 .vite
 coverage
 .claude/
+
+# Secrets — 這個 repo 是 public，絕對不可 commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
