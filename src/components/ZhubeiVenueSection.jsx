@@ -166,32 +166,74 @@ function ParkingAccordion({ data, expanded, onToggle, onOpenImage }) {
           ▾
         </span>
       </button>
-      <div id={panelId} className={styles.parkingPanel} hidden={!expanded}>
-        {data.summary ? (
-          <p className={styles.parkingSummary}>{data.summary}</p>
-        ) : null}
-        {images.length > 0 ? (
-          <div className={styles.parkingImages}>
-            {images.map((img) => (
-              <button
-                key={img.src}
-                type="button"
-                className={styles.parkingImageButton}
-                onClick={() => onOpenImage(img)}
-                aria-label={`放大檢視：${img.alt}`}
-              >
-                <img
-                  src={assetUrl(img.src)}
-                  alt={img.alt}
-                  className={styles.parkingImage}
-                  loading="lazy"
-                />
-              </button>
-            ))}
-          </div>
-        ) : null}
-      </div>
+      {expanded ? (
+        <div id={panelId} className={styles.parkingPanel}>
+          {data.summary ? (
+            <p className={styles.parkingSummary}>{data.summary}</p>
+          ) : null}
+          {images.length > 0 ? (
+            <div className={styles.parkingImages}>
+              {images.map((img) => (
+                <button
+                  key={img.src}
+                  type="button"
+                  className={styles.parkingImageButton}
+                  onClick={() => onOpenImage(img)}
+                  aria-label={`放大檢視：${img.alt}`}
+                >
+                  <img
+                    src={assetUrl(img.src)}
+                    alt={img.alt}
+                    className={styles.parkingImage}
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </section>
+  )
+}
+
+function FlowIcon({ flowId }) {
+  if (flowId === 'staffReception') {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    )
+  }
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <circle cx="12" cy="10" r="3" />
+      <path d="M7 16c1.2-2 3-3 5-3s3.8 1 5 3" />
+    </svg>
   )
 }
 
@@ -206,18 +248,13 @@ function EntryFlowSelector({ flows, selectedId, onSelect }) {
             type="button"
             role="radio"
             aria-checked={selected}
-            className={`${styles.flowCard} ${selected ? styles.flowCardSelected : ''}`}
+            className={`${styles.flowButton} ${selected ? styles.flowButtonSelected : ''}`}
             onClick={() => onSelect(flow.id)}
           >
-            <span className={styles.flowCardRadio} aria-hidden="true">
-              <span className={styles.flowCardRadioDot} />
+            <span className={styles.flowButtonIcon}>
+              <FlowIcon flowId={flow.id} />
             </span>
-            <span className={styles.flowCardText}>
-              <span className={styles.flowCardTitle}>{flow.title}</span>
-              {flow.summary ? (
-                <span className={styles.flowCardSummary}>{flow.summary}</span>
-              ) : null}
-            </span>
+            <span className={styles.flowButtonLabel}>{flow.title}</span>
           </button>
         )
       })}
@@ -233,28 +270,32 @@ function FlowSteps({ steps, onOpenImage }) {
         <li key={`${step.title}-${index}`} className={styles.flowStepCard}>
           <header className={styles.flowStepHeader}>
             <span className={styles.flowStepNumber} aria-hidden="true">
-              {String(index + 1).padStart(2, '0')}
+              {index + 1}
             </span>
             <h4 className={styles.flowStepTitle}>{step.title}</h4>
           </header>
-          {step.image ? (
-            <button
-              type="button"
-              className={styles.flowStepImageButton}
-              onClick={() => onOpenImage({ src: step.image, alt: step.imageAlt || step.title })}
-              aria-label={`放大檢視：${step.imageAlt || step.title}`}
-            >
-              <img
-                src={assetUrl(step.image)}
-                alt={step.imageAlt || step.title}
-                className={styles.flowStepImage}
-                loading="lazy"
-              />
-            </button>
-          ) : null}
-          {step.description ? (
-            <p className={styles.flowStepDescription}>{step.description}</p>
-          ) : null}
+          <div className={styles.flowStepBody}>
+            {step.description ? (
+              <p className={styles.flowStepDescription}>{step.description}</p>
+            ) : null}
+            {step.image ? (
+              <button
+                type="button"
+                className={styles.flowStepImageButton}
+                onClick={() =>
+                  onOpenImage({ src: step.image, alt: step.imageAlt || step.title })
+                }
+                aria-label={`放大檢視：${step.imageAlt || step.title}`}
+              >
+                <img
+                  src={assetUrl(step.image)}
+                  alt={step.imageAlt || step.title}
+                  className={styles.flowStepImage}
+                  loading="lazy"
+                />
+              </button>
+            ) : null}
+          </div>
         </li>
       ))}
     </ol>
