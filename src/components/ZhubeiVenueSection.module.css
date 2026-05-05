@@ -297,100 +297,66 @@
   }
 }
 
-/* ===== Radio cards ===== */
+/* ===== Segmented buttons：兩張並排，icon + label，左實心右描邊 ===== */
 .flowSelector {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-md);
-}
-
-@media (min-width: 640px) {
-  .flowSelector {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.flowCard {
-  display: flex;
-  align-items: flex-start;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-sm);
-  padding: var(--space-md) var(--space-lg);
-  background-color: var(--bg-white);
-  border: 1px solid var(--color-line-beige);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  text-align: left;
-  font-family: inherit;
-  transition:
-    border-color 0.15s ease,
-    background-color 0.15s ease,
-    box-shadow 0.15s ease;
 }
 
-.flowCard:hover,
-.flowCard:focus-visible {
-  border-color: var(--color-vermilion);
-  background-color: var(--bg-warm);
-}
-
-.flowCardSelected {
-  border-color: var(--color-vermilion);
-  background-color: var(--bg-warm);
-  box-shadow: var(--shadow-soft);
-}
-
-.flowCardRadio {
-  flex: 0 0 auto;
+.flowButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 2px solid var(--color-line-beige);
-  border-radius: 50%;
-  margin-top: 2px;
-  transition: border-color 0.15s ease;
+  gap: var(--space-xs);
+  min-height: 48px;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
-.flowCardSelected .flowCardRadio {
+.flowButton:hover,
+.flowButton:focus-visible {
   border-color: var(--color-vermilion);
 }
 
-.flowCardRadioDot {
-  display: block;
-  width: 0.625rem;
-  height: 0.625rem;
-  border-radius: 50%;
+.flowButtonSelected {
   background-color: var(--color-vermilion);
-  opacity: 0;
-  transition: opacity 0.15s ease;
+  border-color: var(--color-vermilion);
+  color: var(--bg-white);
+  box-shadow: var(--shadow-soft);
 }
 
-.flowCardSelected .flowCardRadioDot {
-  opacity: 1;
+.flowButtonSelected:hover,
+.flowButtonSelected:focus-visible {
+  background-color: var(--color-vermilion-deep);
+  border-color: var(--color-vermilion-deep);
 }
 
-.flowCardText {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1 1 auto;
+.flowButtonIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: currentColor;
 }
 
-.flowCardTitle {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--color-text);
-  letter-spacing: 0.04em;
-  line-height: 1.3;
-}
-
-.flowCardSummary {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
+.flowButtonLabel {
+  flex: 0 1 auto;
+  white-space: nowrap;
 }
 
 /* ===== 流程步驟列表 ===== */
@@ -408,16 +374,10 @@
   border: 1px solid var(--color-line-beige);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft);
-  padding: var(--space-md) var(--space-md) var(--space-lg);
+  padding: var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-}
-
-@media (min-width: 640px) {
-  .flowStepCard {
-    padding: var(--space-lg);
-  }
+  gap: var(--space-sm);
 }
 
 .flowStepHeader {
@@ -431,16 +391,14 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  min-width: 2.25rem;
-  height: 2.25rem;
-  padding: 0 0.5rem;
-  border-radius: var(--radius-pill);
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
   background-color: var(--color-vermilion);
   color: var(--bg-white);
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
+  font-size: 0.875rem;
   line-height: 1;
 }
 
@@ -449,14 +407,43 @@
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-text);
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.3;
   letter-spacing: 0.02em;
 }
 
 @media (min-width: 640px) {
   .flowStepTitle {
-    font-size: 1.25rem;
+    font-size: 1.0625rem;
+  }
+}
+
+/* 文字 + 縮圖橫向佈局：手機與桌機都並排 */
+.flowStepBody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+@media (min-width: 640px) {
+  .flowStepBody {
+    grid-template-columns: minmax(0, 1fr) 140px;
+    gap: var(--space-md);
+  }
+}
+
+.flowStepDescription {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  line-height: 1.65;
+}
+
+@media (min-width: 640px) {
+  .flowStepDescription {
+    font-size: 0.9375rem;
   }
 }
 
@@ -483,21 +470,13 @@
 .flowStepImage {
   display: block;
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 90px;
+  object-fit: cover;
   background-color: var(--bg-card);
 }
 
-.flowStepDescription {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  color: var(--color-text);
-  line-height: 1.7;
-}
-
 @media (min-width: 640px) {
-  .flowStepDescription {
-    font-size: 1rem;
+  .flowStepImage {
+    height: 100px;
   }
 }
