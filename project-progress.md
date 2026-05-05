@@ -34,6 +34,7 @@
 - `data/programs.dounan.json`：斗南場節目表資料
 - `data/schedules.public.json`：斗南 / 竹北公開版時間表圖片設定
 - `visual-style-guide.md`：最新視覺方向與 UI 設計規範
+- `ZHUBEI_VENUE_UX_HANDOFF.md`：竹北場場地資訊 UX、接待流程、停車資訊與圖片對應的詳細交接文件
 - `gemini-visual-prompt.md`：依最新視覺方向整理的視覺生成提示
 - `source-materials/`：整理後的素材來源資料夾
 - `mockups/`：節目表搜尋與 accordion 視覺參考
@@ -92,13 +93,18 @@
    - 使用 `ZhubeiVenueSection`。
    - 商辦內部抵達流程，文字配圖。
    - 使用 `data/venue.zhubei.json`。
+   - 詳細 UX 與圖片對應以 `ZHUBEI_VENUE_UX_HANDOFF.md` 為準。
+   - 參考樣式為 `source-materials/zhubei/venue/竹北場地資訊示意圖.png`。
    - 商辦 / 商場正式名稱為「暐順經貿大樓」。
    - 正式地址為「新竹縣竹北市復興三路二段168號 9號樓之5室」。
    - Google Maps 連結為 `https://maps.app.goo.gl/n4jS88sTgs6sUhNe7`。
    - 竹北場不需要 Apple Maps 連結。
-   - 包含 Google Maps 圖或座標、商場地址、換證流程、電梯樓層、出電梯後找會場。
+   - 場地摘要包含 Google Maps 圖或座標、商場地址；停車資訊放在 Google Maps 按鈕下方並預設收合。
+   - 入場方式分為「工作人員接待」與「自行換證入場」，預設顯示「工作人員接待」。
+   - 只顯示使用者所選的必要流程，不同時攤開兩條完整流程。
    - 不顯示「我迷路了」。
-   - 換證流程、入口或電梯、樓層、出電梯後指引與對應圖片會後續提供圖文說明。
+   - 若無對應截圖，請勿擅自創造不存在的圖片，也不要顯示缺圖 placeholder。
+   - 入口、換證、樓層、出電梯後指引不可從圖片或常識自行編造。
    - 缺資料時顯示「待補」，不可自行編造樓層、換證規則或動線細節。
 
 8. **Schedule**
@@ -155,6 +161,10 @@
 - 不要把竹北場硬套斗南場戶外園區導覽結構。
 - 不要讓竹北場出現「我迷路了」區塊或 tab。
 - 不要從圖片或常識猜竹北商辦地址、座標、樓層、換證流程。
+- 不要以「遲到 / 晚到 / 超過時間」描述竹北場自行換證入場。
+- 不要同時顯示竹北場「工作人員接待」與「自行換證入場」的完整流程。
+- 若竹北場無對應截圖，請勿擅自創造不存在的圖片或顯示缺圖 placeholder。
+- 竹北場地資訊 UX 詳細規格以 `ZHUBEI_VENUE_UX_HANDOFF.md` 為準。
 - 不要將工作人員 / 老師內部流程顯示在網站。
 - 不要將老師版時間表圖片放入公開網站 schedule gallery。
 - 不要為時間表 lightbox 加左右切換或下載按鈕。
@@ -170,10 +180,9 @@
 ## Next Open Questions
 
 1. **竹北場地資訊**
-   - 換證流程細節是什麼？
-   - 搭哪一部電梯或哪個入口？
-   - 電梯樓層與出電梯後指引是什麼？
-   - 對應圖文說明與圖片素材。
+   - 依 `ZHUBEI_VENUE_UX_HANDOFF.md` 更新 `data/venue.zhubei.json` 與 `ZhubeiVenueSection`。
+   - 將實際使用圖片從 `source-materials/zhubei/venue/` 複製到 `public/assets/zhubei/venue/`。
+   - 不放沒有對應截圖的換證櫃台、電梯樓層按鈕等項目。
 
 2. **實作驗收**
    - 375px 手機不破版。
@@ -190,7 +199,7 @@
 
 ## Next Suggested Action
 
-1. 整理最終 implementation prompt，或直接開始 Vite + React 實作。
+1. 依 `ZHUBEI_VENUE_UX_HANDOFF.md` 實作竹北場場地資訊 UX。
 
 ## Verification Notes
 
@@ -203,5 +212,7 @@
 - 已驗證 `data/events.json`、場地資料、時間表資料、節目資料、聯絡資料皆為合法 JSON。
 - 已驗證 `data/events.json` 的 `eventId` 可對上 `data/venue.*.json` 與 `data/schedules.public.json`。
 - 已驗證資料檔中目前引用的 `source-materials/...` 圖片路徑都存在；正式前端實作時仍需複製到 `public/assets` 後引用公開路徑。
+- 已新增 `ZHUBEI_VENUE_UX_HANDOFF.md`，記錄竹北場場地資訊清楚表單式 UX、停車資訊、入場分流與圖片對應。
+- 已驗證 `source-materials/zhubei/venue/竹北場地資訊示意圖.png` 與本次交接文件列出的竹北場 venue 圖片存在。
 - 最近一次 commit 後工作樹曾確認乾淨。
 - 本文件建立後尚未 commit。
