@@ -77,8 +77,8 @@
 - [ ] DounanVenueSection 移除座標卡 + 抵達建議後的整體配置是否仍順
 - [ ] DounanScheduleSection 圖片放大 lightbox
 
-### 竹北場（**全部待詳細檢驗**）
-- [ ] ZhubeiVenueSection：抵達摘要卡、Google Maps 按鈕、4 個步驟（其中 3 個 description / 4 個 image 是 PlaceholderBox）
+### 竹北場
+- [x] ZhubeiVenueSection 已依 `ZHUBEI_VENUE_UX_HANDOFF.md` 重做（hero 兩張、Le Phare/暐順經貿大樓/地址、Google Maps、停車 collapsible、Radio cards 入場分流、流程步驟） — **待視覺驗證**
 - [ ] ZhubeiScheduleSection：時間表圖
 - [ ] ZhubeiProgramSection：單張節目表圖 + 點擊放大 + 「節目表說明待補」
 
@@ -101,11 +101,11 @@
 #### Agent E（竹北）尚待決定
 | # | 項目 | 目前 | 備註 |
 |---|---|---|---|
-| E1 | 步驟序號補零 | 「01 / 02 / 03 / 04」 | 待確認 |
-| E2 | 序號樣式 | 朱紅底白字膠囊 | 待確認 |
-| E3 | 摘要卡背景 vs 步驟卡背景 | 摘要 `--bg-card` / 步驟 `--bg-white` | 待確認 |
-| E4 | Google Maps 按鈕文字 | 「用 Google 地圖開啟」（斗南 lost 用「拯救我」，竹北一般場景） | 待確認 |
-| E5 | 節目表說明 PlaceholderBox tone | `info`，其他「待補」`pending` | 待確認 |
+| E1 | 步驟序號補零 | 「01 / 02」（每流程獨立計數） | 已調整 ✓ |
+| E2 | 序號樣式 | 朱紅底白字膠囊 | 沿用 ✓ |
+| E3 | 摘要卡 vs 步驟卡背景 | 已重構：摘要無框、步驟卡 `--bg-white` | 已處理 ✓ |
+| E4 | Google Maps 按鈕文字 | 「用 Google 地圖開啟」 | 沿用 ✓ |
+| E5 | 節目表說明 PlaceholderBox tone | `info`，其他「待補」`pending` | 待確認（不影響竹北 venue） |
 
 ### 資料層待修正（不影響 build）
 
@@ -113,10 +113,11 @@
 
 ### 規格 / JSON 待補（不影響網站運作，PlaceholderBox 已處理）
 
-- `data/venue.zhubei.json` `arrivalSteps` 的 `description`：4 個步驟中 check-in / elevator / after-elevator 三個是「待補」
-- `data/venue.zhubei.json` `arrivalSteps` 的 `image`：4 個步驟全部 `imageStatus !== 'ready'` 或 `image: null`
 - 竹北節目表說明文字（`ZhubeiProgramSection` 顯示「節目表說明待補」）
 - 部分老師的 `items` 仍有 `performer: ''` / `title: ''` → 顯示為「— / 曲目待補」
+
+> 註：`venue.zhubei.json` 已重構為 `heroImages` / `parkingInfo` / `entryFlows` 結構，
+> 文字與圖片皆已備齊（依 `ZHUBEI_VENUE_UX_HANDOFF.md`），不再有 `arrivalSteps` 待補項目。
 
 這些待補項目都在 JSON 補齊資料後，元件會自動顯示真內容，**不需要改程式碼**。
 

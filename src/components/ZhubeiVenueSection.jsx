@@ -1,46 +1,27 @@
+import { useCallback, useState } from 'react'
+
 import { venueZhubei, assetUrl } from '../data/siteData.js'
 import MapButton from './MapButton.jsx'
-import PlaceholderBox from './PlaceholderBox.jsx'
+import ImageLightbox from './ImageLightbox.jsx'
 import styles from './ZhubeiVenueSection.module.css'
 
 /**
- * ZhubeiVenueSection
- *
- * 竹北場場地資訊 — 商辦內部「步驟式」抵達流程。
+ * ZhubeiVenueSection — 竹北場場地資訊
  *
  * 規格依據：
- *  - event-website-spec.md「2. 場地資訊 → 竹北場場地資訊」：
- *    「以步驟式文字配圖為主，每一步可有一張圖片或 placeholder。
- *      圖片未補齊時顯示「圖片待補」。地址、座標、樓層、換證細節未確認時顯示「待補」。
- *      不要自行編造商辦地址、座標、樓層或換證規則。」
- *  - engineering-plan.md 資料對照表：使用 ZhubeiVenueSection + ArrivalStepList，
- *    Apple Maps 不需要。
- *  - visual-style-guide.md §九 卡片 / §十「竹北場：商辦內動線用步驟卡呈現」/
- *    §六 色彩 / §七 字體
- *  - project-progress.md Confirmed Decisions §7 Zhubei Venue / Do Not Override
- *    （不可從圖片或常識編造商辦地址、座標、樓層、換證流程）
+ *  - ZHUBEI_VENUE_UX_HANDOFF.md（清楚表單式 UX：摘要 → 停車收合 → 入場分流 → 流程步驟）
+ *  - project-progress.md Confirmed Decisions §7 / Do Not Override
+ *  - visual-style-guide.md（白底、朱紅、細線、活動手冊感）
  *
- * 資料邊界：
- *  - 只讀 venue.zhubei.json
- *  - Apple Maps 永遠不顯示（即使資料有 appleMaps 也不渲染）
- *  - arrivalSteps 直接照 JSON 順序渲染；description === '待補' 時改用 PlaceholderBox
- *  - imageStatus !== 'ready' 或 image 為 null 時改用 PlaceholderBox 的「圖片待補」
- *
- * Props:
- *  - id?: string         section id（給 SectionNav 使用），預設 'venue'
- *  - title?: string      區塊標題，預設「場地資訊」
- *  - className?: string  外層額外 class
+ * 結構：
+ *  1. Hero 兩張並排（Le Phare 室內 + 大樓外觀），點擊放大
+ *  2. Summary（venueShortName / venueName / displayAddress）
+ *  3. Google Maps 按鈕
+ *  4. ParkingAccordion（預設收合）
+ *  5. EntryFlowSelector（Radio cards，預設 staffReception）
+ *  6. FlowSteps（顯示選中流程的 steps）
+ *  7. ImageLightbox
  */
-
-const PENDING_TEXT = '待補'
-
-function isPending(value) {
-  return (
-    typeof value !== 'string' ||
-    value.length === 0 ||
-    value === PENDING_TEXT
-  )
-}
 
 export default function ZhubeiVenueSection({
   id = 'venue',
@@ -48,13 +29,30 @@ export default function ZhubeiVenueSection({
   className = '',
 }) {
   const data = venueZhubei ?? {}
-  const summary = data.arrivalSummary ?? {}
-  const steps = Array.isArray(data.arrivalSteps) ? data.arrivalSteps : []
+  const heroImages = Array.isArray(data.heroImages) ? data.heroImages : []
+  const parkingInfo = data.parkingInfo ?? null
+  const entryFlows = data.entryFlows ?? null
   const googleMapsHref = data?.mapLinks?.googleMaps ?? ''
 
-  // 顯示在 summary 卡片的：大樓名稱 / 地址（其餘換證、樓層欄位由步驟區呈現）
-  const buildingName = summary.buildingName || data.venueName || ''
-  const address = summary.address || data.displayAddress || ''
+  const [activeImage, setActiveImage] = useState(null)
+  const handleCloseLightbox = useCallback(() => setActiveImage(null), [])
+  const openImage = useCallback(
+    (img) => setActiveImage({ path: assetUrl(img.src), alt: img.alt, caption: img.caption }),
+    [],
+  )
+
+  const [parkingExpanded, setParkingExpanded] = useState(
+    Boolean(parkingInfo?.defaultExpanded),
+  )
+  const toggleParking = useCallback(() => setParkingExpanded((v) => !v), [])
+
+  const flowItems = Array.isArray(entryFlows?.items) ? entryFlows.items : []
+  const initialFlowId =
+    entryFlows?.defaultFlowId && flowItems.some((f) => f.id === entryFlows.defaultFlowId)
+      ? entryFlows.defaultFlowId
+      : flowItems[0]?.id ?? ''
+  const [selectedFlowId, setSelectedFlowId] = useState(initialFlowId)
+  const selectedFlow = flowItems.find((f) => f.id === selectedFlowId) ?? null
 
   return (
     <section
@@ -69,109 +67,196 @@ export default function ZhubeiVenueSection({
         <span className={styles.divider} aria-hidden="true" />
       </header>
 
-      {/* ===== 抵達摘要卡：大樓名稱 + 地址 + Google Maps 按鈕 =====
-          只顯示已確認資料；不可顯示 Apple Maps（規格明定不需要）。 */}
-      <div className={styles.summaryCard}>
-        {buildingName ? (
-          <p className={styles.buildingName}>{buildingName}</p>
-        ) : null}
-        {address ? (
-          <p className={styles.address}>{address}</p>
-        ) : (
-          <PlaceholderBox label={PENDING_TEXT}>
-            商辦地址待補
-          </PlaceholderBox>
-        )}
-
-        {googleMapsHref ? (
-          <div className={styles.mapButtons}>
-            <MapButton
-              provider="google"
-              href={googleMapsHref}
-              variant="primary"
+      {heroImages.length > 0 ? (
+        <div className={styles.heroGrid}>
+          {heroImages.map((img) => (
+            <button
+              key={img.src}
+              type="button"
+              className={styles.heroImageButton}
+              onClick={() => openImage(img)}
+              aria-label={`放大檢視：${img.alt}`}
             >
-              用 Google 地圖開啟
-            </MapButton>
-          </div>
-        ) : (
-          <PlaceholderBox label="Google Maps 連結待補" tone="info" />
-        )}
+              <img
+                src={assetUrl(img.src)}
+                alt={img.alt}
+                className={styles.heroImage}
+                loading="lazy"
+              />
+              <span className={styles.zoomHint} aria-hidden="true">點擊放大</span>
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      <div className={styles.summaryText}>
+        {data.venueShortName ? (
+          <p className={styles.venueShortName}>{data.venueShortName}</p>
+        ) : null}
+        {data.venueName ? (
+          <p className={styles.venueName}>{data.venueName}</p>
+        ) : null}
+        {data.displayAddress ? (
+          <p className={styles.address}>{data.displayAddress}</p>
+        ) : null}
       </div>
 
-      {/* ===== 步驟式抵達流程 ===== */}
-      {steps.length > 0 ? (
-        <ol className={styles.stepList}>
-          {steps.map((step, index) => (
-            <li key={step.id ?? index} className={styles.stepItem}>
-              <ArrivalStepCard step={step} index={index} />
-            </li>
-          ))}
-        </ol>
-      ) : (
-        <PlaceholderBox label={PENDING_TEXT}>
-          抵達流程步驟待補
-        </PlaceholderBox>
-      )}
+      {googleMapsHref ? (
+        <div className={styles.mapButtons}>
+          <MapButton provider="google" href={googleMapsHref} variant="primary">
+            用 Google 地圖開啟
+          </MapButton>
+        </div>
+      ) : null}
+
+      {parkingInfo ? (
+        <ParkingAccordion
+          data={parkingInfo}
+          expanded={parkingExpanded}
+          onToggle={toggleParking}
+          onOpenImage={openImage}
+        />
+      ) : null}
+
+      {flowItems.length > 0 ? (
+        <div className={styles.entrySection}>
+          <h3 className={styles.entryHeading}>選擇入場方式</h3>
+          <EntryFlowSelector
+            flows={flowItems}
+            selectedId={selectedFlowId}
+            onSelect={setSelectedFlowId}
+          />
+          {selectedFlow ? (
+            <FlowSteps steps={selectedFlow.steps} onOpenImage={openImage} />
+          ) : null}
+        </div>
+      ) : null}
+
+      <ImageLightbox
+        isOpen={activeImage !== null}
+        imageUrl={activeImage?.path}
+        alt={activeImage?.alt || ''}
+        caption={activeImage?.caption}
+        onClose={handleCloseLightbox}
+      />
     </section>
   )
 }
 
-/**
- * 單一步驟卡片：序號 + 標題 + 描述（或「待補」placeholder）+ 圖片（或「圖片待補」placeholder）
- *
- * 資料行為：
- *  - description 為 '待補' / 空值 → 用 PlaceholderBox
- *  - image 為 null 或 imageStatus !== 'ready' → 用 PlaceholderBox（label 取 step.placeholderLabel || '圖片待補'）
- */
-function ArrivalStepCard({ step, index }) {
-  const number = String(index + 1).padStart(2, '0')
-  const title = step?.title ?? ''
-  const description = step?.description ?? ''
-  const descriptionIsPending = isPending(description)
-
-  const imageReady =
-    step?.imageStatus === 'ready' &&
-    typeof step?.image === 'string' &&
-    step.image.length > 0
-
-  const placeholderLabel =
-    typeof step?.placeholderLabel === 'string' && step.placeholderLabel.length > 0
-      ? step.placeholderLabel
-      : '圖片待補'
+function ParkingAccordion({ data, expanded, onToggle, onOpenImage }) {
+  const panelId = 'zhubei-parking-panel'
+  const buttonId = 'zhubei-parking-toggle'
+  const images = Array.isArray(data.images) ? data.images : []
 
   return (
-    <article className={styles.stepCard}>
-      <header className={styles.stepHeader}>
-        <span className={styles.stepNumber} aria-hidden="true">
-          {number}
+    <section className={styles.parkingAccordion} aria-labelledby={buttonId}>
+      <button
+        id={buttonId}
+        type="button"
+        className={styles.parkingToggle}
+        aria-expanded={expanded}
+        aria-controls={panelId}
+        onClick={onToggle}
+      >
+        <span className={styles.parkingTitle}>{data.title}</span>
+        <span
+          className={`${styles.parkingChevron} ${expanded ? styles.parkingChevronOpen : ''}`}
+          aria-hidden="true"
+        >
+          ▾
         </span>
-        <h3 className={styles.stepTitle}>{title}</h3>
-      </header>
-
-      {/* 圖片區 */}
-      <div className={styles.stepMedia}>
-        {imageReady ? (
-          <img
-            src={assetUrl(step.image)}
-            alt={step.imageAlt || title || '抵達流程圖片'}
-            className={styles.stepImage}
-            loading="lazy"
-          />
-        ) : (
-          <PlaceholderBox label={placeholderLabel} />
-        )}
+      </button>
+      <div id={panelId} className={styles.parkingPanel} hidden={!expanded}>
+        {data.summary ? (
+          <p className={styles.parkingSummary}>{data.summary}</p>
+        ) : null}
+        {images.length > 0 ? (
+          <div className={styles.parkingImages}>
+            {images.map((img) => (
+              <button
+                key={img.src}
+                type="button"
+                className={styles.parkingImageButton}
+                onClick={() => onOpenImage(img)}
+                aria-label={`放大檢視：${img.alt}`}
+              >
+                <img
+                  src={assetUrl(img.src)}
+                  alt={img.alt}
+                  className={styles.parkingImage}
+                  loading="lazy"
+                />
+              </button>
+            ))}
+          </div>
+        ) : null}
       </div>
+    </section>
+  )
+}
 
-      {/* 描述區 */}
-      <div className={styles.stepBody}>
-        {descriptionIsPending ? (
-          <PlaceholderBox label={PENDING_TEXT}>
-            步驟說明待補
-          </PlaceholderBox>
-        ) : (
-          <p className={styles.stepDescription}>{description}</p>
-        )}
-      </div>
-    </article>
+function EntryFlowSelector({ flows, selectedId, onSelect }) {
+  return (
+    <div className={styles.flowSelector} role="radiogroup" aria-label="入場方式">
+      {flows.map((flow) => {
+        const selected = flow.id === selectedId
+        return (
+          <button
+            key={flow.id}
+            type="button"
+            role="radio"
+            aria-checked={selected}
+            className={`${styles.flowCard} ${selected ? styles.flowCardSelected : ''}`}
+            onClick={() => onSelect(flow.id)}
+          >
+            <span className={styles.flowCardRadio} aria-hidden="true">
+              <span className={styles.flowCardRadioDot} />
+            </span>
+            <span className={styles.flowCardText}>
+              <span className={styles.flowCardTitle}>{flow.title}</span>
+              {flow.summary ? (
+                <span className={styles.flowCardSummary}>{flow.summary}</span>
+              ) : null}
+            </span>
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+function FlowSteps({ steps, onOpenImage }) {
+  if (!Array.isArray(steps) || steps.length === 0) return null
+  return (
+    <ol className={styles.flowSteps}>
+      {steps.map((step, index) => (
+        <li key={`${step.title}-${index}`} className={styles.flowStepCard}>
+          <header className={styles.flowStepHeader}>
+            <span className={styles.flowStepNumber} aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h4 className={styles.flowStepTitle}>{step.title}</h4>
+          </header>
+          {step.image ? (
+            <button
+              type="button"
+              className={styles.flowStepImageButton}
+              onClick={() => onOpenImage({ src: step.image, alt: step.imageAlt || step.title })}
+              aria-label={`放大檢視：${step.imageAlt || step.title}`}
+            >
+              <img
+                src={assetUrl(step.image)}
+                alt={step.imageAlt || step.title}
+                className={styles.flowStepImage}
+                loading="lazy"
+              />
+            </button>
+          ) : null}
+          {step.description ? (
+            <p className={styles.flowStepDescription}>{step.description}</p>
+          ) : null}
+        </li>
+      ))}
+    </ol>
   )
 }

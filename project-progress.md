@@ -106,6 +106,12 @@
    - 若無對應截圖，請勿擅自創造不存在的圖片，也不要顯示缺圖 placeholder。
    - 入口、換證、樓層、出電梯後指引不可從圖片或常識自行編造。
    - 缺資料時顯示「待補」，不可自行編造樓層、換證規則或動線細節。
+   - **實作落地（2026-05-06）**：
+     - JSON 結構：`heroImages` / `parkingInfo` / `entryFlows`（取代舊的 `arrivalSummary` / `arrivalSteps`）。
+     - 場地摘要用兩張 hero 圖並排（Le Phare 室內 + 大樓外觀）+ `venueShortName` + `venueName` + `displayAddress`。
+     - 停車資訊以 inline collapsible 呈現（不重用 ProgramAccordion，避免不必要耦合）。
+     - 入場分流選擇器使用 Radio cards（兩張並排大卡，附摘要文字），預設選中 staffReception。
+     - 圖片均整合 ImageLightbox 點擊放大。
 
 8. **Schedule**
    - 使用 `DounanScheduleSection` / `ZhubeiScheduleSection`。
@@ -179,10 +185,10 @@
 
 ## Next Open Questions
 
-1. **竹北場地資訊**
-   - 依 `ZHUBEI_VENUE_UX_HANDOFF.md` 更新 `data/venue.zhubei.json` 與 `ZhubeiVenueSection`。
-   - 將實際使用圖片從 `source-materials/zhubei/venue/` 複製到 `public/assets/zhubei/venue/`。
-   - 不放沒有對應截圖的換證櫃台、電梯樓層按鈕等項目。
+1. **竹北場地資訊**（已實作 2026-05-06，待視覺驗收）
+   - ✅ 已依 `ZHUBEI_VENUE_UX_HANDOFF.md` 重構 `data/venue.zhubei.json` 與重寫 `ZhubeiVenueSection`。
+   - ✅ 已將 8 張使用中圖片複製到 `public/assets/zhubei/venue/`（`zhubei-venue-01.jpg` 與示意圖未複製）。
+   - 待使用者實機驗收（375px 手機 / 桌機）視覺與互動。
 
 2. **實作驗收**
    - 375px 手機不破版。
@@ -214,5 +220,5 @@
 - 已驗證資料檔中目前引用的 `source-materials/...` 圖片路徑都存在；正式前端實作時仍需複製到 `public/assets` 後引用公開路徑。
 - 已新增 `ZHUBEI_VENUE_UX_HANDOFF.md`，記錄竹北場場地資訊清楚表單式 UX、停車資訊、入場分流與圖片對應。
 - 已驗證 `source-materials/zhubei/venue/竹北場地資訊示意圖.png` 與本次交接文件列出的竹北場 venue 圖片存在。
+- 2026-05-06：依 `ZHUBEI_VENUE_UX_HANDOFF.md` 重構 `data/venue.zhubei.json`、重寫 `ZhubeiVenueSection.jsx` / `.module.css`、複製 8 張圖到 `public/assets/zhubei/venue/`；`npx vitest run` 24/24 通過、`npm run build` 成功（CSS 約 39.6KB / JS 約 287KB）；dist 內含 8 張圖與新文字內容。
 - 最近一次 commit 後工作樹曾確認乾淨。
-- 本文件建立後尚未 commit。

@@ -1,57 +1,83 @@
 {
   "eventId": "zhubei-2026-05-31",
+  "venueShortName": "Le Phare 共享空間竹北館",
   "venueName": "暐順經貿大樓",
   "displayAddress": "新竹縣竹北市復興三路二段168號 9號樓之5室",
-  "primaryGoal": "協助使用者抵達暐順經貿大樓後，完成入館流程並找到竹北場會場。",
   "mapLinks": {
-    "googleMaps": "https://maps.app.goo.gl/n4jS88sTgs6sUhNe7",
-    "appleMaps": null
+    "googleMaps": "https://maps.app.goo.gl/n4jS88sTgs6sUhNe7"
   },
-  "arrivalSummary": {
-    "buildingName": "暐順經貿大樓",
-    "address": "新竹縣竹北市復興三路二段168號 9號樓之5室",
-    "checkIn": "待補",
-    "entranceOrElevator": "待補",
-    "floor": "待補",
-    "afterElevator": "待補"
-  },
-  "arrivalSteps": [
+  "heroImages": [
     {
-      "id": "map-and-building",
-      "title": "抵達暐順經貿大樓",
-      "description": "請先依 Google Maps 導航至暐順經貿大樓。詳細入口與抵達圖片待補。",
-      "image": null,
-      "imageStatus": "pending",
-      "placeholderLabel": "圖片待補"
+      "src": "source-materials/zhubei/venue/zhubei-le-phare-interior.jpg",
+      "alt": "Le Phare 共享空間竹北館室內空間"
     },
     {
-      "id": "check-in",
-      "title": "換證流程",
-      "description": "待補",
-      "image": null,
-      "imageStatus": "pending",
-      "placeholderLabel": "圖片待補"
-    },
-    {
-      "id": "elevator",
-      "title": "電梯與樓層指引",
-      "description": "待補",
-      "image": null,
-      "imageStatus": "pending",
-      "placeholderLabel": "圖片待補"
-    },
-    {
-      "id": "after-elevator",
-      "title": "出電梯後找到會場",
-      "description": "待補",
-      "image": null,
-      "imageStatus": "pending",
-      "placeholderLabel": "圖片待補"
+      "src": "source-materials/zhubei/venue/zhubei-building-exterior.png",
+      "alt": "暐順經貿大樓外觀"
     }
   ],
+  "parkingInfo": {
+    "title": "開車與停車資訊",
+    "summary": "停車入口位於高鐵二路，停車後可依地下停車場電梯入口前往一樓大廳。",
+    "defaultExpanded": false,
+    "images": [
+      {
+        "src": "source-materials/zhubei/venue/zhubei-parking-entrance-close.jpg",
+        "alt": "高鐵二路停車場入口"
+      },
+      {
+        "src": "source-materials/zhubei/venue/zhubei-parking-entrance-close2.png",
+        "alt": "地下停車場電梯入口"
+      }
+    ]
+  },
+  "entryFlows": {
+    "defaultFlowId": "staffReception",
+    "items": [
+      {
+        "id": "staffReception",
+        "title": "工作人員接待",
+        "summary": "一樓大廳會合，由工作人員協助帶位。",
+        "steps": [
+          {
+            "title": "抵達一樓大廳",
+            "description": "進入大樓後，請至一樓大廳尋找活動接待人員。",
+            "image": "source-materials/zhubei/venue/zhubei-lobby-entrance.png",
+            "imageAlt": "暐順經貿大樓一樓大廳入口"
+          },
+          {
+            "title": "與接待人員會合",
+            "description": "工作人員會協助確認並帶位前往 9 樓會場。",
+            "image": "source-materials/zhubei/venue/zhubei-reception-meeting-point.jpg",
+            "imageAlt": "一樓大廳接待會合位置"
+          }
+        ]
+      },
+      {
+        "id": "selfCheckIn",
+        "title": "自行換證入場",
+        "summary": "若現場未遇到接待人員，可依大樓流程換證入場。",
+        "steps": [
+          {
+            "title": "依大樓流程換證",
+            "description": "完成入館流程後，請往商辦電梯方向前進。",
+            "image": "source-materials/zhubei/venue/zhubei-elevator-direction-from-lobby.png",
+            "imageAlt": "一樓大廳往商辦電梯方向"
+          },
+          {
+            "title": "前往 9 樓會場",
+            "description": "抵達 9 樓後，依 Le Phare 招牌前往會場入口。",
+            "image": "source-materials/zhubei/venue/zhubei-le-phare-entrance.png",
+            "imageAlt": "Le Phare 共享空間竹北館入口"
+          }
+        ]
+      }
+    ]
+  },
   "notes": [
-    "Apple Maps 連結不需要提供。",
-    "換證流程、入口或電梯、樓層、出電梯後指引與對應圖片皆待後續提供圖文說明。",
-    "資料未補齊前，前端第一版請顯示「待補」，不要隱藏步驟或自行編造內容。"
+    "Apple Maps 連結不需要提供，僅顯示 Google Maps 按鈕。",
+    "停車資訊預設收合，使用者點擊標題後展開。",
+    "入場方式預設選中『工作人員接待』；切到『自行換證入場』時不顯示工作人員接待流程。",
+    "資料更新請維持 heroImages / parkingInfo / entryFlows 三組結構。"
   ]
 }
