@@ -12,9 +12,17 @@
     },
     {
       "id": "facebook",
-      "label": "Facebook 粉絲專頁",
+      "label": "Facebook",
       "value": "Museeksoul",
       "href": "https://www.facebook.com/museeksoul/?locale=zh_TW",
+      "status": "ready",
+      "linkBehavior": "link"
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "value": "Museeksoul - 惠歆音樂社",
+      "href": "https://www.instagram.com/museeksoul/",
       "status": "ready",
       "linkBehavior": "link"
     },
@@ -31,6 +39,8 @@
   "notes": [
     "未補連結時，前端仍顯示該項目與「待補」文字，不隱藏。",
     "LINE 官方帳號連結已確認為 https://line.me/R/ti/p/@ykh1020h。",
+    "Facebook 連結為 https://www.facebook.com/museeksoul/。",
+    "Instagram 連結為 https://www.instagram.com/museeksoul/。",
     "電話已確認為 05 596 6996。"
   ]
 }
