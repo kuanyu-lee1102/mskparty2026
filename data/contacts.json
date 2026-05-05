@@ -19,14 +19,6 @@
       "linkBehavior": "link"
     },
     {
-      "id": "line-id",
-      "label": "LINE ID",
-      "value": "待定",
-      "href": null,
-      "status": "pending",
-      "linkBehavior": "show-pending"
-    },
-    {
       "id": "phone",
       "label": "電話",
       "value": "05 596 6996",
@@ -39,7 +31,6 @@
   "notes": [
     "未補連結時，前端仍顯示該項目與「待補」文字，不隱藏。",
     "LINE 官方帳號連結已確認為 https://line.me/R/ti/p/@ykh1020h。",
-    "LINE ID 目前待定。",
     "電話已確認為 05 596 6996。"
   ]
 }
