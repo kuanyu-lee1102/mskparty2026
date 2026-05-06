@@ -1,71 +1,39 @@
 # 接棒文件 — 2026 惠歆音樂會網站
 
-最後更新：2026-05-05（Wave 4 完成）
+最後更新：2026-05-07（Wave 5 完成 + 竹北 venue 重做 + 視覺優化）
 
 這份文件給「下一個開工的 session（人或 Claude）」用 — 看完這份就能無縫接手。
 
 ---
 
-## 一、目前進度（5 個 Wave）
+## 一、目前進度（5 個 Wave + Round 1 視覺優化）
 
-| Wave | 範圍 | Commit | 狀態 |
-|---|---|---|---|
-| 1 | Vite + React 19 + react-router-dom 7 + Vitest scaffold；CSS tokens；404 SPA hack；Google Fonts；6 個公開素材 | `90064d8` | ✅ |
-| 2 | 共用 UI：MapButton / PlaceholderBox / ImageLightbox / ScheduleImageGallery（含 lightbox 放大 bug 修正、lost button 改內容寬度） | `b61e3a1` + `80e8fad` | ✅ |
-| 3 | HomePage（含 logo + 植物角落裝飾）、EventHero、SectionNav（auto-margin 中央對齊）、ContactSection | `ded6a58` | ✅ |
-| 4 | DounanVenueSection / ScheduleSection / ProgramSection / ProgramAccordion；ZhubeiVenueSection / ScheduleSection / ProgramSection；programSearch.js + 24 unit tests；老師色彩系統 | `1a03177` | ✅ |
-| 5 | 頁面組裝（DounanPage / ZhubeiPage 正式版）、`vite.config.js` 部署 base、GitHub Actions deploy.yml | — | ⏳ 未開始 |
+| Wave | 範圍 | 狀態 |
+|---|---|---|
+| 1 | Vite + React 19 + react-router-dom 7 + Vitest scaffold；CSS tokens；404 SPA hack；Google Fonts；6 個公開素材 | ✅ |
+| 2 | 共用 UI：MapButton / PlaceholderBox / ImageLightbox / ScheduleImageGallery | ✅ |
+| 3 | HomePage（含 logo + 植物角落裝飾）、EventHero、SectionNav、ContactSection | ✅ |
+| 4 | DounanVenueSection / ScheduleSection / ProgramSection / ProgramAccordion；ZhubeiVenueSection / ScheduleSection / ProgramSection；programSearch.js + 24 unit tests；老師色彩系統 | ✅ |
+| 5 | 頁面組裝、`.github/workflows/deploy.yml`（actions/deploy-pages@v4 OIDC）、GitHub Pages 部署、CLAUDE.md 開發準則、`.gitignore` secrets 防護 | ✅ |
+| Round 1 | **竹北場 venue 依 `ZHUBEI_VENUE_UX_HANDOFF.md` 重做**：Hero（Le Phare 室內）/ 場地摘要置中 / Google Maps / 停車 collapsible（含 car icon、副標、◇ 菱形列點注意事項）/ Radio segmented buttons 入場分流 / 米色 wrapper banner 包 step 卡 / 自行換證入場新增「請至櫃檯辦理換證」首步驟。EventHero 副標移除（首頁仍保留） | ✅ |
 
-`main` branch 已 push 到 GitHub，最新 commit `1a03177`。
+線上：**https://kuanyu-lee1102.github.io/mskparty2026/**
+GitHub repo：https://github.com/kuanyu-lee1102/mskparty2026（public）
 
 ---
 
-## 二、下一步：Wave 5（Agent F）
+## 二、下一步候選
 
-### 工作範圍
+候選任務（順序非強制，按需要排）：
 
-| 檔案 | 內容 |
-|---|---|
-| `src/pages/DounanPage.jsx` | 目前是「Wave 4 預覽版」串接所有 Section，可保留或重寫，內容已正確 |
-| `src/pages/ZhubeiPage.jsx` | 同上 |
-| `vite.config.js` | 已設 `base: command === 'build' ? '/mskparty2026/' : '/'`，**已可用** — Agent F 主要驗證/微調即可 |
-| `.github/workflows/deploy.yml` | **需新建** — GitHub Actions 自動 build + deploy gh-pages |
-
-### Wave 5 重點
-
-1. **Page 組裝**：目前 `DounanPage.jsx` / `ZhubeiPage.jsx` 已實際串好所有 Section，視覺與互動都驗證過 — 可能不需大改，只需最後檢查 SectionNav tab id 與 section id 對齊、`<main>` 包裝、SEO meta（如有需要）。
-2. **GitHub Pages 部署**：
-   - Repo: `https://github.com/kuanyu-lee1102/mskparty2026`
-   - Base path: `/mskparty2026/`
-   - Workflow：node setup → `npm ci` → `npm run build` → 上傳 `dist/` 到 `gh-pages` branch（或用 `actions/deploy-pages@v4` 走 Pages artifact 流程）
-   - Settings > Pages source 要設成 `gh-pages` branch 或 `GitHub Actions`
-3. **404.html SPA hack**：Wave 1 已建好，`pathSegmentsToKeep = 1`（對應 `/mskparty2026/` 一段）。直接訪問 `/mskparty2026/dounan` 應透過 hack 正常運作。
-
-### 啟動 Agent F 的建議 prompt 框架
-
-```
-你是 Wave 5 的 Agent F，負責頁面正式組裝 + GitHub Pages 部署。
-
-工作目錄：/Users/kuan-yu/Documents/2026 音樂會
-必讀：
-- SESSION_HANDOFF.md（這份）
-- CLAUDE_CODE_FRONTEND_HANDOFF.md 頁面模型段
-- engineering-plan.md
-- event-website-spec.md 整體頁面結構段
-- project-progress.md
-- 現有 src/pages/DounanPage.jsx / ZhubeiPage.jsx（已預組裝，可大幅復用）
-- vite.config.js（base 已設定）
-
-工作規範同 plan 第 10.1 節（規格優先、不過度猜測、缺資料用 PlaceholderBox）。
-依賴：Wave 1-4 全部產出，只讀不改。
-
-產出：
-- src/pages/DounanPage.jsx 正式版（若預覽版已 OK 可不大改）
-- src/pages/ZhubeiPage.jsx 正式版
-- .github/workflows/deploy.yml 新增
-
-完成後 npm run build 必須通過，npx vitest run 必須通過。
-```
+1. **斗南場視覺驗收 + 文案決策**：見第三節「Agent D / E 尚待決定」
+2. **竹北 venue 視覺最終驗收**：第一輪結構升級已上線，等使用者跑最後一輪 device 測試
+3. **第二輪視覺優化（選做）**：依 `ZHUBEI_VENUE_UX_HANDOFF.md` / 示意圖補強，可能項目：
+   - 入場 segmented buttons icon 改 filled silhouette
+   - 加頁角植物 / 鋼琴線稿裝飾（需先取得 SVG 素材）
+   - Google Maps 按鈕加 pin icon
+4. **節目表編輯 / 回灌流程**：用 `scripts/programs-to-csv.mjs` 將 `data/programs.dounan.json` 攤平成 CSV 給協作者編輯，回灌邏輯詳見 script 註解
+5. **未補資料**：竹北節目表說明文字、部分老師的 `performer` / `title` 仍空（顯示「— / 曲目待補」）
 
 ---
 
@@ -109,7 +77,7 @@
 
 ### 資料層待修正（不影響 build）
 
-- **`data/contacts.json` 的 Facebook value 是 `Museek Soul`**（中間有空格），但 `data/events.json` `brand.englishName` 是 `Museeksoul`（無空格）。需要使用者決定哪個是正確拼寫，並更新對應 JSON。
+- 已處理 ✓：拼寫已統一為 `Museeksoul`；`contacts.json` 已加 Instagram、移除 LINE ID、Facebook 拆主粉專與竹北教室。
 
 ### 規格 / JSON 待補（不影響網站運作，PlaceholderBox 已處理）
 
@@ -151,42 +119,34 @@ npx vitest run       # 跑單元測試（目前 24 tests，全綠）
 
 ---
 
-## 六、計畫文件位置
-
-執行計畫：`/Users/kuan-yu/.claude/plans/rippling-juggling-starfish.md`
-
-該檔包含：
-- 12 小節完整實作計畫
-- 第 10.1「Agent 共通工作規範」（規格優先、不過度猜測、缺資料用 PlaceholderBox 等 8 條）
-- 第 10.2「執行順序原則」（Wave 制 + 同 Wave 內檔案不重疊才並行）
-- 第 10.3 / 10.4 各 Wave 的 Agent 範圍與必讀清單
-
----
-
-## 七、規格文件清單（給 Wave 5 Agent F 必讀）
+## 六、規格文件清單
 
 | 文件 | 重要段落 |
 |---|---|
+| `CLAUDE.md` | 任何 AI 動工前必讀；安全規則 + 開發規則 + 必讀文件順序 |
 | `CLAUDE_CODE_FRONTEND_HANDOFF.md` | 頁面模型、元件對照、Do Not 規則 |
-| `event-website-spec.md` | 整體頁面結構（先讀「頁面結構」段） |
+| `event-website-spec.md` | 整體頁面結構 |
 | `engineering-plan.md` | 路由、檔案結構、部署 |
-| `visual-style-guide.md` | 視覺基準（已被 Wave 1-4 落地實作） |
-| `project-progress.md` | Do Not Override 規則 |
+| `visual-style-guide.md` | 視覺基準 |
+| `project-progress.md` | Decision Log + Do Not Override + Verification Notes |
+| `ZHUBEI_VENUE_UX_HANDOFF.md` | 竹北 venue UX、停車、入場分流、圖片對應 |
 
 ---
 
-## 八、聯絡 / 驗證資源
+## 七、聯絡 / 驗證資源
 
-- GitHub repo: https://github.com/kuanyu-lee1102/mskparty2026
-- 部署網址（待 Wave 5）：`https://kuanyu-lee1102.github.io/mskparty2026/`
-- 本機 dev：`http://localhost:5173/`
+- GitHub repo: https://github.com/kuanyu-lee1102/mskparty2026（public）
+- 部署網址：https://kuanyu-lee1102.github.io/mskparty2026/
+- 本機 dev：`npm run dev` → `http://localhost:5173/`
+- 本機 preview build：`npm run build && npm run preview` → `http://localhost:4173/mskparty2026/`
 
 ---
 
-## 九、給接棒者的話
+## 八、給接棒者的話
 
 - **不要 hardcode 任何文案** — 一律從 JSON 讀
-- **不要編造資料** — 缺的用 `PlaceholderBox`
+- **不要編造資料** — 沒對應素材就不放（竹北 venue 規範）；其他區塊缺資料用 `PlaceholderBox`
 - **遇到不確定** — 先回查規格 .md，找不到就問使用者
-- **先 commit 再做大改動** — 已建立 Wave 制就遵守，避免 cross-wave 覆蓋
+- **commit 前跑 `npx vitest run`**
 - **HMR 在背景跑時，視覺修改可即時驗證** — 善用瀏覽器
+- **public repo**：絕對不要 commit secret（API keys、tokens、私鑰），詳見 CLAUDE.md
