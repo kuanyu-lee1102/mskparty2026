@@ -167,6 +167,11 @@ function ParkingAccordion({ data, expanded, onToggle, onOpenImage }) {
         aria-controls={panelId}
         onClick={onToggle}
       >
+        {data.icon ? (
+          <span className={styles.parkingIcon} aria-hidden="true">
+            <img src={assetUrl(data.icon)} alt="" className={styles.parkingIconImage} />
+          </span>
+        ) : null}
         <span className={styles.parkingHeaderText}>
           <span className={styles.parkingTitle}>{data.title}</span>
           {data.summary ? (
@@ -177,7 +182,18 @@ function ParkingAccordion({ data, expanded, onToggle, onOpenImage }) {
           className={`${styles.parkingChevron} ${expanded ? styles.parkingChevronOpen : ''}`}
           aria-hidden="true"
         >
-          ▾
+          <svg
+            viewBox="0 0 24 24"
+            width="22"
+            height="22"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </span>
       </button>
       {expanded ? (
