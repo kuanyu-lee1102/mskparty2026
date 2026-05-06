@@ -64,11 +64,11 @@ export default function ZhubeiVenueSection({
         <h2 id={`${id}-title`} className={styles.title}>
           {title}
         </h2>
-        <span className={styles.divider} aria-hidden="true" />
+        <DiamondDivider />
       </header>
 
       {heroImages.length > 0 ? (
-        <div className={styles.heroGrid}>
+        <div className={styles.heroSingle}>
           {heroImages.map((img) => (
             <button
               key={img.src}
@@ -93,11 +93,18 @@ export default function ZhubeiVenueSection({
         {data.venueShortName ? (
           <p className={styles.venueShortName}>{data.venueShortName}</p>
         ) : null}
-        {data.venueName ? (
-          <p className={styles.venueName}>{data.venueName}</p>
-        ) : null}
-        {data.displayAddress ? (
-          <p className={styles.address}>{data.displayAddress}</p>
+        {data.venueName || data.displayAddress ? (
+          <p className={styles.venueLine}>
+            {data.venueName ? (
+              <span className={styles.venueName}>{data.venueName}</span>
+            ) : null}
+            {data.venueName && data.displayAddress ? (
+              <span className={styles.venueLineSeparator} aria-hidden="true">｜</span>
+            ) : null}
+            {data.displayAddress ? (
+              <span className={styles.address}>{data.displayAddress}</span>
+            ) : null}
+          </p>
         ) : null}
       </div>
 
@@ -120,14 +127,16 @@ export default function ZhubeiVenueSection({
 
       {flowItems.length > 0 ? (
         <div className={styles.entrySection}>
-          <h3 className={styles.entryHeading}>選擇入場方式</h3>
+          <SectionTitle>選擇入場方式</SectionTitle>
           <EntryFlowSelector
             flows={flowItems}
             selectedId={selectedFlowId}
             onSelect={setSelectedFlowId}
           />
           {selectedFlow ? (
-            <FlowSteps steps={selectedFlow.steps} onOpenImage={openImage} />
+            <SelectedFlowBanner flow={selectedFlow}>
+              <FlowSteps steps={selectedFlow.steps} onOpenImage={openImage} />
+            </SelectedFlowBanner>
           ) : null}
         </div>
       ) : null}
@@ -158,7 +167,12 @@ function ParkingAccordion({ data, expanded, onToggle, onOpenImage }) {
         aria-controls={panelId}
         onClick={onToggle}
       >
-        <span className={styles.parkingTitle}>{data.title}</span>
+        <span className={styles.parkingHeaderText}>
+          <span className={styles.parkingTitle}>{data.title}</span>
+          {data.summary ? (
+            <span className={styles.parkingSubtitle}>{data.summary}</span>
+          ) : null}
+        </span>
         <span
           className={`${styles.parkingChevron} ${expanded ? styles.parkingChevronOpen : ''}`}
           aria-hidden="true"
@@ -168,26 +182,33 @@ function ParkingAccordion({ data, expanded, onToggle, onOpenImage }) {
       </button>
       {expanded ? (
         <div id={panelId} className={styles.parkingPanel}>
-          {data.summary ? (
-            <p className={styles.parkingSummary}>{data.summary}</p>
-          ) : null}
           {images.length > 0 ? (
             <div className={styles.parkingImages}>
               {images.map((img) => (
-                <button
-                  key={img.src}
-                  type="button"
-                  className={styles.parkingImageButton}
-                  onClick={() => onOpenImage(img)}
-                  aria-label={`放大檢視：${img.alt}`}
-                >
-                  <img
-                    src={assetUrl(img.src)}
-                    alt={img.alt}
-                    className={styles.parkingImage}
-                    loading="lazy"
-                  />
-                </button>
+                <figure key={img.src} className={styles.parkingImageFigure}>
+                  <button
+                    type="button"
+                    className={styles.parkingImageButton}
+                    onClick={() => onOpenImage(img)}
+                    aria-label={`放大檢視：${img.alt}`}
+                  >
+                    <img
+                      src={assetUrl(img.src)}
+                      alt={img.alt}
+                      className={styles.parkingImage}
+                      loading="lazy"
+                    />
+                  </button>
+                  {Array.isArray(img.captionLines) && img.captionLines.length > 0 ? (
+                    <ul className={styles.parkingCaption}>
+                      {img.captionLines.map((line, idx) => (
+                        <li key={idx} className={styles.parkingCaptionItem}>
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </figure>
               ))}
             </div>
           ) : null}
@@ -299,5 +320,46 @@ function FlowSteps({ steps, onOpenImage }) {
         </li>
       ))}
     </ol>
+  )
+}
+
+function DiamondDivider() {
+  return (
+    <span className={styles.diamondDivider} aria-hidden="true">
+      <span className={styles.diamondLine} />
+      <span className={styles.diamondMark}>◇</span>
+      <span className={styles.diamondLine} />
+    </span>
+  )
+}
+
+function SectionTitle({ children }) {
+  return (
+    <div className={styles.sectionTitleRow}>
+      <span className={styles.sectionTitleLine} aria-hidden="true" />
+      <span className={styles.sectionTitleMark} aria-hidden="true">◇</span>
+      <h3 className={styles.sectionTitleText}>{children}</h3>
+      <span className={styles.sectionTitleMark} aria-hidden="true">◇</span>
+      <span className={styles.sectionTitleLine} aria-hidden="true" />
+    </div>
+  )
+}
+
+function SelectedFlowBanner({ flow, children }) {
+  return (
+    <div className={styles.flowBanner}>
+      <header className={styles.flowBannerHeader}>
+        <span className={styles.flowBannerIcon} aria-hidden="true">
+          <FlowIcon flowId={flow.id} />
+        </span>
+        <span className={styles.flowBannerText}>
+          <span className={styles.flowBannerTitle}>{flow.title}流程</span>
+          {flow.summary ? (
+            <span className={styles.flowBannerSummary}>{flow.summary}</span>
+          ) : null}
+        </span>
+      </header>
+      {children}
+    </div>
   )
 }

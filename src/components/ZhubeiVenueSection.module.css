@@ -23,46 +23,52 @@
   }
 }
 
-/* ===== 區塊標題 ===== */
+/* ===== 區塊標題（置中 + 菱形分隔） ===== */
 .header {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-sm);
   margin-bottom: var(--space-lg);
+  text-align: center;
 }
 
 .title {
   margin: 0;
   font-family: var(--font-heading);
   font-weight: 700;
-  color: var(--color-text);
-  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  color: var(--color-vermilion);
+  font-size: clamp(1.5rem, 4.5vw, 1.875rem);
   line-height: 1.2;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
-.divider {
+/* 菱形分隔：— ◇ — */
+.diamondDivider {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-vermilion);
+}
+
+.diamondLine {
   display: inline-block;
   width: 32px;
   height: 1px;
-  background-color: var(--color-vermilion);
+  background-color: currentColor;
+  opacity: 0.55;
+}
+
+.diamondMark {
+  font-size: 0.75rem;
+  line-height: 1;
   opacity: 0.85;
 }
 
-/* ===== Hero 圖（兩張並排） ===== */
-.heroGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-md);
+/* ===== Hero 圖（單張） ===== */
+.heroSingle {
+  display: block;
   margin-bottom: var(--space-lg);
-}
-
-@media (min-width: 640px) {
-  .heroGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
-  }
 }
 
 .heroImageButton {
@@ -89,14 +95,14 @@
 .heroImage {
   display: block;
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
   background-color: var(--bg-card);
 }
 
 @media (min-width: 640px) {
   .heroImage {
-    height: 220px;
+    height: 280px;
   }
 }
 
@@ -116,19 +122,22 @@
   pointer-events: none;
 }
 
-/* ===== Summary 文字 ===== */
+/* ===== Summary 文字（置中） ===== */
 .summaryText {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: var(--space-xs);
   margin-bottom: var(--space-md);
+  padding: 0 var(--space-sm);
 }
 
 .venueShortName {
   margin: 0;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--color-text);
   letter-spacing: 0.04em;
   line-height: 1.3;
@@ -136,31 +145,36 @@
 
 @media (min-width: 640px) {
   .venueShortName {
-    font-size: 1.375rem;
+    font-size: 1.75rem;
   }
 }
 
-.venueName {
+.venueLine {
   margin: 0;
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   color: var(--color-text-secondary);
-  letter-spacing: 0.04em;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+.venueName {
+  font-weight: 600;
+}
+
+.venueLineSeparator {
+  margin: 0 var(--space-xs);
+  color: var(--color-line-beige);
 }
 
 .address {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--color-text);
-  line-height: 1.6;
   word-break: break-word;
 }
 
-/* ===== Google Maps 按鈕 ===== */
+/* ===== Google Maps 按鈕（置中） ===== */
 .mapButtons {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: var(--space-sm);
   margin-bottom: var(--space-xl);
@@ -179,6 +193,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-md);
   width: 100%;
   min-height: 56px;
   padding: var(--space-md) var(--space-lg);
@@ -186,11 +201,7 @@
   border: 0;
   cursor: pointer;
   text-align: left;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--color-text);
-  letter-spacing: 0.04em;
+  font-family: inherit;
   transition: background-color 0.15s ease;
 }
 
@@ -199,8 +210,27 @@
   background-color: var(--bg-warm);
 }
 
-.parkingTitle {
+.parkingHeaderText {
   flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.parkingTitle {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+.parkingSubtitle {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
 }
 
 .parkingChevron {
@@ -220,20 +250,11 @@
 }
 
 .parkingPanel {
-  padding: 0 var(--space-lg) var(--space-lg);
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
   border-top: 1px solid var(--color-line-beige);
-  padding-top: var(--space-md);
-}
-
-.parkingSummary {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  color: var(--color-text);
-  line-height: 1.7;
 }
 
 .parkingImages {
@@ -248,6 +269,13 @@
   }
 }
 
+.parkingImageFigure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
 .parkingImageButton {
   display: block;
   width: 100%;
@@ -260,6 +288,34 @@
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease;
+}
+
+.parkingCaption {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.parkingCaptionItem {
+  position: relative;
+  padding-left: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  line-height: 1.55;
+}
+
+.parkingCaptionItem::before {
+  content: "◇";
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  color: var(--color-vermilion);
+  font-size: 0.6875rem;
+  line-height: 1.55;
 }
 
 .parkingImageButton:hover,
@@ -282,17 +338,41 @@
   gap: var(--space-lg);
 }
 
-.entryHeading {
+/* SectionTitle：◇ ─ TITLE ─ ◇ 置中 */
+.sectionTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  color: var(--color-vermilion);
+}
+
+.sectionTitleLine {
+  flex: 0 1 48px;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.45;
+}
+
+.sectionTitleMark {
+  font-size: 0.75rem;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.sectionTitleText {
   margin: 0;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.125rem;
-  color: var(--color-text);
-  letter-spacing: 0.04em;
+  color: var(--color-vermilion);
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  white-space: nowrap;
 }
 
 @media (min-width: 640px) {
-  .entryHeading {
+  .sectionTitleText {
     font-size: 1.25rem;
   }
 }
@@ -359,6 +439,63 @@
   white-space: nowrap;
 }
 
+/* ===== 選中流程 wrapper banner（米色外卡包 step 卡） ===== */
+.flowBanner {
+  background-color: var(--bg-warm);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .flowBanner {
+    padding: var(--space-lg);
+  }
+}
+
+.flowBannerHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.flowBannerIcon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: var(--color-vermilion);
+  color: var(--bg-white);
+}
+
+.flowBannerText {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.flowBannerTitle {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+.flowBannerSummary {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
 /* ===== 流程步驟列表 ===== */
 .flowSteps {
   list-style: none;
@@ -366,7 +503,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .flowStepCard {
