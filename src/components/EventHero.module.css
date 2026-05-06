@@ -121,18 +121,3 @@
   }
 }
 
-/* ===== 副標：簡短說明 ===== */
-.subtitle {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  line-height: 1.7;
-  max-width: 28em;
-}
-
-@media (min-width: 640px) {
-  .subtitle {
-    font-size: 0.95rem;
-  }
-}
