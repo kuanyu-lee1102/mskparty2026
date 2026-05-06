@@ -15,6 +15,7 @@
   "parkingInfo": {
     "title": "開車與停車資訊",
     "summary": "停車入口 與 地下停車場電梯入口",
+    "icon": "source-materials/zhubei/venue/car-icon.png",
     "defaultExpanded": false,
     "images": [
       {
