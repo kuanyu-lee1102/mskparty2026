@@ -221,4 +221,13 @@
 - 已新增 `ZHUBEI_VENUE_UX_HANDOFF.md`，記錄竹北場場地資訊清楚表單式 UX、停車資訊、入場分流與圖片對應。
 - 已驗證 `source-materials/zhubei/venue/竹北場地資訊示意圖.png` 與本次交接文件列出的竹北場 venue 圖片存在。
 - 2026-05-06：依 `ZHUBEI_VENUE_UX_HANDOFF.md` 重構 `data/venue.zhubei.json`、重寫 `ZhubeiVenueSection.jsx` / `.module.css`、複製 8 張圖到 `public/assets/zhubei/venue/`；`npx vitest run` 24/24 通過、`npm run build` 成功（CSS 約 39.6KB / JS 約 287KB）；dist 內含 8 張圖與新文字內容。
+- 2026-05-07：竹北 venue 第一輪視覺優化上線：
+  - 場地資訊標題改置中 + ◇ 菱形分隔；摘要文字置中、暐順大樓與地址同行用 ｜ 分隔
+  - Hero 由兩張並排改為單張 Le Phare 室內
+  - 「選擇入場方式」標題改朱紅置中 + ◇ ─ 標題 ─ ◇ 裝飾
+  - 停車卡 collapsed 加 summary 副標 + 紅色 car icon、chevron 改 22×22 SVG 加粗深色
+  - 停車兩張圖下方加 captionLines 注意事項列表（◇ 朱紅菱形列點）
+  - 自行換證入場新增首步驟「請至櫃檯辦理換證」（共 3 步）
+  - 選中流程加 SelectedFlowBanner 米色外卡（雙層卡）
+  - EventHero 副標移除（首頁仍顯示，由 HomePage 直接讀 events.json subtitle）+ EventHero padding-bottom 縮短讓 SectionNav 緊貼大標
 - 最近一次 commit 後工作樹曾確認乾淨。
