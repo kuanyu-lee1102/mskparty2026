@@ -10,10 +10,6 @@
     {
       "src": "source-materials/zhubei/venue/zhubei-le-phare-interior.jpg",
       "alt": "Le Phare 共享空間竹北館室內空間"
-    },
-    {
-      "src": "source-materials/zhubei/venue/zhubei-building-exterior.png",
-      "alt": "暐順經貿大樓外觀"
     }
   ],
   "parkingInfo": {
@@ -23,11 +19,20 @@
     "images": [
       {
         "src": "source-materials/zhubei/venue/zhubei-parking-entrance-close.jpg",
-        "alt": "高鐵二路停車場入口"
+        "alt": "高鐵二路停車場入口",
+        "captionLines": [
+          "停車場入口位於高鐵二路上",
+          "機車停車場位於 B1"
+        ]
       },
       {
         "src": "source-materials/zhubei/venue/zhubei-parking-entrance-close2.png",
-        "alt": "地下停車場電梯入口"
+        "alt": "地下停車場電梯入口",
+        "captionLines": [
+          "汽車停放樓層為 B2 至 B4",
+          "繳費機設於 B1 至 B3",
+          "若您停在 B4，請至其他樓層繳費"
+        ]
       }
     ]
   },
@@ -58,6 +63,12 @@
         "title": "自行換證入場",
         "summary": "若現場未遇到接待人員，可依大樓流程換證入場。",
         "steps": [
+          {
+            "title": "請至櫃檯辦理換證",
+            "description": "抵達一樓後，請至大樓櫃檯辦理訪客換證手續。",
+            "image": "source-materials/zhubei/venue/zhubei-checkin-counter.jpg",
+            "imageAlt": "暐順經貿大樓一樓換證櫃檯"
+          },
           {
             "title": "依大樓流程換證",
             "description": "完成入館流程後，請往商辦電梯方向前進。",
