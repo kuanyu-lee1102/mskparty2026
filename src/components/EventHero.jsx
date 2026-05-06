@@ -19,13 +19,12 @@ import styles from './EventHero.module.css'
  *  - 主要使用方式為傳入 eventId（'dounan' | 'zhubei'），元件自行從 events.json
  *    `routes.events[]` 找出 displayName / date / route。
  *  - 也允許呼叫端覆寫 displayName / date / backHref（Wave 5 若已自己讀好，可直接傳入）。
- *  - subtitle 為可選；若未傳，使用 events.json 的 event.subtitle 作為 fallback。
+ *  - 場次頁不顯示全站副標（events.json subtitle 只給首頁使用）。
  *
  * Props:
  *  - eventId?: 'dounan' | 'zhubei'   建議用法：以 id 對應到 routes.events[]
  *  - displayName?: string            可選，覆寫場次顯示名稱
  *  - date?: string                   可選，ISO 日期字串（YYYY-MM-DD）
- *  - subtitle?: string               可選，場次下方說明文字（不傳則使用 events.json 全站副標）
  *  - backHref?: string               可選，返回連結，預設為 '/'
  *  - backLabel?: string              可選，返回連結文字，預設「返回首頁」
  */
@@ -63,7 +62,6 @@ export default function EventHero({
   eventId,
   displayName,
   date,
-  subtitle,
   backHref = '/',
   backLabel = '返回首頁',
 }) {
@@ -71,7 +69,6 @@ export default function EventHero({
 
   const finalDisplayName = displayName ?? entry?.displayName ?? ''
   const finalDate = date ?? entry?.date ?? ''
-  const finalSubtitle = subtitle ?? events?.event?.subtitle ?? ''
   const eventDisplayTitle = events?.event?.displayTitle ?? ''
 
   const { chinese: chineseDate, iso: isoDate } = formatChineseDate(finalDate)
@@ -110,10 +107,6 @@ export default function EventHero({
         </time>
       ) : null}
 
-      {/* 副標：簡短說明 */}
-      {finalSubtitle ? (
-        <p className={styles.subtitle}>{finalSubtitle}</p>
-      ) : null}
     </header>
   )
 }
