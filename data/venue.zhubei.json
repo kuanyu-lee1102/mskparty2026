@@ -14,7 +14,7 @@
   ],
   "parkingInfo": {
     "title": "開車與停車資訊",
-    "summary": "停車入口位於高鐵二路，停車後可依地下停車場電梯入口前往一樓大廳。",
+    "summary": "停車入口 與 地下停車場電梯入口",
     "defaultExpanded": false,
     "images": [
       {
