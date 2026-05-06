@@ -10,8 +10,8 @@
   position: relative;
   width: 100%;
   background-color: var(--bg-white);
-  /* 上下使用較大留白，呼應節目冊感的 hero 留白；左右用 md 與其他區塊保持齊頭 */
-  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  /* 上方用較大留白；下方刻意縮小，讓 SectionNav 緊貼大標 */
+  padding: var(--space-xl) var(--space-md) var(--space-md);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
 
 @media (min-width: 640px) {
   .hero {
-    padding: var(--space-2xl) var(--space-lg) var(--space-2xl);
+    padding: var(--space-2xl) var(--space-lg) var(--space-md);
     gap: var(--space-md);
   }
 }
