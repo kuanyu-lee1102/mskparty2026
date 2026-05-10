@@ -1,23 +1,34 @@
 {
   "eventId": "dounan-2026-05-24",
+  "venueShortName": "虎尾建國眷村文化園區-已棟蓄水池周邊草地",
   "venueName": "虎尾建國眷村",
+  "displayAddress": "632雲林縣虎尾鎮建國里建國一村55號",
+  "meetingLocationLabel": "會場地點",
+  "meetingLocation": "已棟蓄水池周邊蓄水池",
   "targetAreaName": "C 區草地",
   "targetDescription": "已棟蓄水池周邊草地 C 區",
-  "displayAddress": "虎尾建國眷村 已棟蓄水池周邊草地 C 區",
   "coordinates": {
     "dms": "23°42'49.7\"N 120°25'17.8\"E",
     "lat": 23.713806,
     "lng": 120.421611
   },
   "mapLinks": {
-    "googleMaps": "https://www.google.com/maps?q=23.713806,120.421611",
-    "appleMaps": "https://maps.apple.com/?ll=23.713806,120.421611&q=%E8%99%8E%E5%B0%BE%E5%BB%BA%E5%9C%8B%E7%9C%B7%E6%9D%91%20C%E5%8D%80%E8%8D%89%E5%9C%B0"
+    "googleMaps": "https://www.google.com/maps?q=23.713806,120.421611"
   },
+  "heroImages": [
+    {
+      "src": "source-materials/dounan/hero/dounan-jianguo-village-hero-white70-original.jpg",
+      "alt": "虎尾建國眷村文化園區戶外景觀"
+    }
+  ],
   "guideImage": {
     "status": "ready",
-    "path": "source-materials/dounan/venue/dounan-zone-map.jpg",
-    "alt": "斗南場虎尾建國眷村 C 區草地會場引導圖",
-    "caption": "請依園區圖示尋找已棟蓄水池周邊的 C 區草地。"
+    "path": "source-materials/dounan/venue/dounan-venue-area-circled.jpg",
+    "alt": "虎尾建國眷村文化園區會場位置示意圖（紅圈為已棟蓄水池周邊草地）",
+    "captionLines": [
+      "紅圈處即為會場：已棟蓄水池周邊草地。",
+      "可點擊下方引導按鈕。"
+    ]
   },
   "supportingImages": [
     {

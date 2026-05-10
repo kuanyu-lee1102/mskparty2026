@@ -10,29 +10,10 @@ import styles from './DounanVenueSection.module.css'
  *
  * 斗南場場地資訊區塊。資料來源唯一為 data/venue.dounan.json。
  *
- * 規格依據：
- *  - event-website-spec.md「2. 場地資訊 → 斗南場場地資訊」
- *      會場引導圖、Google / Apple Maps 按鈕、簡短抵達說明
- *      第一版只需要幫助使用者找到會場，不細分報到區、急救站、補水區、廁所、服務台
- *  - engineering-plan.md 資料對照表：DounanVenueSection 只讀 venue.dounan.json
- *  - visual-style-guide.md §六/§七/§九（卡片）/§十（斗南場可更強調草地、戶外、家庭參與感）
- *  - CLAUDE_CODE_FRONTEND_HANDOFF.md「Component Guidance → Venue Sections」
- *  - project-progress.md Do Not Override：不可用時間表圖片取代場地資訊
- *
- * 顯示順序（由上至下）：
- *  1. 區塊標題「場地資訊」+ 細線分隔
- *  2. 會場名稱、目標區域描述（C 區草地）
- *  3. 顯示地址 + 座標（DMS + 十進位）
- *  4. 引導圖（zone-map）— 有 caption
- *  5. 兩顆地圖按鈕（Google + Apple）
- *  6. 抵達建議（navigationNotes）
- *  7. 補充圖片（map-screenshot、venue-photo）
- *  - 圖片皆可點擊放大（ImageLightbox）
- *
- * Props:
- *  - id?: string         section id，提供給 SectionNav 對應；建議由父層傳入「venue」
- *  - title?: string      區塊標題，預設「場地資訊」
- *  - className?: string  外層額外 class
+ * 視覺對齊：
+ *  - 標題列採用與 ZhubeiVenueSection 相同的菱形分隔線樣式（— ◇ —）
+ *  - 摘要置中：venueShortName（大字）+ venueName ｜ displayAddress + 會場地點 ｜ meetingLocation
+ *  - 主要 CTA：單顆 Google Maps 按鈕（已不再提供 Apple Maps）
  */
 export default function DounanVenueSection({
   id,
@@ -44,14 +25,18 @@ export default function DounanVenueSection({
   const openImage = useCallback((img) => setActiveImage(img), [])
 
   const {
+    venueShortName,
     venueName,
-    targetAreaName,
-    targetDescription,
-    primaryGoal,
+    displayAddress,
+    meetingLocationLabel,
+    meetingLocation,
     mapLinks,
+    heroImages,
     guideImage,
     supportingImages,
   } = venueDounan ?? {}
+
+  const heroList = Array.isArray(heroImages) ? heroImages : []
 
   const guideImageUrl =
     guideImage && guideImage.status === 'ready' && guideImage.path
@@ -68,79 +53,137 @@ export default function DounanVenueSection({
         <h2 id={id ? `${id}-title` : undefined} className={styles.title}>
           {title}
         </h2>
-        <span className={styles.divider} aria-hidden="true" />
+        <DiamondDivider />
       </header>
 
-      {/* ===== 會場名稱 + 目標區域 ===== */}
-      <div className={styles.venueIntro}>
-        {venueName ? (
-          <p className={styles.venueName}>{venueName}</p>
+      {/* ===== Hero 圖（置於分隔線與場地名稱之間，對齊 Zhubei） ===== */}
+      {heroList.length > 0 ? (
+        <div className={styles.heroSingle}>
+          {heroList.map((img) => (
+            <button
+              key={img.src}
+              type="button"
+              className={styles.heroImageButton}
+              onClick={() =>
+                openImage({
+                  path: assetUrl(img.src),
+                  alt: img.alt,
+                  caption: img.caption,
+                })
+              }
+              aria-label={`放大檢視：${img.alt}`}
+            >
+              <img
+                src={assetUrl(img.src)}
+                alt={img.alt}
+                className={styles.heroImage}
+                loading="lazy"
+              />
+              <span className={styles.zoomHint} aria-hidden="true">
+                點擊放大
+              </span>
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      {/* ===== 場地名稱與地址（置中） ===== */}
+      <div className={styles.summaryText}>
+        {venueShortName ? (
+          <p className={styles.venueShortName}>{venueShortName}</p>
         ) : null}
-        {targetAreaName ? (
-          <p className={styles.targetArea}>{targetAreaName}</p>
-        ) : null}
-        {targetDescription ? (
-          <p className={styles.targetDescription}>{targetDescription}</p>
-        ) : null}
-        {primaryGoal ? (
-          <p className={styles.primaryGoal}>{primaryGoal}</p>
+        {venueName || displayAddress ? (
+          <p className={styles.venueLine}>
+            {venueName ? (
+              <span className={styles.venueName}>{venueName}</span>
+            ) : null}
+            {venueName && displayAddress ? (
+              <span className={styles.venueLineSeparator} aria-hidden="true">｜</span>
+            ) : null}
+            {displayAddress ? (
+              <span className={styles.address}>{displayAddress}</span>
+            ) : null}
+          </p>
         ) : null}
       </div>
 
-      {/* ===== 會場引導圖 ===== */}
-      {guideImageUrl ? (
-        <figure className={styles.figure}>
-          <button
-            type="button"
-            className={styles.imageButton}
-            onClick={() =>
-              openImage({
-                path: guideImageUrl,
-                alt: guideImage.alt,
-                caption: guideImage.caption,
-              })
-            }
-            aria-label={`放大檢視：${guideImage.alt || '會場引導圖'}`}
-          >
-            <img
-              src={guideImageUrl}
-              alt={guideImage.alt || '斗南場會場引導圖'}
-              className={styles.image}
-              loading="lazy"
-            />
-            <span className={styles.zoomHint} aria-hidden="true">
-              點擊放大
-            </span>
-          </button>
-          {guideImage.caption ? (
-            <figcaption className={styles.caption}>
-              {guideImage.caption}
-            </figcaption>
+      {/* ===== 會場地點卡（米色外卡，header + 引導圖 + 紅菱形說明） ===== */}
+      {meetingLocation || guideImageUrl ? (
+        <div className={styles.locationCard}>
+          {meetingLocation ? (
+            <header className={styles.locationCardHeader}>
+              <span className={styles.locationCardIcon} aria-hidden="true">
+                <LocationPinIcon />
+              </span>
+              <span className={styles.locationCardText}>
+                {meetingLocationLabel ? (
+                  <span className={styles.locationCardTitle}>
+                    {meetingLocationLabel}
+                  </span>
+                ) : null}
+                <span className={styles.locationCardSummary}>
+                  {meetingLocation}
+                </span>
+              </span>
+            </header>
           ) : null}
-        </figure>
+
+          {guideImageUrl ? (
+            <figure className={styles.locationFigure}>
+              <button
+                type="button"
+                className={styles.locationImageButton}
+                onClick={() =>
+                  openImage({
+                    path: guideImageUrl,
+                    alt: guideImage.alt,
+                    caption: Array.isArray(guideImage.captionLines)
+                      ? guideImage.captionLines.join(' ')
+                      : guideImage.caption,
+                  })
+                }
+                aria-label={`放大檢視：${guideImage.alt || '會場引導圖'}`}
+              >
+                <img
+                  src={guideImageUrl}
+                  alt={guideImage.alt || '斗南場會場引導圖'}
+                  className={styles.locationImage}
+                  loading="lazy"
+                />
+                <span className={styles.zoomHint} aria-hidden="true">
+                  點擊放大
+                </span>
+              </button>
+              {Array.isArray(guideImage.captionLines) && guideImage.captionLines.length > 0 ? (
+                <figcaption>
+                  <ul className={styles.captionList}>
+                    {guideImage.captionLines.map((line, idx) => (
+                      <li key={idx} className={styles.captionListItem}>
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                </figcaption>
+              ) : guideImage.caption ? (
+                <figcaption className={styles.caption}>
+                  {guideImage.caption}
+                </figcaption>
+              ) : null}
+            </figure>
+          ) : null}
+        </div>
       ) : null}
 
-      {/* ===== 地圖按鈕 ===== */}
-      {(mapLinks?.googleMaps || mapLinks?.appleMaps) ? (
+      {/* ===== 地圖按鈕（Google Maps 單顆，置中） ===== */}
+      {mapLinks?.googleMaps ? (
         <div className={styles.mapButtonGroup}>
-          {mapLinks.googleMaps ? (
-            <MapButton
-              provider="google"
-              href={mapLinks.googleMaps}
-              variant="primary"
-            >
-              用 Google 地圖開啟
-            </MapButton>
-          ) : null}
-          {mapLinks.appleMaps ? (
-            <MapButton
-              provider="apple"
-              href={mapLinks.appleMaps}
-              variant="secondary"
-            >
-              用 Apple 地圖開啟
-            </MapButton>
-          ) : null}
+          <MapButton
+            provider="google"
+            href={mapLinks.googleMaps}
+            variant="primary"
+          >
+            用 Google 地圖帶我去會場！
+          </MapButton>
         </div>
       ) : null}
 
@@ -191,5 +234,34 @@ export default function DounanVenueSection({
         onClose={handleClose}
       />
     </section>
+  )
+}
+
+function DiamondDivider() {
+  return (
+    <span className={styles.diamondDivider} aria-hidden="true">
+      <span className={styles.diamondLine} />
+      <span className={styles.diamondMark}>◇</span>
+      <span className={styles.diamondLine} />
+    </span>
+  )
+}
+
+function LocationPinIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 21s-7-7.58-7-12a7 7 0 0 1 14 0c0 4.42-7 12-7 12z" />
+      <circle cx="12" cy="9" r="2.5" />
+    </svg>
   )
 }

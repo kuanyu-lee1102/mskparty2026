@@ -1,12 +1,12 @@
 # 接棒文件 — 2026 惠歆音樂會網站
 
-最後更新：2026-05-10（節目編輯流程上線 + items[] schema 簡化 + 團班顯示）
+最後更新：2026-05-11（斗南場場地資訊對齊竹北場視覺）
 
 這份文件給「下一個開工的 session（人或 Claude）」用 — 看完這份就能無縫接手。
 
 ---
 
-## 一、目前進度（5 個 Wave + Round 1 視覺優化）
+## 一、目前進度（5 個 Wave + 視覺優化）
 
 | Wave | 範圍 | 狀態 |
 |---|---|---|
@@ -17,6 +17,7 @@
 | 5 | 頁面組裝、`.github/workflows/deploy.yml`（actions/deploy-pages@v4 OIDC）、GitHub Pages 部署、CLAUDE.md 開發準則、`.gitignore` secrets 防護 | ✅ |
 | Round 1 | **竹北場 venue 依 `ZHUBEI_VENUE_UX_HANDOFF.md` 重做**：Hero（Le Phare 室內）/ 場地摘要置中 / Google Maps / 停車 collapsible（含 car icon、副標、◇ 菱形列點注意事項）/ Radio segmented buttons 入場分流 / 米色 wrapper banner 包 step 卡 / 自行換證入場新增「請至櫃檯辦理換證」首步驟。EventHero 副標移除（首頁仍保留） | ✅ |
 | Round 2 | **斗南節目編輯流程 + items[] schema 簡化**：新增 `scripts/programs-to-csv.mjs`（CSV ↔ JSON 契約寫在 docstring）；協作者第二輪 CSV 改回 JSON（含曲目、姓名拼字、Mr. Vincent 老師名統一為「林老師」）；items 移除 `performers[]` 與 `type`，只保留 `order / performer / title`；團班顯示靠 `(團名) 名1、名2` 約定，`ProgramAccordion` 解析後渲染標籤 + 編號學生名單；mobile header padding/gap/teacher font 微調讓 `Miss. Khristin 黃老師` 單行可塞下 | ✅ |
+| Round 3 | **斗南場場地資訊整體對齊竹北場視覺**（2026-05-11）：標題置中 + ◇ 菱形分隔；新增 hero（眷村景觀 cover 圖）置於分隔線下；摘要置中大字 venueShortName + 「venueName｜displayAddress」；新增「會場地點」米色卡（朱紅 pin icon + 標題 + 摘要 + 縮小引導圖 + 紅菱形 captionList）；引導圖換為紅圈標示版（`dounan-venue-area-circled.jpg`）；地圖按鈕只剩單顆「用 Google 地圖帶我去會場！」（移除 Apple Maps）；`displayAddress` 更新為正式地址 | ✅ |
 
 線上：**https://kuanyu-lee1102.github.io/mskparty2026/**
 GitHub repo：https://github.com/kuanyu-lee1102/mskparty2026（public）
@@ -94,10 +95,7 @@ GitHub repo：https://github.com/kuanyu-lee1102/mskparty2026（public）
 
 ## 四、技術債 / 可選清理（低優先）
 
-1. **DounanVenueSection.module.css 有 dead code**：
-   - `.infoCard, .infoRow, .infoLabel, .infoValue, .code`（座標卡 styles，已不再 import）
-   - `.notes, .notesTitle, .notesList, .notesItem`（抵達建議 styles，已不再 import）
-   - 可順手刪。
+1. ~~**DounanVenueSection.module.css 有 dead code**~~：已於 2026-05-11 重寫整支檔案，dead 樣式皆已清除。
 2. **首頁 plant-ornament.png** 是螢幕截圖，目前用 `mix-blend-mode: darken` 融背景。如果要更乾淨可改用真正去背過的 SVG / PNG。
 3. **首頁 Museeksoul logo** 用 `mix-blend-mode: multiply` 處理白底，整體可接受。若想完全去背可請 designer 提供透明 PNG/SVG。
 4. **資料路徑轉換** `assetUrl()` 目前只處理 `source-materials/` 前綴。HomePage 對 logo / plant 用 `import.meta.env.BASE_URL + 'assets/brand/...'` 直接拼接（因為它們不在 source-materials 裡）。沒問題但兩種 pattern 並存。
