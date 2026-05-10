@@ -27,13 +27,14 @@
   }
 }
 
-/* ===== 區塊標題（與 Zhubei 一致：置中 + 菱形分隔） ===== */
+/* ===== 區塊標題（與 Zhubei 一致：置中 + 菱形分隔）
+ * 不另加 margin-bottom：父層 .section 已用 flex gap 控制區塊間距
+ * ===== */
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-sm);
-  margin-bottom: var(--space-lg);
   text-align: center;
 }
 
