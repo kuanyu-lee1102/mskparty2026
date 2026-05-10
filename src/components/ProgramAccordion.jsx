@@ -160,11 +160,41 @@ export function ProgramItemList({ items, accentColor, className = '' }) {
           <span className={styles.order}>{item.order ?? '—'}</span>
           <span className={styles.itemDivider} aria-hidden="true" />
           <span className={styles.itemBody}>
-            <span className={styles.performer}>{item.performer || '—'}</span>
+            <PerformerCell performer={item.performer} />
             <span className={styles.title}>{item.title || '曲目待補'}</span>
           </span>
         </li>
       ))}
     </ol>
+  )
+}
+
+/**
+ * 演出者欄位渲染。若 performer 字串為 `(團名) 名1、名2、…` 格式，
+ * 解析為團名標籤 + 編號學生名單；否則照原樣顯示。
+ * 約定：半形 `(` 開頭、半形 `)` 結尾，名單以「、」「,」「，」分隔。
+ */
+function PerformerCell({ performer }) {
+  const m =
+    typeof performer === 'string'
+      ? performer.match(/^\(([^)]+)\)\s*(.+)$/)
+      : null
+  if (!m) {
+    return <span className={styles.performer}>{performer || '—'}</span>
+  }
+  const [, label, rest] = m
+  const names = rest
+    .split(/[、,，]/)
+    .map((s) => s.trim())
+    .filter(Boolean)
+  return (
+    <span className={styles.performerGroup}>
+      <span className={styles.groupLabel}>{label}</span>
+      <ol className={styles.groupList}>
+        {names.map((n, i) => (
+          <li key={`${i}-${n}`}>{n}</li>
+        ))}
+      </ol>
+    </span>
   )
 }

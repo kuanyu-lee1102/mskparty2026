@@ -17,21 +17,13 @@
       "items": [
         {
           "order": "01",
-          "performer": "鍵盤團班",
-          "performers": [
-            "何禹昕",
-            "高筠晴",
-            "施柏安",
-            "劉采恩",
-            "王若宏"
-          ],
-          "title": "小星星",
-          "type": "group"
+          "performer": "(鍵盤團班) 何禹昕、高荺晴、施柏安、劉采恩、王若宏",
+          "title": "小星星"
         },
         {
           "order": "02",
           "performer": "郭芊妤",
-          "title": "幸福在唱歌"
+          "title": "幸福在歌唱"
         },
         {
           "order": "03",
@@ -50,8 +42,8 @@
       "session": "上午場",
       "sessionStartTime": "10:00",
       "teacherName": "Mr. Vincent",
-      "teacherDisplayName": "Mr. Vincent 林文祥老師",
-      "teacherLocalName": "林文祥老師",
+      "teacherDisplayName": "Mr. Vincent 林老師",
+      "teacherLocalName": "林老師",
       "startTime": "10:20",
       "endTime": "10:50",
       "sourceImage": "source-materials/dounan/programs/dounan-program-18.jpg",
@@ -64,12 +56,7 @@
         {
           "order": "02",
           "performer": "林永昕 & Vincent",
-          "performers": [
-            "林永昕",
-            "Vincent"
-          ],
-          "title": "動物村的運動會",
-          "type": "ensemble"
+          "title": "動物村的運動會"
         },
         {
           "order": "03",
@@ -89,22 +76,12 @@
         {
           "order": "06",
           "performer": "鄭柚佳 & Vincent",
-          "performers": [
-            "鄭柚佳",
-            "Vincent"
-          ],
-          "title": "崖上的波妞",
-          "type": "ensemble"
+          "title": "崖上的波妞"
         },
         {
           "order": "07",
           "performer": "林駿豪 & Vincent",
-          "performers": [
-            "林駿豪",
-            "Vincent"
-          ],
-          "title": "前前前世",
-          "type": "ensemble"
+          "title": "前前前世"
         }
       ]
     },
@@ -137,13 +114,7 @@
         {
           "order": "04",
           "performer": "劉姷汘、劉芛辰、劉洧岓",
-          "performers": [
-            "劉姷汘",
-            "劉芛辰",
-            "劉洧岓"
-          ],
-          "title": "追光者",
-          "type": "ensemble"
+          "title": "追光者"
         }
       ]
     },
@@ -161,12 +132,7 @@
         {
           "order": "01",
           "performer": "吳季恩、吳紹宏",
-          "performers": [
-            "吳季恩",
-            "吳紹宏"
-          ],
-          "title": "The friendly echo 朋友的回音",
-          "type": "ensemble"
+          "title": "The friendly echo 朋友的回音"
         },
         {
           "order": "02",
@@ -175,7 +141,7 @@
         },
         {
           "order": "03",
-          "performer": "張樵泌",
+          "performer": "張樵宓",
           "title": "隱形的翅膀"
         },
         {
@@ -249,12 +215,7 @@
         {
           "order": "05",
           "performer": "張芯芮、楊佳瑜",
-          "performers": [
-            "張芯芮",
-            "楊佳瑜"
-          ],
-          "title": "紅鼻子馴鹿魯道夫",
-          "type": "ensemble"
+          "title": "紅鼻子馴鹿魯道夫"
         },
         {
           "order": "06",
@@ -269,23 +230,12 @@
         {
           "order": "10",
           "performer": "劉洧岓、鍾蕓竹、徐慧玲",
-          "performers": [
-            "劉洧岓",
-            "鍾蕓竹",
-            "徐慧玲"
-          ],
-          "title": "喔！蘇珊娜",
-          "type": "ensemble"
+          "title": "喔！蘇珊娜"
         },
         {
           "order": "11",
-          "performer": "林品彤、Miss. Lucy-小提合奏",
-          "performers": [
-            "林品彤",
-            "Miss. Lucy"
-          ],
-          "title": "前前前世",
-          "type": "ensemble"
+          "performer": "林品彤&Lucy",
+          "title": "前前前世"
         }
       ]
     },
@@ -302,7 +252,7 @@
       "items": [
         {
           "order": "01",
-          "performer": "藍亭鈞",
+          "performer": "藍亭筠",
           "title": "印地安人"
         },
         {
@@ -398,7 +348,7 @@
       "items": [
         {
           "order": "01",
-          "performer": "沈郁展",
+          "performer": "沈郡展",
           "title": "蘑菇濃湯"
         },
         {
@@ -513,7 +463,7 @@
         {
           "order": "05",
           "performer": "黃愷祐",
-          "title": "完全感覺"
+          "title": "Duddu Duddu"
         }
       ]
     },
@@ -571,12 +521,7 @@
         {
           "order": "09",
           "performer": "李健誠、李宥宏",
-          "performers": [
-            "李健誠",
-            "李宥宏"
-          ],
-          "title": "Home Sweet Home",
-          "type": "ensemble"
+          "title": "Home Sweet Home"
         }
       ]
     },
@@ -608,9 +553,8 @@
         },
         {
           "order": "05",
-          "performer": "楊楷定父子",
-          "title": "物語",
-          "type": "family"
+          "performer": "楊楷定、楊堯翔",
+          "title": "物語"
         },
         {
           "order": "06",

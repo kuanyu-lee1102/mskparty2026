@@ -135,6 +135,17 @@
    - 竹北場節目表不做 JSON、不做 accordion、不做搜尋。
    - 竹北節目表圖片需可點擊放大，並預留少量文字說明空間。
    - 竹北場節目表說明文字第一版顯示「節目表說明待補」。
+   - **節目資料編輯流程（2026-05-10）**：
+     - 由 `scripts/programs-to-csv.mjs` 將 JSON 攤平成 6 欄 CSV（場次 / 老師 / 時段 / 序號 / 演出者 / 曲目）給曲目表負責人在 Google Sheets 編輯。
+     - 「老師」欄（`teacherDisplayName`）為定位 key，13 位皆唯一；items[] 順序 = CSV 列順序。
+     - 回灌時由 AI 依 script 檔頭 docstring 的契約 + checklist（老師連續性、序號保留前導零等）merge 回 JSON。
+     - 中介 `exports/` 不進 git，每次需要時重新匯出。
+   - **items[] schema 簡化（2026-05-10）**：
+     - 移除 `performers[]` 和 `type` 欄位；items 只保留 `order / performer / title`。
+     - 個別學生姓名以 substring 搜尋方式命中 `performer` 顯示字串（搜尋邏輯不變，但靠約定使顯示字串內含全部姓名）。
+     - 團班顯示約定：`performer` 開頭以半形 `(團名)` + 空白 + 名單（用「、」分隔），例 `(鍵盤團班) 何禹昕、高荺晴、施柏安、劉采恩、王若宏`。
+     - 前端 `ProgramAccordion` 對符合該 pattern 的字串解析為「團名標籤 + 編號學生名單」雙段渲染；不符合時 fallback 成單行字串。
+     - Mr. Vincent 老師名統一為「林老師」（原為「林文祥老師」），其他老師沿用單姓格式。
 
 10. **Nav**
     - 斗南場導覽列：場地資訊、時間表、節目表、我迷路了、聯絡我們。
@@ -161,6 +172,11 @@
     - `data/events.json` 只索引品牌、活動名稱、場次 route、eventId 與各資料檔位置，不取代場地、時間表、節目或聯絡資料檔。
     - `engineering-plan.md` 已補上前端元件與資料來源對照表。
 
+14. **Generated Music Component Assets**
+    - 已新增 `public/assets/music-components/`，內含爵士鼓、鋼琴、吉他各 3 個去背 PNG 元件。
+    - 這批元件是使用者要求的復古高彩度海報風格探索資產，目前未接入前端頁面。
+    - 原因 / 風險：現行網站主視覺仍以 `visual-style-guide.md` 的「優雅草地音樂會邀請函」為準；若未來要套用這批元件，需由使用者明確確認整體風格切換，避免違反「不要做回高彩度復古感」的既有規則。
+
 ## Do Not Override
 
 - 不要把「時間表圖片」拿來替代「場地資訊」。
@@ -182,6 +198,9 @@
 - 不要以 `hueixin-music-club-poster.pdf` 作為主要版面或色彩來源。
 - 不要讓首頁只剩工具式場次分流而完全沒有活動名稱與品牌儀式感。
 - 不要在首頁或頁面外框 hardcode 第二份品牌、活動名稱、場次 route；請從 `data/events.json` 讀取或衍生。
+- 不要把 `performers[]` / `type` 加回 `programs.dounan.json` 的 items[] schema（已於 2026-05-10 簡化為 `order / performer / title`）。
+- 不要為節目編輯流程在 `data/programs.dounan.json` 上手動 patch；請走 `scripts/programs-to-csv.mjs` 匯出 CSV → Google Sheets 編輯 → AI 回灌的循環。
+- 不要把團班 / 多人合奏顯示拆成另一份資料結構；前端應從 `performer` 字串的 `(團名) 名1、名2` 約定解析。
 
 ## Next Open Questions
 
@@ -218,6 +237,12 @@
 - 已驗證 `data/events.json`、場地資料、時間表資料、節目資料、聯絡資料皆為合法 JSON。
 - 已驗證 `data/events.json` 的 `eventId` 可對上 `data/venue.*.json` 與 `data/schedules.public.json`。
 - 已驗證資料檔中目前引用的 `source-materials/...` 圖片路徑都存在；正式前端實作時仍需複製到 `public/assets` 後引用公開路徑。
+- 2026-05-10：已將復古海報風格樂器生成圖拆成 9 個獨立去背 PNG，輸出於 `public/assets/music-components/`；已用 checkerboard 預覽確認四角透明。
+- 2026-05-10：節目編輯流程上線 + items[] schema 簡化：
+  - 新增 `scripts/programs-to-csv.mjs`（含 CSV ↔ JSON 契約 docstring）。
+  - `data/programs.dounan.json` 套用協作者第二輪 CSV 修訂（含曲目、姓名拼字、Mr. Vincent 老師名統一），移除所有 items 的 `performers[]` 與 `type`。
+  - `ProgramAccordion.jsx` / `.module.css` 加入 `(團名) 名1、名2` 解析渲染（團名標籤 + 編號學生名單）；mobile（< 480px）header padding/gap/teacher font 微調讓老師名單行可塞下 `Miss. Khristin 黃老師`。
+  - `npx vitest run` 24/24 通過。
 - 已新增 `ZHUBEI_VENUE_UX_HANDOFF.md`，記錄竹北場場地資訊清楚表單式 UX、停車資訊、入場分流與圖片對應。
 - 已驗證 `source-materials/zhubei/venue/竹北場地資訊示意圖.png` 與本次交接文件列出的竹北場 venue 圖片存在。
 - 2026-05-06：依 `ZHUBEI_VENUE_UX_HANDOFF.md` 重構 `data/venue.zhubei.json`、重寫 `ZhubeiVenueSection.jsx` / `.module.css`、複製 8 張圖到 `public/assets/zhubei/venue/`；`npx vitest run` 24/24 通過、`npm run build` 成功（CSS 約 39.6KB / JS 約 287KB）；dist 內含 8 張圖與新文字內容。
