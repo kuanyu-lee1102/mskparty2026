@@ -1,6 +1,6 @@
 # 接棒文件 — 2026 惠歆音樂會網站
 
-最後更新：2026-05-07（Wave 5 完成 + 竹北 venue 重做 + 視覺優化）
+最後更新：2026-05-10（節目編輯流程上線 + items[] schema 簡化 + 團班顯示）
 
 這份文件給「下一個開工的 session（人或 Claude）」用 — 看完這份就能無縫接手。
 
@@ -16,6 +16,7 @@
 | 4 | DounanVenueSection / ScheduleSection / ProgramSection / ProgramAccordion；ZhubeiVenueSection / ScheduleSection / ProgramSection；programSearch.js + 24 unit tests；老師色彩系統 | ✅ |
 | 5 | 頁面組裝、`.github/workflows/deploy.yml`（actions/deploy-pages@v4 OIDC）、GitHub Pages 部署、CLAUDE.md 開發準則、`.gitignore` secrets 防護 | ✅ |
 | Round 1 | **竹北場 venue 依 `ZHUBEI_VENUE_UX_HANDOFF.md` 重做**：Hero（Le Phare 室內）/ 場地摘要置中 / Google Maps / 停車 collapsible（含 car icon、副標、◇ 菱形列點注意事項）/ Radio segmented buttons 入場分流 / 米色 wrapper banner 包 step 卡 / 自行換證入場新增「請至櫃檯辦理換證」首步驟。EventHero 副標移除（首頁仍保留） | ✅ |
+| Round 2 | **斗南節目編輯流程 + items[] schema 簡化**：新增 `scripts/programs-to-csv.mjs`（CSV ↔ JSON 契約寫在 docstring）；協作者第二輪 CSV 改回 JSON（含曲目、姓名拼字、Mr. Vincent 老師名統一為「林老師」）；items 移除 `performers[]` 與 `type`，只保留 `order / performer / title`；團班顯示靠 `(團名) 名1、名2` 約定，`ProgramAccordion` 解析後渲染標籤 + 編號學生名單；mobile header padding/gap/teacher font 微調讓 `Miss. Khristin 黃老師` 單行可塞下 | ✅ |
 
 線上：**https://kuanyu-lee1102.github.io/mskparty2026/**
 GitHub repo：https://github.com/kuanyu-lee1102/mskparty2026（public）
@@ -32,8 +33,8 @@ GitHub repo：https://github.com/kuanyu-lee1102/mskparty2026（public）
    - 入場 segmented buttons icon 改 filled silhouette
    - 加頁角植物 / 鋼琴線稿裝飾（需先取得 SVG 素材）
    - Google Maps 按鈕加 pin icon
-4. **節目表編輯 / 回灌流程**：用 `scripts/programs-to-csv.mjs` 將 `data/programs.dounan.json` 攤平成 CSV 給協作者編輯，回灌邏輯詳見 script 註解
-5. **未補資料**：竹北節目表說明文字、部分老師的 `performer` / `title` 仍空（顯示「— / 曲目待補」）
+4. **節目表下一輪編輯 / 回灌**：流程已就緒。重新匯出用 `node scripts/programs-to-csv.mjs`，CSV ↔ JSON 契約寫在 script 開頭 docstring（含「老師欄定位」「列順序 = items 順序」「團班 `(團名) 名1、名2` 約定」「序號前導零」等規則）。
+5. **未補資料**：竹北節目表說明文字（斗南場 performer / title 已於 2026-05-10 由協作者 CSV 補齊）
 
 ---
 
@@ -63,7 +64,7 @@ GitHub repo：https://github.com/kuanyu-lee1102/mskparty2026（public）
 | D6 | LostSection 引言 / 標籤 | LostSection 已移除 | 已處理 ✓ |
 | D8 | 曲目空字串顯示 | 「曲目待補」 | 待確認 |
 | D9 | session 標題加開始時間 | 例：「上午場 10:00 起」 | 待確認 |
-| D10 | 節目卡只顯示「序號/演出者/曲目」，不顯示 `type` | — | 待確認 |
+| D10 | 節目卡只顯示「序號/演出者/曲目」，不顯示 `type` | items[] schema 已移除 `type` / `performers[]`，只剩 `order / performer / title` | 已處理 ✓ |
 | D11 | VenueSection 顯示 `primaryGoal` 小字 | 「協助使用者抵達虎尾建國眷村後，找到園區內指定的 C 區草地會場。」 | 待確認 |
 
 #### Agent E（竹北）尚待決定
