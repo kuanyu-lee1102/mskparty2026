@@ -32,6 +32,9 @@ export default function ContactSection({
   className = '',
 }) {
   const items = Array.isArray(contacts?.items) ? contacts.items : []
+  const directoryGroups = Array.isArray(contacts?.directoryGroups)
+    ? contacts.directoryGroups
+    : []
   const pendingText =
     typeof contacts?.pendingDisplayText === 'string' && contacts.pendingDisplayText.length > 0
       ? contacts.pendingDisplayText
@@ -53,15 +56,44 @@ export default function ContactSection({
         <span className={styles.divider} aria-hidden="true" />
       </header>
 
-      <ul className={styles.list}>
-        {items.map((item) => (
-          <li key={item.id} className={styles.item}>
-            <ContactRow item={item} pendingText={pendingText} />
-          </li>
-        ))}
-      </ul>
+      {directoryGroups.length > 0 ? (
+        <ContactDirectory groups={directoryGroups} items={items} pendingText={pendingText} />
+      ) : (
+        <ContactList items={items} pendingText={pendingText} />
+      )}
     </section>
   )
+}
+
+function ContactDirectory({ groups, items, pendingText }) {
+  return (
+    <div className={styles.directoryStack}>
+      {groups.map((group) => (
+        <section key={group.id} className={styles.contactGroup}>
+          <h3 className={styles.groupTitle}>{group.label}</h3>
+          <ContactList items={getItemsByIds(items, group.itemIds)} pendingText={pendingText} />
+        </section>
+      ))}
+    </div>
+  )
+}
+
+function ContactList({ items, pendingText }) {
+  return (
+    <ul className={styles.list}>
+      {items.map((item) => (
+        <li key={item.id} className={styles.item}>
+          <ContactRow item={item} pendingText={pendingText} />
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function getItemsByIds(items, itemIds = []) {
+  return itemIds
+    .map((itemId) => items.find((item) => item.id === itemId))
+    .filter(Boolean)
 }
 
 /**
@@ -81,10 +113,16 @@ function ContactRow({ item, pendingText }) {
   if (isLink) {
     const isExternal = !item.href.startsWith('tel:') && !item.href.startsWith('mailto:')
     const ariaLabel = `${item.label}：${item.value}`
+    const platformLabel = item.platformLabel || item.label
+    const contextLabel = item.contextLabel || item.value
     return (
       <div className={styles.row}>
+        <span className={styles.iconMark} aria-hidden="true">
+          {getContactGlyph(platformLabel)}
+        </span>
         <div className={styles.labelGroup}>
-          <span className={styles.label}>{item.label}</span>
+          <span className={styles.label}>{platformLabel}</span>
+          {contextLabel ? <span className={styles.context}>{contextLabel}</span> : null}
         </div>
         <a
           href={item.href}
@@ -94,7 +132,7 @@ function ContactRow({ item, pendingText }) {
             ? { target: '_blank', rel: 'noopener noreferrer' }
             : {})}
         >
-          <span className={styles.valueText}>{item.value}</span>
+          <span className={styles.valueText}>{getActionLabel(item)}</span>
           {isExternal ? (
             <span className={styles.externalIcon} aria-hidden="true">
               {/* 細線外連 icon，與 MapButton 維持一致語言 */}
@@ -129,8 +167,12 @@ function ContactRow({ item, pendingText }) {
         : pendingText
     return (
       <div className={styles.row}>
+        <span className={styles.iconMark} aria-hidden="true">
+          {getContactGlyph(item.platformLabel || item.label)}
+        </span>
         <div className={styles.labelGroup}>
-          <span className={styles.label}>{item.label}</span>
+          <span className={styles.label}>{item.platformLabel || item.label}</span>
+          {item.contextLabel ? <span className={styles.context}>{item.contextLabel}</span> : null}
         </div>
         <div className={styles.placeholderWrap}>
           <PlaceholderBox label={placeholderLabel} tone="info" />
@@ -142,12 +184,32 @@ function ContactRow({ item, pendingText }) {
   // 其他未知狀態：保守顯示為純文字值（仍不隱藏）
   return (
     <div className={styles.row}>
+      <span className={styles.iconMark} aria-hidden="true">
+        {getContactGlyph(item.platformLabel || item.label)}
+      </span>
       <div className={styles.labelGroup}>
-        <span className={styles.label}>{item.label}</span>
+        <span className={styles.label}>{item.platformLabel || item.label}</span>
+        {item.contextLabel ? <span className={styles.context}>{item.contextLabel}</span> : null}
       </div>
       <span className={styles.value}>
         <span className={styles.valueText}>{item.value ?? pendingText}</span>
       </span>
     </div>
   )
+}
+
+function getActionLabel(item) {
+  if (item?.href?.startsWith('tel:')) return item.value
+  return '開啟'
+}
+
+function getContactGlyph(label = '') {
+  const normalized = label.toLowerCase()
+
+  if (normalized.includes('line')) return 'L'
+  if (normalized.includes('facebook')) return 'f'
+  if (normalized.includes('instagram')) return '◎'
+  if (label.includes('電話')) return '☎'
+
+  return label.slice(0, 1)
 }
