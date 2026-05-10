@@ -5,6 +5,9 @@
     {
       "id": "line-official",
       "label": "LINE 官方帳號",
+      "platformLabel": "LINE",
+      "contextLabel": "官方帳號",
+      "audience": ["all"],
       "value": "@ykh1020h",
       "href": "https://line.me/R/ti/p/@ykh1020h",
       "status": "ready",
@@ -13,6 +16,9 @@
     {
       "id": "facebook-main",
       "label": "Facebook",
+      "platformLabel": "Facebook",
+      "contextLabel": "斗南教室",
+      "audience": ["dounan"],
       "value": "惠歆音樂社（Museeksoul）",
       "href": "https://www.facebook.com/museeksoul/?locale=zh_TW",
       "status": "ready",
@@ -21,6 +27,9 @@
     {
       "id": "facebook-zhubei",
       "label": "Facebook",
+      "platformLabel": "Facebook",
+      "contextLabel": "竹北教室",
+      "audience": ["zhubei"],
       "value": "惠歆音樂社竹北教室",
       "href": "https://www.facebook.com/p/%E6%83%A0%E6%AD%86%E9%9F%B3%E6%A8%82%E7%A4%BE-%E7%AB%B9%E5%8C%97%E6%95%99%E5%AE%A4-100063726136813/",
       "status": "ready",
@@ -29,6 +38,9 @@
     {
       "id": "instagram",
       "label": "Instagram",
+      "platformLabel": "Instagram",
+      "contextLabel": "社群動態",
+      "audience": ["all"],
       "value": "Museeksoul - 惠歆音樂社",
       "href": "https://www.instagram.com/museeksoul/",
       "status": "ready",
@@ -37,15 +49,45 @@
     {
       "id": "phone",
       "label": "電話",
+      "platformLabel": "電話",
+      "contextLabel": "直接聯絡",
+      "audience": ["all"],
       "value": "05 596 6996",
       "href": "tel:055966996",
       "status": "ready",
       "linkBehavior": "link"
     }
   ],
+  "stylePreview": {
+    "enabled": false,
+    "selectedPattern": "directory-list"
+  },
+  "directoryGroups": [
+      {
+        "id": "event-contact",
+        "label": "活動主要聯絡",
+        "itemIds": ["line-official", "phone"]
+      },
+      {
+        "id": "dounan",
+        "label": "斗南教室",
+        "itemIds": ["facebook-main"]
+      },
+      {
+        "id": "zhubei",
+        "label": "竹北教室",
+        "itemIds": ["facebook-zhubei"]
+      },
+      {
+        "id": "social",
+        "label": "官方社群",
+        "itemIds": ["instagram"]
+      }
+  ],
   "pendingDisplayText": "待補",
   "notes": [
     "未補連結時，前端仍顯示該項目與「待補」文字，不隱藏。",
+    "聯絡項目前台可用 platformLabel 作為平台入口，並以 audience / contextLabel 區分斗南、竹北或全站共用；完整名稱仍保留在 value 與無障礙標籤。",
     "LINE 官方帳號連結已確認為 https://line.me/R/ti/p/@ykh1020h。",
     "Facebook 主粉專為 https://www.facebook.com/museeksoul/。",
     "Facebook 竹北教室粉專已加入。",

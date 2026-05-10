@@ -158,6 +158,13 @@
     - 電話為 `05 596 6996`，前端可使用 `tel:055966996`。
     - LINE ID 目前待定。
     - 未補連結時仍顯示該項目與「待補」文字，不隱藏。
+    - **多據點聯絡版型（2026-05-10）**：
+      - `contacts.items[]` 新增 `platformLabel` 與 `contextLabel`，前台主要顯示平台名稱（LINE / Facebook / Instagram / 電話），完整官方名稱仍保留於 `value` 與無障礙標籤。
+      - `contacts.items[]` 新增 `audience`，用來標示 `all` / `dounan` / `zhubei`，避免多據點粉專只顯示平台名時失去分流意義。
+      - 使用者已選定 `03 Directory List`；`ContactSection` 正式改為依 `contacts.directoryGroups` 顯示「活動主要聯絡 / 斗南教室 / 竹北教室 / 官方社群」。
+      - `contacts.stylePreview.enabled` 已關閉，候選版型與 preview UI 已移除。
+      - 決策原因：參考多個設計成熟網站與 footer/social link best practices，多平台入口通常以平台名或 icon 為主，避免將完整粉專名稱重複攤開造成視覺噪音。
+      - 進一步修正：多據點品牌的聯絡入口需優先呈現據點或任務脈絡（斗南教室 / 竹北教室 / 官方共用），平台名稱退為卡片內的動作入口，符合 location page 與 information scent 原則。
 
 12. **Visual Direction**
     - 最新主視覺方向改為「優雅草地音樂會邀請函」。
@@ -238,6 +245,7 @@
 - 已驗證 `data/events.json` 的 `eventId` 可對上 `data/venue.*.json` 與 `data/schedules.public.json`。
 - 已驗證資料檔中目前引用的 `source-materials/...` 圖片路徑都存在；正式前端實作時仍需複製到 `public/assets` 後引用公開路徑。
 - 2026-05-10：已將復古海報風格樂器生成圖拆成 9 個獨立去背 PNG，輸出於 `public/assets/music-components/`；已用 checkerboard 預覽確認四角透明。
+- 2026-05-10：聯絡區塊多據點 Directory List 正式版已通過 `data/contacts.json` JSON parse、`node ./node_modules/vitest/vitest.mjs run`（24 tests passed）與 `node ./node_modules/vite/bin/vite.js build`。本機環境無 `npm` / `npx` 指令，改用 Codex bundled Node 執行本機依賴。
 - 2026-05-10：節目編輯流程上線 + items[] schema 簡化：
   - 新增 `scripts/programs-to-csv.mjs`（含 CSV ↔ JSON 契約 docstring）。
   - `data/programs.dounan.json` 套用協作者第二輪 CSV 修訂（含曲目、姓名拼字、Mr. Vincent 老師名統一），移除所有 items 的 `performers[]` 與 `type`。

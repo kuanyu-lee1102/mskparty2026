@@ -87,21 +87,39 @@
   .row {
     flex-direction: row;
     align-items: center;
-    gap: var(--space-lg);
+    gap: var(--space-md);
   }
+}
+
+.iconMark {
+  display: inline-grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 2.25rem;
+  place-items: center;
+  border: 1px solid rgba(217, 54, 22, 0.22);
+  border-radius: var(--radius-pill);
+  background-color: rgba(217, 54, 22, 0.055);
+  color: var(--color-vermilion);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .labelGroup {
   display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.08rem;
   flex: 0 0 auto;
 }
 
 @media (min-width: 640px) {
   .labelGroup {
     /* 寬版固定 label 寬度，讓 value 對齊 */
-    flex: 0 0 8.5rem;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 }
 
@@ -117,6 +135,12 @@
   .label {
     font-size: 0.9rem;
   }
+}
+
+.context {
+  color: var(--color-text-secondary);
+  font-size: 0.78rem;
+  line-height: 1.4;
 }
 
 /* ===== 值（可點擊或純文字） ===== */
@@ -161,5 +185,83 @@ a.value:focus-visible {
   .placeholderWrap {
     /* 寬版時讓 placeholder 不要拉滿，避免顯得太重 */
     max-width: 18rem;
+  }
+}
+
+/* ===== 據點目錄版型 ===== */
+.directoryStack {
+  display: grid;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid rgba(216, 185, 166, 0.9);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgba(255, 253, 248, 0.94), rgba(251, 246, 239, 0.78)),
+    var(--bg-white);
+}
+
+@media (min-width: 640px) {
+  .directoryStack {
+    padding: var(--space-lg);
+  }
+}
+
+.directoryStack .item {
+  border-color: rgba(216, 185, 166, 0.78);
+  box-shadow: none;
+}
+
+.directoryStack .row {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.directoryStack .value {
+  justify-self: end;
+  justify-content: flex-end;
+  min-width: 4rem;
+}
+
+.contactGroup {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-sm);
+  padding-block: var(--space-sm);
+  border-top: 1px solid rgba(216, 185, 166, 0.72);
+}
+
+.contactGroup:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.groupTitle {
+  margin: 0;
+  padding-top: var(--space-md);
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.directoryStack .list {
+  gap: var(--space-xs);
+}
+
+.directoryStack .item {
+  padding: var(--space-sm) var(--space-md);
+}
+
+@media (max-width: 420px) {
+  .contactGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .groupTitle {
+    padding-top: 0;
   }
 }
