@@ -87,7 +87,18 @@
    - 使用 `DounanVenueSection`。
    - 戶外園區 / 草地會場導引。
    - 使用 `data/venue.dounan.json`。
-   - 保留「我迷路了」功能與 Google / Apple Maps 按鈕。
+   - 保留「我迷路了」功能。
+   - 視覺整體對齊 Zhubei：
+     - 區塊標題置中 + 朱紅菱形分隔（— ◇ —）。
+     - 標題下方放 `heroImages`（眷村景觀圖；`source-materials/dounan/hero/dounan-jianguo-village-hero-white70-original.jpg`），220–280px cover。
+     - 摘要置中：venueShortName 大字 +「venueName｜displayAddress」一行。
+     - 「會場地點」改裝在米色（`bg-warm`）卡片內，header 為朱紅圓圈 pin icon + 標題 +「已棟蓄水池周邊蓄水池」摘要，卡內含縮小引導圖（max 480px / max-height 220–280px）與紅菱形 ◇ 列點：
+       - 「紅圈處即為會場：已棟蓄水池周邊草地。」
+       - 「可點擊下方引導按鈕。」
+     - 引導圖採用紅圈標示版本：`source-materials/dounan/venue/dounan-venue-area-circled.jpg`。
+   - 地圖按鈕僅保留 Google Maps（置中），按鈕文字「用 Google 地圖帶我去會場！」；已不再顯示 Apple Maps 按鈕（`mapLinks.appleMaps` 已從 JSON 移除）。
+   - JSON 新增欄位：`venueShortName` / `meetingLocationLabel` / `meetingLocation` / `heroImages[]` / `guideImage.captionLines[]`。
+   - **實作落地（2026-05-11）**：`DounanVenueSection.jsx` / `.module.css` 重寫，補上 `LocationPinIcon` 與 `DiamondDivider`；移除舊 `venueIntro` / `targetArea` / `targetDescription` / `primaryGoal` 樣式與引用。
 
 7. **Zhubei Venue**
    - 使用 `ZhubeiVenueSection`。
@@ -184,6 +195,13 @@
     - 這批元件是使用者要求的復古高彩度海報風格探索資產，目前未接入前端頁面。
     - 原因 / 風險：現行網站主視覺仍以 `visual-style-guide.md` 的「優雅草地音樂會邀請函」為準；若未來要套用這批元件，需由使用者明確確認整體風格切換，避免違反「不要做回高彩度復古感」的既有規則。
 
+15. **Dounan Jianguo Hero Asset**
+    - 已新增 `public/assets/dounan/hero/dounan-jianguo-village-hero-white70-original.jpg`。
+    - 以使用者提供的建國眷村照片原亮度合成白色三行標題：「建國眷村 / JIANGUO MILITARY / DEPENDENTS' VILLAGE」。
+    - 文字字形來源為使用者提供的竹北場首圖 PNG，不重新打字、不換字體；將字形填成全白後以 70% 透明度疊到照片上。
+    - 使用者已決定不修照片中的春聯年份，維持原圖內容。
+    - 原因 / 風險：目前只建立正式公開資產，尚未接入前端頁面；若要替換斗南場頁面頂部 hero，需再更新元件與資料來源，不要直接引用 `Downloads` 或其他本機路徑。
+
 ## Do Not Override
 
 - 不要把「時間表圖片」拿來替代「場地資訊」。
@@ -251,6 +269,7 @@
   - `data/programs.dounan.json` 套用協作者第二輪 CSV 修訂（含曲目、姓名拼字、Mr. Vincent 老師名統一），移除所有 items 的 `performers[]` 與 `type`。
   - `ProgramAccordion.jsx` / `.module.css` 加入 `(團名) 名1、名2` 解析渲染（團名標籤 + 編號學生名單）；mobile（< 480px）header padding/gap/teacher font 微調讓老師名單行可塞下 `Miss. Khristin 黃老師`。
   - `npx vitest run` 24/24 通過。
+- 2026-05-11：已新增斗南建國眷村首圖 `public/assets/dounan/hero/dounan-jianguo-village-hero-white70-original.jpg`；維持原照片亮度與原春聯內容，沿用使用者提供的文字 PNG 字形，轉為全白 70% 透明度疊圖。已用本機影像預覽確認輸出存在。此輪未改前端程式，未跑 Vitest。
 - 已新增 `ZHUBEI_VENUE_UX_HANDOFF.md`，記錄竹北場場地資訊清楚表單式 UX、停車資訊、入場分流與圖片對應。
 - 已驗證 `source-materials/zhubei/venue/竹北場地資訊示意圖.png` 與本次交接文件列出的竹北場 venue 圖片存在。
 - 2026-05-06：依 `ZHUBEI_VENUE_UX_HANDOFF.md` 重構 `data/venue.zhubei.json`、重寫 `ZhubeiVenueSection.jsx` / `.module.css`、複製 8 張圖到 `public/assets/zhubei/venue/`；`npx vitest run` 24/24 通過、`npm run build` 成功（CSS 約 39.6KB / JS 約 287KB）；dist 內含 8 張圖與新文字內容。
@@ -263,4 +282,11 @@
   - 自行換證入場新增首步驟「請至櫃檯辦理換證」（共 3 步）
   - 選中流程加 SelectedFlowBanner 米色外卡（雙層卡）
   - EventHero 副標移除（首頁仍顯示，由 HomePage 直接讀 events.json subtitle）+ EventHero padding-bottom 縮短讓 SectionNav 緊貼大標
+- 2026-05-11：斗南場場地資訊整體視覺對齊竹北場：
+  - `data/venue.dounan.json` 新增 `venueShortName` / `meetingLocationLabel` / `meetingLocation` / `heroImages[]`，`guideImage.caption` 改為 `captionLines[]`，移除 `mapLinks.appleMaps`；`displayAddress` 更新為「632雲林縣虎尾鎮建國里建國一村55號」。
+  - `DounanVenueSection.jsx` / `.module.css` 重寫：標題置中 + ◇ 菱形分隔；新增 hero（眷村景觀 cover 圖）；摘要置中大字 venueShortName + 「venueName｜displayAddress」；新增「會場地點」米色卡（朱紅 pin icon + 標題 + 摘要 + 縮小引導圖 + 紅菱形 captionList）；地圖按鈕改單顆「用 Google 地圖帶我去會場！」置中；移除 Apple Maps 按鈕。
+  - 新增素材：
+    - `public/assets/dounan/venue/dounan-venue-area-circled.jpg`（紅圈標示版引導圖，並鏡像至 `source-materials/dounan/venue/`）。
+    - `public/assets/dounan/hero/dounan-jianguo-village-hero-white70-original.jpg` 也鏡像進 `source-materials/dounan/hero/`。
+  - `npx vitest run` 24/24 通過、`npm run build` 成功（CSS 約 46.7KB / JS 約 296KB）。
 - 最近一次 commit 後工作樹曾確認乾淨。
