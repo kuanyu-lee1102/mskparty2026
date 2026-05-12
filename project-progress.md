@@ -32,6 +32,7 @@
 - `data/venue.zhubei.json`：竹北場場地資訊
 - `data/contacts.json`：聯絡資訊
 - `data/programs.dounan.json`：斗南場節目表資料
+- `data/market.json`：斗南場小市集擺攤店家資料
 - `data/schedules.public.json`：斗南 / 竹北公開版時間表圖片設定
 - `visual-style-guide.md`：最新視覺方向與 UI 設計規範
 - `ZHUBEI_VENUE_UX_HANDOFF.md`：竹北場場地資訊 UX、接待流程、停車資訊與圖片對應的詳細交接文件
@@ -159,8 +160,9 @@
      - Mr. Vincent 老師名統一為「林老師」（原為「林文祥老師」），其他老師沿用單姓格式。
 
 10. **Nav**
-    - 斗南場導覽列：場地資訊、時間表、節目表、我迷路了、聯絡我們。
+    - 斗南場導覽列：場地資訊、時間表、節目表、小市集、聯絡我們。
     - 竹北場導覽列：場地資訊、時間表、節目表、聯絡我們。
+    - 小市集只屬於斗南場，竹北場不顯示。
 
 11. **Contacts**
     - 使用 `data/contacts.json`。
@@ -202,6 +204,15 @@
     - 使用者已決定不修照片中的春聯年份，維持原圖內容。
     - 原因 / 風險：目前只建立正式公開資產，尚未接入前端頁面；若要替換斗南場頁面頂部 hero，需再更新元件與資料來源，不要直接引用 `Downloads` 或其他本機路徑。
 
+16. **Dounan Market（小市集，2026-05-12）**
+    - 只在斗南場顯示，竹北場無小市集區塊。
+    - 區塊位置：節目表之後、聯絡我們之前。
+    - 資料來源：`data/market.json`，`vendors[]` 順序即為前端顯示順序。
+    - 視覺為左 logo 方塊 + 右店名 + 聯絡圖示列，每家店之間以細線分隔。
+    - 缺 logo 時顯示 placeholder「Logo 待補」，不可隱藏 logo 欄位。
+    - `links[].type` 支援 facebook / instagram / line / note；type=note 用於 IG 私訊等無連結的訂購說明。
+    - 第一家「國柱食作所」logo 已放在 `public/assets/dounan/market/guozhu-logo.jpg`；其他店家 logo 待補。
+
 ## Do Not Override
 
 - 不要把「時間表圖片」拿來替代「場地資訊」。
@@ -226,6 +237,8 @@
 - 不要把 `performers[]` / `type` 加回 `programs.dounan.json` 的 items[] schema（已於 2026-05-10 簡化為 `order / performer / title`）。
 - 不要為節目編輯流程在 `data/programs.dounan.json` 上手動 patch；請走 `scripts/programs-to-csv.mjs` 匯出 CSV → Google Sheets 編輯 → AI 回灌的循環。
 - 不要把團班 / 多人合奏顯示拆成另一份資料結構；前端應從 `performer` 字串的 `(團名) 名1、名2` 約定解析。
+- 不要把小市集區塊放到竹北場；小市集只屬於斗南場。
+- 不要把店家 logo 直接從 `Downloads/` 或其他本機路徑引用；統一放 `public/assets/dounan/market/`，並透過 `data/market.json` 的 `logo` 欄位走 `assetUrl()`。
 
 ## Next Open Questions
 
