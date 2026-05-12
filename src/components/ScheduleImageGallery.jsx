@@ -49,7 +49,7 @@ export default function ScheduleImageGallery({ images = [], className = '' }) {
             type="button"
             className={styles.imageButton}
             onClick={() => handleOpen(image)}
-            aria-label={`放大檢視：${image.alt || image.caption || '時間表圖片'}`}
+            aria-label={`放大檢視：${image.alt || image.caption || '流程表圖片'}`}
           >
             <img
               src={image.path}

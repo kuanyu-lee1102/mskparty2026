@@ -36,7 +36,7 @@ import ScheduleImageGallery from './ScheduleImageGallery.jsx'
  */
 export default function ZhubeiScheduleSection({
   id = 'schedule',
-  title = '時間表',
+  title = '流程表',
   className = '',
 }) {
   const eventConfig = schedules?.events?.zhubei ?? {}
