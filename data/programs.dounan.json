@@ -17,7 +17,7 @@
       "items": [
         {
           "order": "01",
-          "performer": "(鍵盤團班) 何禹昕、高荺晴、施柏安、劉采恩、王若宏",
+          "performer": "(鍵盤團班) 何禹昕、高荺晴、施柏安、劉采恩、王茗宏",
           "title": "小星星"
         },
         {
@@ -34,6 +34,11 @@
           "order": "04",
           "performer": "李冠宇",
           "title": "Passacaglia"
+        },
+        {
+          "order": "04",
+          "performer": "陳若晞",
+          "title": "Fountain in the rain"
         }
       ]
     },
@@ -51,7 +56,7 @@
         {
           "order": "01",
           "performer": "陳彥儒",
-          "title": "Mozart - Sonate KN545"
+          "title": "Mozart - Sonate K.545"
         },
         {
           "order": "02",
@@ -113,7 +118,7 @@
         },
         {
           "order": "04",
-          "performer": "劉姷汘、劉芛辰、劉洧岓",
+          "performer": "劉姷汘、劉芛辰、劉洧岓&Candy、 Lucy、Kristin、Kiki",
           "title": "追光者"
         }
       ]
@@ -156,8 +161,8 @@
         },
         {
           "order": "06",
-          "performer": "郭語嫣",
-          "title": "小步舞曲"
+          "performer": "郭雨嫣",
+          "title": "往事難忘"
         },
         {
           "order": "07",
@@ -177,7 +182,7 @@
         {
           "order": "10",
           "performer": "鍾宜茹",
-          "title": "小奏鳴曲NO7"
+          "title": "小奏鳴曲NO. 7"
         }
       ]
     },
@@ -194,22 +199,27 @@
       "items": [
         {
           "order": "01",
-          "performer": "林品彤",
+          "performer": "林品彤&Lucy",
           "title": "（魔女宅急便）季節的迴轉"
         },
         {
           "order": "02",
-          "performer": "沈依岑",
+          "performer": "沈依岑&Lucy",
           "title": "（神隱少女）生命之名"
         },
         {
           "order": "03",
-          "performer": "王錦聰",
+          "performer": "王錦聰&Lucy",
           "title": "My heart will go on"
         },
         {
+          "order": "03",
+          "performer": "徐慧玲&Lucy",
+          "title": "風中奇緣"
+        },
+        {
           "order": "04",
-          "performer": "鍾蕓竹",
+          "performer": "鍾蕓竹&Lucy",
           "title": "野草莓"
         },
         {
@@ -229,7 +239,7 @@
         },
         {
           "order": "10",
-          "performer": "劉洧岓、鍾蕓竹、徐慧玲",
+          "performer": "劉洧岓、鍾蕓竹、徐慧玲&Lucy",
           "title": "喔！蘇珊娜"
         },
         {
@@ -391,7 +401,7 @@
         },
         {
           "order": "04",
-          "performer": "宋侑洛",
+          "performer": "宋侑洺",
           "title": "夢中做憨人"
         },
         {
@@ -420,12 +430,12 @@
         {
           "order": "01",
           "performer": "吳映潔",
-          "title": "理想混蛋-平衡木"
+          "title": "平衡木"
         },
         {
           "order": "02",
           "performer": "黃萱語",
-          "title": "告五人-愛在夏天"
+          "title": "愛在夏天"
         }
       ]
     },
@@ -443,7 +453,7 @@
         {
           "order": "01",
           "performer": "王茗宏",
-          "title": "Fantastic baby"
+          "title": "Try everything"
         },
         {
           "order": "02",
@@ -457,7 +467,7 @@
         },
         {
           "order": "04",
-          "performer": "鍾宥鈞",
+          "performer": "鐘宥鈞",
           "title": "打開太陽"
         },
         {
@@ -481,7 +491,7 @@
         {
           "order": "01",
           "performer": "歐昕澄",
-          "title": "Good Mood"
+          "title": "恐龍兒歌"
         },
         {
           "order": "02",
@@ -497,11 +507,6 @@
           "order": "04",
           "performer": "李健誠",
           "title": "孤獨的人"
-        },
-        {
-          "order": "05",
-          "performer": "施怡秀",
-          "title": "Zoo"
         },
         {
           "order": "06",
@@ -522,6 +527,11 @@
           "order": "09",
           "performer": "李健誠、李宥宏",
           "title": "Home Sweet Home"
+        },
+        {
+          "order": "05",
+          "performer": "施怡秀",
+          "title": "Zoo"
         }
       ]
     },
@@ -539,7 +549,7 @@
         {
           "order": "01",
           "performer": "李宥宏",
-          "title": "CROOKED"
+          "title": "Intuition"
         },
         {
           "order": "03",
