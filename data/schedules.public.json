@@ -32,7 +32,7 @@
         {
           "id": "dounan-schedule-participant",
           "audience": "participant",
-          "path": "source-materials/dounan/schedule/dounan-schedule-participant.jpg",
+          "path": "source-materials/dounan/schedule/dounan-schedule-participant.png",
           "alt": "斗南場草地音樂會流程表與重要提醒",
           "caption": "斗南場參加者流程與注意事項"
         }
@@ -41,7 +41,7 @@
         {
           "id": "dounan-schedule-teacher",
           "audience": "teacher",
-          "path": "source-materials/dounan/schedule/dounan-schedule-teacher.jpg",
+          "path": "source-materials/dounan/schedule/dounan-schedule-teacher.png",
           "reason": "老師版時間表不顯示於公開網站。"
         }
       ],

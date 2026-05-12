@@ -42,6 +42,12 @@
       "label": "場地照片",
       "path": "source-materials/dounan/venue/dounan-venue-photo.png",
       "alt": "斗南場虎尾建國眷村 C 區草地現場照片"
+    },
+    {
+      "id": "venue-layout",
+      "label": "草地音樂會現場配置圖",
+      "path": "source-materials/dounan/venue/dounan-venue-layout.png",
+      "alt": "斗南場草地音樂會現場配置圖：標示舞台、音控區、報到處、家長接送、座位區與服務站位置"
     }
   ],
   "navigationNotes": [
