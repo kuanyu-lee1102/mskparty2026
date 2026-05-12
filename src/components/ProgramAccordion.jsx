@@ -140,7 +140,8 @@ export default function ProgramAccordion({
  *
  * 學生節目明細卡片列表（單一老師展開後內容，或搜尋結果中單一群組底下）。
  * 規範：每張卡片包含「序號 / 演出者 / 曲目」三欄；不顯示樂器、合奏標籤等
- *      可選欄位於第一版（保留資料但不顯示，待視覺再決定）。
+ *      若 item.ownerTeacherDisplayName 存在，代表該項目插入在目前老師時段中，
+ *      但原指導老師不同，於卡片內顯示小標籤。
  * Export 給 DounanProgramSection 搜尋結果群組共用。
  *
  * accentColor 控制序號顏色，呼應海報配色。
@@ -161,7 +162,14 @@ export function ProgramItemList({ items, accentColor, className = '' }) {
           <span className={styles.itemDivider} aria-hidden="true" />
           <span className={styles.itemBody}>
             <PerformerCell performer={item.performer} />
-            <span className={styles.title}>{item.title || '曲目待補'}</span>
+            <span className={styles.titleWrap}>
+              <span className={styles.title}>{item.title || '曲目待補'}</span>
+              {item.ownerTeacherDisplayName ? (
+                <span className={styles.ownerTeacherBadge}>
+                  {item.ownerTeacherDisplayName} 學生
+                </span>
+              ) : null}
+            </span>
           </span>
         </li>
       ))}

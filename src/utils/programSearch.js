@@ -21,6 +21,7 @@
  *  - 老師範圍同時匹配 teacherName / teacherDisplayName / teacherLocalName，
  *    確保使用者搜尋「Lucy」「張老師」「Miss. Lucy」皆可命中
  *  - 學生範圍同時匹配 item.performer（顯示字串）以及 item.performers[]（拆分後個別姓名）
+ *  - 跨老師插入項目可匹配 item.ownerTeacherDisplayName，避免搜尋原指導老師時漏掉該項
  *  - 曲目範圍匹配 item.title
  *  - 老師命中時：該老師整組 items 顯示
  *  - 學生 / 曲目命中時：只顯示該命中的 item
@@ -66,7 +67,8 @@ function teacherFieldMatches(query, program) {
 
 /**
  * 單一節目項目（item）命中檢查。
- * 命中欄位：performer 顯示字串、performers[] 拆分後的個別姓名、title。
+ * 命中欄位：performer 顯示字串、performers[] 拆分後的個別姓名、
+ * ownerTeacherDisplayName、title。
  */
 function itemMatches(query, item) {
   if (!item) return false
@@ -74,6 +76,7 @@ function itemMatches(query, item) {
   if (Array.isArray(item.performers)) {
     if (item.performers.some((name) => lower(name).includes(query))) return true
   }
+  if (lower(item.ownerTeacherDisplayName).includes(query)) return true
   if (lower(item.title).includes(query)) return true
   return false
 }

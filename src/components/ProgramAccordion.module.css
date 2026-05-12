@@ -271,11 +271,35 @@
   padding-left: 2px;
 }
 
+.titleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
 .title {
   font-family: var(--font-body);
   font-size: 0.9rem;
   color: var(--color-text-secondary);
   line-height: 1.5;
+  word-break: break-word;
+}
+
+.ownerTeacherBadge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 2px 8px;
+  border: 1px solid color-mix(in srgb, var(--accent-color) 30%, var(--color-line-beige));
+  border-radius: var(--radius-sm);
+  background-color: color-mix(in srgb, var(--accent-color) 8%, var(--bg-white));
+  color: var(--accent-color);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
   word-break: break-word;
 }
 
@@ -297,7 +321,7 @@
     min-width: 7.5rem;
     align-self: flex-start;
   }
-  .title {
+  .titleWrap {
     flex: 1 1 auto;
   }
 }

@@ -77,6 +77,12 @@ const fixturePrograms = [
     teacherLocalName: '李老師',
     items: [
       { order: '05', performer: '楊楷定父子', title: '物語' },
+      {
+        order: '08',
+        performer: '李健誠、李宥宏',
+        title: 'Home Sweet Home',
+        ownerTeacherDisplayName: 'Mr. Kevin 張老師',
+      },
     ],
   },
 ]
@@ -180,6 +186,15 @@ describe('searchPrograms — student matching', () => {
     expect(results[0].matchedItems[0].title).toBe('再見的時候')
     expect(results[1].matchedItems).toHaveLength(1)
     expect(results[1].matchedItems[0].title).toBe('理想混蛋-平衡木')
+  })
+
+  it('matches inserted item by owner teacher display name', () => {
+    const results = searchPrograms(fixturePrograms, 'Kevin')
+    expect(results).toHaveLength(1)
+    expect(results[0].program.id).toBe('afternoon-yang')
+    expect(results[0].matchType).toBe('item')
+    expect(results[0].matchedItems).toHaveLength(1)
+    expect(results[0].matchedItems[0].title).toBe('Home Sweet Home')
   })
 })
 

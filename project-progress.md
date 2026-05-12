@@ -158,6 +158,14 @@
      - 團班顯示約定：`performer` 開頭以半形 `(團名)` + 空白 + 名單（用「、」分隔），例 `(鍵盤團班) 何禹昕、高荺晴、施柏安、劉采恩、王若宏`。
      - 前端 `ProgramAccordion` 對符合該 pattern 的字串解析為「團名標籤 + 編號學生名單」雙段渲染；不符合時 fallback 成單行字串。
      - Mr. Vincent 老師名統一為「林老師」（原為「林文祥老師」），其他老師沿用單姓格式。
+   - **跨老師插入演出順序（2026-05-12）**：
+     - 業主新版 CSV 允許某位老師學生插入另一位老師時段 / accordion 中，避免因少數調整而重做整個節目表 UI。
+     - `items[]` 新增 optional `ownerTeacherDisplayName`；存在時代表該 item 顯示在目前 program 底下，但原指導老師不同。
+     - 前端在節目卡片內顯示「{ownerTeacherDisplayName} 學生」小標籤；搜尋也會比對 `ownerTeacherDisplayName`，避免搜尋原指導老師時漏掉插入項目。
+     - CSV 契約改為 `場次 / 顯示於老師 / 指導老師 / 時段 / 序號 / 演出者 / 曲目`；`顯示於老師` 定位 accordion，`指導老師` 只在跨老師插入時填寫。
+     - 已依 `source-materials/dounan/programs/惠歆音樂社 2026音樂會 節目表 - programs.dounan-6.csv` 遷移：
+       - `Miss. Wanda 許老師` 的 `藍亭筠 / 印地安人` 顯示於 `Miss. Linda 陳老師`。
+       - `Mr. Kevin 張老師` 的 `李健誠、李宥宏 / Home Sweet Home` 顯示於 `Mr. Yang 李老師`。
 
 10. **Nav**
     - 斗南場導覽列：場地資訊、時間表、節目表、小市集、聯絡我們。
@@ -212,6 +220,14 @@
     - 缺 logo 時顯示 placeholder「Logo 待補」，不可隱藏 logo 欄位。
     - `links[].type` 支援 facebook / instagram / line / note；type=note 用於 IG 私訊等無連結的訂購說明。
     - 第一家「國柱食作所」logo 已放在 `public/assets/dounan/market/guozhu-logo.jpg`；其他店家 logo 待補。
+
+17. **Dounan Teacher Portrait Source Assets（師資陣容，2026-05-12）**
+    - 使用者提供的斗南場師資圖存放於 `source-materials/dounan/teacher-portraits/`。
+    - 已依圖片中的英文顯示名稱重新命名檔案，移除 `Mr.` / `Miss.` 前綴，避免與副檔名混淆。
+    - 已依 `data/programs.dounan.json` 節目表老師順序加上兩位數序號。
+    - 目前檔名為：`01-Candy.png`、`02-Vincent.png`、`03-Khristin.png`、`04-Wanda.png`、`05-Lucy.png`、`07-Vivian.png`、`08-Orange.png`、`09-Stone.png`、`10-Ben.png`、`11-Nick.png`、`12-Kevin.png`、`13-Yang.png`。
+    - `06-Linda.png` 目前缺圖，先保留序號空位，避免後續接入前端時與節目表順序錯位。
+    - 這批仍是 source material，若未來要接入前端，需先複製到 `public/assets/` 並透過資料檔引用，不可直接從 `source-materials/` 作為公開前端資產路徑。
 
 ## Do Not Override
 
@@ -302,4 +318,7 @@
     - `public/assets/dounan/venue/dounan-venue-area-circled.jpg`（紅圈標示版引導圖，並鏡像至 `source-materials/dounan/venue/`）。
     - `public/assets/dounan/hero/dounan-jianguo-village-hero-white70-original.jpg` 也鏡像進 `source-materials/dounan/hero/`。
   - `npx vitest run` 24/24 通過、`npm run build` 成功（CSS 約 46.7KB / JS 約 296KB）。
+- 2026-05-12：已依師資圖中文字辨識並重新命名 `source-materials/dounan/teacher-portraits/` 12 張 PNG：Ben / Candy / Kevin / Khristin / Lucy / Nick / Orange / Stone / Vincent / Vivian / Wanda / Yang。此輪只整理 source material，未改前端程式，未跑 Vitest。
+- 2026-05-12：已依 `data/programs.dounan.json` 老師排序為師資圖檔名加上兩位數序號；因 `Miss. Linda` 圖片尚未提供，保留 `06-Linda.png` 空位，現有檔案為 01、02、03、04、05、07、08、09、10、11、12、13。此輪只整理 source material，未改前端程式，未跑 Vitest。
+- 2026-05-12：已依 `programs.dounan-6.csv` 遷移跨老師插入演出順序，`data/programs.dounan.json` 新增兩筆 `ownerTeacherDisplayName`；`ProgramAccordion` 顯示原指導老師 badge，`programSearch` 納入該欄位搜尋，`scripts/programs-to-csv.mjs` 匯出欄位改為 `場次 / 顯示於老師 / 指導老師 / 時段 / 序號 / 演出者 / 曲目`。已產出 Google Sheets 用中介檔 `exports/programs.dounan.csv`（81 data rows + header）。`node ./node_modules/vitest/vitest.mjs run` 25/25 通過、`node ./node_modules/vite/bin/vite.js build` 成功。
 - 最近一次 commit 後工作樹曾確認乾淨。

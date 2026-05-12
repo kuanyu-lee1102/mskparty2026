@@ -263,7 +263,8 @@
         {
           "order": "01",
           "performer": "藍亭筠",
-          "title": "印地安人"
+          "title": "印地安人",
+          "ownerTeacherDisplayName": "Miss. Wanda 許老師"
         },
         {
           "order": "02",
@@ -271,27 +272,27 @@
           "title": "Can You Feel The Love Tonight"
         },
         {
-          "order": "02",
+          "order": "03",
           "performer": "劉芛辰",
           "title": "Golden"
         },
         {
-          "order": "03",
+          "order": "04",
           "performer": "劉欣瑜",
           "title": "轉圈圈之歌"
         },
         {
-          "order": "04",
+          "order": "05",
           "performer": "廖竹君",
           "title": "打上花火"
         },
         {
-          "order": "05",
+          "order": "06",
           "performer": "高欣彤",
           "title": "終究還是因為愛"
         },
         {
-          "order": "06",
+          "order": "07",
           "performer": "沈彥翎",
           "title": "千本櫻"
         }
@@ -509,27 +510,22 @@
           "title": "孤獨的人"
         },
         {
-          "order": "06",
+          "order": "05",
           "performer": "賴柏硯",
           "title": "Drip"
         },
         {
-          "order": "07",
+          "order": "06",
           "performer": "李恩碩",
           "title": "勇者"
         },
         {
-          "order": "08",
+          "order": "07",
           "performer": "吳柏緯",
           "title": "Beggin"
         },
         {
           "order": "09",
-          "performer": "李健誠、李宥宏",
-          "title": "Home Sweet Home"
-        },
-        {
-          "order": "05",
           "performer": "施怡秀",
           "title": "Zoo"
         }
@@ -552,19 +548,25 @@
           "title": "Intuition"
         },
         {
-          "order": "03",
+          "order": "02",
           "performer": "吳芮蓁",
           "title": "Chase"
         },
         {
-          "order": "04",
+          "order": "03",
           "performer": "鐘宥鈞",
           "title": "大家來跳舞"
         },
         {
-          "order": "05",
+          "order": "04",
           "performer": "楊楷定、楊堯翔",
           "title": "物語"
+        },
+        {
+          "order": "05",
+          "performer": "李健誠、李宥宏",
+          "title": "Home Sweet Home",
+          "ownerTeacherDisplayName": "Mr. Kevin 張老師"
         },
         {
           "order": "06",
