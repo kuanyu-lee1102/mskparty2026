@@ -32,7 +32,7 @@ import styles from './DounanScheduleSection.module.css'
  */
 export default function DounanScheduleSection({
   id,
-  title = '時間表',
+  title = '流程表',
   className = '',
 }) {
   const eventConfig = schedules?.events?.dounan

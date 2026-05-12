@@ -8,7 +8,7 @@ import ContactSection from '../components/ContactSection.jsx'
 
 const DOUNAN_TABS = [
   { id: 'venue', label: '場地資訊' },
-  { id: 'schedule', label: '時間表' },
+  { id: 'schedule', label: '流程表' },
   { id: 'program', label: '節目表' },
   { id: 'market', label: '小市集' },
   { id: 'contact', label: '聯絡我們' },
