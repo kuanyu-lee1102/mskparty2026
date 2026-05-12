@@ -26,7 +26,7 @@
     {
       "id": "siji-bee",
       "name": "四季蜂收",
-      "logo": null,
+      "logo": "source-materials/dounan/market/siji-bee-logo.jpg",
       "links": [
         {
           "type": "instagram",
@@ -39,7 +39,7 @@
     {
       "id": "shanmien",
       "name": "山眠手作",
-      "logo": null,
+      "logo": "source-materials/dounan/market/shanmien-logo.jpg",
       "links": [
         {
           "type": "instagram",
@@ -63,7 +63,7 @@
     {
       "id": "ooh-studio",
       "name": "O'OH 手作",
-      "logo": null,
+      "logo": "source-materials/dounan/market/ooh-logo.jpg",
       "links": [
         {
           "type": "instagram",
@@ -76,7 +76,7 @@
     {
       "id": "daily-kids",
       "name": "小日常童裝",
-      "logo": null,
+      "logo": "source-materials/dounan/market/daily-kids-logo.jpg",
       "links": [
         {
           "type": "instagram",
@@ -95,19 +95,13 @@
     {
       "id": "miao-shop",
       "name": "MiAo.Shop",
-      "logo": null,
+      "logo": "source-materials/dounan/market/miao-shop-logo.jpg",
       "links": [
         {
           "type": "instagram",
           "label": "Instagram 粉專",
           "value": "@miao.shop24",
           "href": "https://www.instagram.com/miao.shop24"
-        },
-        {
-          "type": "instagram",
-          "label": "Instagram 粉專",
-          "value": "@aura.acc98",
-          "href": "https://www.instagram.com/aura.acc98"
         },
         {
           "type": "line",
@@ -118,9 +112,22 @@
       ]
     },
     {
+      "id": "aura",
+      "name": "AURA",
+      "logo": "source-materials/dounan/market/aura-logo.jpg",
+      "links": [
+        {
+          "type": "instagram",
+          "label": "Instagram 粉專",
+          "value": "@aura.acc98",
+          "href": "https://www.instagram.com/aura.acc98"
+        }
+      ]
+    },
+    {
       "id": "yuni-meeting",
       "name": "渝你相遇 Yuni_Meeting",
-      "logo": null,
+      "logo": "source-materials/dounan/market/yuni-meeting-logo.jpg",
       "links": [
         {
           "type": "instagram",
@@ -139,6 +146,7 @@
   ],
   "notes": [
     "vendors[] 順序即為前端顯示順序。",
+    "MiAo.Shop 與 AURA 是兩家店一起擺攤，前端分成兩列獨立呈現各自 logo；MiAo.Shop 段落內列出的官方 LINE 先放在 MiAo.Shop 該列，若需共用請手動補到 AURA links[]。",
     "logo 缺時前端顯示「Logo 待補」placeholder，不可隱藏 logo 欄位。",
     "links[].type 支援 facebook / instagram / line / note；對應前端 icon glyph 與外連行為。",
     "links[].href 若缺則前端只顯示 value 文字（type=note 用於 IG 私訊等無連結資訊）。"
