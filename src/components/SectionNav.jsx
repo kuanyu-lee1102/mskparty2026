@@ -45,6 +45,10 @@ export default function SectionNav({
 
   const navRef = useRef(null)
   const tabRefs = useRef(new Map())
+  // 點擊 tab 觸發 smooth scroll 期間，鎖住 IntersectionObserver 以免途經 section
+  // 把 active 連續改掉造成標籤閃跳。捲動穩定後再解鎖。
+  const programmaticScrollRef = useRef(false)
+  const unlockTimerRef = useRef(null)
   const [internalActiveId, setInternalActiveId] = useState(
     () => activeId ?? safeTabs[0]?.id ?? '',
   )
@@ -70,11 +74,29 @@ export default function SectionNav({
         navHeight -
         scrollOffset
 
+      // 鎖住 observer 後再觸發 smooth scroll，避免途經 section 把 active 改掉
+      programmaticScrollRef.current = true
+      window.clearTimeout(unlockTimerRef.current)
+
       // 尊重 prefers-reduced-motion；global.css 已關閉 scroll-behavior
       window.scrollTo({
         top: Math.max(top, 0),
         behavior: 'smooth',
       })
+
+      // 捲動完成後解鎖：smooth scroll 通常 < 600ms，給 800ms buffer。
+      // 部分瀏覽器（Chrome 114+ / Safari 18+）支援 'scrollend' 事件，可更精準解鎖。
+      const onScrollEnd = () => {
+        programmaticScrollRef.current = false
+        window.removeEventListener('scrollend', onScrollEnd)
+      }
+      if ('onscrollend' in window) {
+        window.addEventListener('scrollend', onScrollEnd, { once: true })
+      }
+      unlockTimerRef.current = window.setTimeout(() => {
+        programmaticScrollRef.current = false
+        window.removeEventListener('scrollend', onScrollEnd)
+      }, 800)
     },
     [isControlled, onTabChange, scrollOffset],
   )
@@ -95,6 +117,8 @@ export default function SectionNav({
     const navHeight = navRef.current?.getBoundingClientRect().height ?? 56
     const observer = new IntersectionObserver(
       (entries) => {
+        // 點擊 tab 的 smooth scroll 期間鎖住，避免途經 section 連續覆蓋 active
+        if (programmaticScrollRef.current) return
         // 取最接近頂端、目前可見且交叉比例最高的 section
         const visible = entries
           .filter((e) => e.isIntersecting)
@@ -113,6 +137,13 @@ export default function SectionNav({
     sections.forEach((s) => observer.observe(s))
     return () => observer.disconnect()
   }, [isControlled, safeTabs])
+
+  // 卸載時清掉解鎖計時器
+  useEffect(() => {
+    return () => {
+      window.clearTimeout(unlockTimerRef.current)
+    }
+  }, [])
 
   // ===== 當 active 改變時，把該 tab 滑到 nav 視窗中央，避免被裁掉 =====
   useEffect(() => {

@@ -18,6 +18,7 @@
 | Round 1 | **竹北場 venue 依 `ZHUBEI_VENUE_UX_HANDOFF.md` 重做**：Hero（Le Phare 室內）/ 場地摘要置中 / Google Maps / 停車 collapsible（含 car icon、副標、◇ 菱形列點注意事項）/ Radio segmented buttons 入場分流 / 米色 wrapper banner 包 step 卡 / 自行換證入場新增「請至櫃檯辦理換證」首步驟。EventHero 副標移除（首頁仍保留） | ✅ |
 | Round 2 | **斗南節目編輯流程 + items[] schema 簡化**：新增 `scripts/programs-to-csv.mjs`（CSV ↔ JSON 契約寫在 docstring）；協作者第二輪 CSV 改回 JSON（含曲目、姓名拼字、Mr. Vincent 老師名統一為「林老師」）；items 移除 `performers[]` 與 `type`，只保留 `order / performer / title`；團班顯示靠 `(團名) 名1、名2` 約定，`ProgramAccordion` 解析後渲染標籤 + 編號學生名單；mobile header padding/gap/teacher font 微調讓 `Miss. Khristin 黃老師` 單行可塞下 | ✅ |
 | Round 3 | **斗南場場地資訊整體對齊竹北場視覺**（2026-05-11）：標題置中 + ◇ 菱形分隔；新增 hero（眷村景觀 cover 圖）置於分隔線下；摘要置中大字 venueShortName + 「venueName｜displayAddress」；新增「會場地點」米色卡（朱紅 pin icon + 標題 + 摘要 + 縮小引導圖 + 紅菱形 captionList）；引導圖換為紅圈標示版（`dounan-venue-area-circled.jpg`）；地圖按鈕只剩單顆「用 Google 地圖帶我去會場！」（移除 Apple Maps）；`displayAddress` 更新為正式地址 | ✅ |
+| Round 4 | **斗南場小市集（2026-05-12）**：在節目表與聯絡我們之間新增「小市集」section（只限斗南場）。新增 `data/market.json`（8 家店）、`MarketSection.jsx` / `.module.css`，左 logo 方塊 + 右店名 + 聯絡圖示列。國柱食作所 logo 放在 `public/assets/dounan/market/guozhu-logo.jpg`，其他店家 logo 顯示「Logo 待補」placeholder | ✅ |
 
 線上：**https://kuanyu-lee1102.github.io/mskparty2026/**
 GitHub repo：https://github.com/kuanyu-lee1102/mskparty2026（public）

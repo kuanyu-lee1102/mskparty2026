@@ -4,6 +4,7 @@ import venueZhubei from '../../data/venue.zhubei.json'
 import schedules from '../../data/schedules.public.json'
 import programsDounan from '../../data/programs.dounan.json'
 import contacts from '../../data/contacts.json'
+import market from '../../data/market.json'
 
 const SOURCE_PREFIX = 'source-materials/'
 
@@ -22,6 +23,7 @@ export {
   schedules,
   programsDounan,
   contacts,
+  market,
 }
 
 export default {
@@ -31,4 +33,5 @@ export default {
   schedules,
   programsDounan,
   contacts,
+  market,
 }

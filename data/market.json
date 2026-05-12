@@ -1,0 +1,146 @@
+{
+  "marketId": "hueixin-mskparty-2026-market",
+  "title": "小市集",
+  "intro": "活動當天現場小市集，歡迎到攤位逛逛、支持手作店家。",
+  "logoPendingLabel": "Logo 待補",
+  "vendors": [
+    {
+      "id": "guozhu",
+      "name": "國柱食作所",
+      "logo": "source-materials/dounan/market/guozhu-logo.jpg",
+      "links": [
+        {
+          "type": "facebook",
+          "label": "Facebook 粉專",
+          "value": "前往粉專",
+          "href": "https://www.facebook.com/share/1GcQAFtzBT/?mibextid=wwXIfr"
+        },
+        {
+          "type": "line",
+          "label": "LINE 訂購",
+          "value": "@vgg4751o",
+          "href": "https://line.me/R/ti/p/@vgg4751o"
+        }
+      ]
+    },
+    {
+      "id": "siji-bee",
+      "name": "四季蜂收",
+      "logo": null,
+      "links": [
+        {
+          "type": "instagram",
+          "label": "Instagram 粉專",
+          "value": "@natural_flavor_seeker",
+          "href": "https://www.instagram.com/natural_flavor_seeker"
+        }
+      ]
+    },
+    {
+      "id": "shanmien",
+      "name": "山眠手作",
+      "logo": null,
+      "links": [
+        {
+          "type": "instagram",
+          "label": "Instagram 粉專",
+          "value": "@shanmien_handmade",
+          "href": "https://www.instagram.com/shanmien_handmade"
+        },
+        {
+          "type": "note",
+          "label": "訂購方式",
+          "value": "IG 私訊"
+        }
+      ]
+    },
+    {
+      "id": "cc-cafe-cookies",
+      "name": "Cc Cafe & Cookies",
+      "logo": null,
+      "links": []
+    },
+    {
+      "id": "ooh-studio",
+      "name": "O'OH 手作",
+      "logo": null,
+      "links": [
+        {
+          "type": "instagram",
+          "label": "Instagram 粉專",
+          "value": "@ooh_studio99",
+          "href": "https://www.instagram.com/ooh_studio99"
+        }
+      ]
+    },
+    {
+      "id": "daily-kids",
+      "name": "小日常童裝",
+      "logo": null,
+      "links": [
+        {
+          "type": "instagram",
+          "label": "Instagram 粉專",
+          "value": "@iam_dailylife_",
+          "href": "https://www.instagram.com/iam_dailylife_"
+        },
+        {
+          "type": "line",
+          "label": "LINE 訂購",
+          "value": "ann840115（amber）",
+          "href": "https://line.me/ti/p/~ann840115"
+        }
+      ]
+    },
+    {
+      "id": "miao-shop",
+      "name": "MiAo.Shop",
+      "logo": null,
+      "links": [
+        {
+          "type": "instagram",
+          "label": "Instagram 粉專",
+          "value": "@miao.shop24",
+          "href": "https://www.instagram.com/miao.shop24"
+        },
+        {
+          "type": "instagram",
+          "label": "Instagram 粉專",
+          "value": "@aura.acc98",
+          "href": "https://www.instagram.com/aura.acc98"
+        },
+        {
+          "type": "line",
+          "label": "官方 LINE",
+          "value": "@042ktekw",
+          "href": "https://lin.ee/eMPTdJQ"
+        }
+      ]
+    },
+    {
+      "id": "yuni-meeting",
+      "name": "渝你相遇 Yuni_Meeting",
+      "logo": null,
+      "links": [
+        {
+          "type": "instagram",
+          "label": "Instagram 粉專",
+          "value": "@yuni_meeting",
+          "href": "https://www.instagram.com/yuni_meeting"
+        },
+        {
+          "type": "line",
+          "label": "LINE 訂購",
+          "value": "baba3001",
+          "href": "https://line.me/ti/p/~baba3001"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "vendors[] 順序即為前端顯示順序。",
+    "logo 缺時前端顯示「Logo 待補」placeholder，不可隱藏 logo 欄位。",
+    "links[].type 支援 facebook / instagram / line / note；對應前端 icon glyph 與外連行為。",
+    "links[].href 若缺則前端只顯示 value 文字（type=note 用於 IG 私訊等無連結資訊）。"
+  ]
+}
