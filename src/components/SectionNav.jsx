@@ -145,7 +145,11 @@ export default function SectionNav({
     }
   }, [])
 
-  // ===== 當 active 改變時，把該 tab 滑到 nav 視窗中央，避免被裁掉 =====
+  // ===== 當 active 改變時，把該 tab 平滑滑到 nav 視窗中央 =====
+  // 不論是 click 或 IntersectionObserver 觸發，都會把目前 active tab
+  // 自動置中。前一版抖動的主因是 .tabActive 的 font-weight 500→600
+  // 會改變 tab 文字寬度，導致整列 flex 重排；那個已修掉，此處單純
+  // 平滑水平捲動即可，不會再抖。
   useEffect(() => {
     const el = tabRefs.current.get(currentActiveId)
     if (!el) return

@@ -92,10 +92,11 @@
   outline-offset: -4px;
 }
 
-/* 選中狀態：朱紅底線（visual-style-guide §九 sticky nav 指定） */
+/* 選中狀態：朱紅色 + 朱紅底線（visual-style-guide §九 sticky nav 指定）
+ * 不切換 font-weight：bold 會讓 tab 文字寬度變動，捲動切換 active 時造成
+ * 整列 flex tab 重排，視覺上會「抖動」。對比交給顏色 + 2px 下底線。 */
 .tabActive {
   color: var(--color-vermilion);
-  font-weight: 600;
   border-bottom-color: var(--color-vermilion);
 }
 

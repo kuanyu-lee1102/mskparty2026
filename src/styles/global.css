@@ -64,6 +64,11 @@ body {
 
 body {
   min-height: 100vh;
+  /* 防止 .page::before 的 radial-gradient（使用 vw 並以負值偏移）造成
+   * 水平捲動。原先 clip 設在 .page 上，但某些瀏覽器（含 Safari）會把
+   * 子層 position: sticky 的 reference point 卡到 .page 自身，導致
+   * sticky nav 無法貼齊瀏覽器頂端。改放 body 等效避免水平滾動且不影響 sticky。 */
+  overflow-x: clip;
 }
 
 #root {
