@@ -1,0 +1,140 @@
+.page {
+  --poster-bg: #fff8ea;
+  --poster-pink: #e84971;
+  --poster-teal: #23a996;
+  --poster-yellow: #f4ad21;
+
+  position: relative;
+  min-height: 100vh;
+  overflow-x: clip;
+  isolation: isolate;
+  background: var(--poster-bg);
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.page::before {
+  z-index: -2;
+  background:
+    radial-gradient(110vw 54vw at -21vw -15vw, var(--poster-pink) 0 53%, rgba(232, 73, 113, 0.78) 53.5%, transparent 54%),
+    radial-gradient(88vw 42vw at -9vw calc(100% + 4vw), var(--poster-teal) 0 49%, rgba(35, 169, 150, 0.72) 49.5%, transparent 50%),
+    radial-gradient(94vw 42vw at 62vw calc(100% + 8vw), var(--poster-yellow) 0 50%, rgba(244, 173, 33, 0.72) 50.5%, transparent 51%),
+    radial-gradient(70vw 42vw at calc(100% + 24vw) calc(100% + 7vw), var(--poster-pink) 0 48%, rgba(232, 73, 113, 0.72) 48.5%, transparent 49%),
+    var(--poster-bg);
+}
+
+.page::after {
+  z-index: -1;
+  background:
+    radial-gradient(circle at 12px 12px, rgba(216, 185, 166, 0.28) 0 2px, transparent 2.6px) 0 0 / 14px 14px,
+    radial-gradient(circle at 50% 18%, rgba(242, 182, 50, 0.12), transparent 46%),
+    radial-gradient(circle at 58% 92%, rgba(255, 253, 248, 0.22), transparent 52%);
+  mask-image: linear-gradient(90deg, #000 0 8%, rgba(0, 0, 0, 0.32) 22%, transparent 38% 62%, rgba(0, 0, 0, 0.32) 78%, #000 100%);
+  -webkit-mask-image: linear-gradient(90deg, #000 0 8%, rgba(0, 0, 0, 0.32) 22%, transparent 38% 62%, rgba(0, 0, 0, 0.32) 78%, #000 100%);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.note,
+.spark {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  color: rgba(232, 73, 113, 0.62);
+  font-family: var(--font-heading);
+  line-height: 1;
+  user-select: none;
+}
+
+.note {
+  font-size: clamp(1.3rem, 5vw, 2.1rem);
+  font-weight: 700;
+}
+
+.spark {
+  width: 1.05rem;
+  height: 1.05rem;
+  filter: drop-shadow(0 0 0.5px currentColor);
+}
+
+.spark::before,
+.spark::after {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 100%;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+  transform: translate(-50%, -50%);
+}
+
+.spark::after {
+  width: 4px;
+  height: 100%;
+}
+
+.noteA {
+  top: 7.5rem;
+  left: max(1.2rem, calc(50% - 31rem));
+}
+
+.noteB {
+  top: 11.8rem;
+  right: max(2rem, calc(50% - 29rem));
+  color: rgba(35, 169, 150, 0.5);
+}
+
+.noteD {
+  top: 13rem;
+  left: max(1.9rem, calc(50% - 25rem));
+  color: rgba(232, 73, 113, 0.46);
+}
+
+.sparkA {
+  top: 7.1rem;
+  right: max(2.4rem, calc(50% - 31rem));
+  color: rgba(244, 173, 33, 0.56);
+}
+
+.sparkC {
+  top: 9rem;
+  right: max(5.3rem, calc(50% - 21rem));
+  color: rgba(232, 73, 113, 0.48);
+}
+
+.sparkD {
+  top: 9.6rem;
+  left: max(4.8rem, calc(50% - 18rem));
+  width: 0.78rem;
+  height: 0.78rem;
+  color: rgba(242, 182, 50, 0.42);
+}
+
+.sparkD::before {
+  height: 3px;
+}
+
+.sparkD::after {
+  width: 3px;
+}
+
+@media (min-width: 760px) {
+  .page::before {
+    background:
+      radial-gradient(58rem 28rem at -13rem -8rem, var(--poster-pink) 0 53%, rgba(232, 73, 113, 0.78) 53.5%, transparent 54%),
+      radial-gradient(52rem 24rem at -5rem calc(100% + 2rem), var(--poster-teal) 0 49%, rgba(35, 169, 150, 0.72) 49.5%, transparent 50%),
+      radial-gradient(58rem 25rem at calc(50% + 14rem) calc(100% + 4rem), var(--poster-yellow) 0 50%, rgba(244, 173, 33, 0.72) 50.5%, transparent 51%),
+      radial-gradient(44rem 25rem at calc(100% + 13rem) calc(100% + 4rem), var(--poster-pink) 0 48%, rgba(232, 73, 113, 0.72) 48.5%, transparent 49%),
+      var(--poster-bg);
+  }
+}

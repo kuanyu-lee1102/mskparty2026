@@ -1,0 +1,42 @@
+{
+  "pageTitle": "內頁背景接續",
+  "pageIntro": "這輪不改任何 UI 結構，只用同一套內頁示意比較三種背景。正式套用時只應調整頁面背景，不動場地、流程、節目表、聯絡等既有元件。",
+  "constrainedTitle": "只換背景：三種樣式參考",
+  "freeTitle": "",
+  "eventLabel": "同一套內頁 UI",
+  "backLabel": "返回首頁",
+  "eventKicker": "MUSEEKSOUL 音樂會",
+  "eventTitle": "斗南場",
+  "dateLabel": "2026 年 5 月 24 日（週日）",
+  "navLabels": ["場地資訊", "流程表", "節目表", "小市集"],
+  "venueTitle": "場地資訊",
+  "venueText": "虎尾建國眷村｜已棟蓄水池周邊草地",
+  "scheduleTitle": "流程表",
+  "scheduleText": "查看公開版活動流程與報到時間",
+  "programTitle": "節目表",
+  "programText": "依老師時段查找演出順序",
+  "marketTitle": "小市集",
+  "marketText": "活動當天限定攤位資訊",
+  "contactTitle": "聯絡我們",
+  "contactText": "LINE / Facebook / 電話",
+  "variants": [
+    {
+      "id": "background-continuation-soft",
+      "scope": "constrained",
+      "name": "背景 A｜柔弧延伸",
+      "intent": "最保守。沿用背景 C 的色塊位置，但降低音符存在感，適合整頁長內容，不干擾正式元件。"
+    },
+    {
+      "id": "background-continuation-dots",
+      "scope": "constrained",
+      "name": "背景 B｜網點延伸",
+      "intent": "保留背景 C 的弧線與半色調，讓下半段也有海報紙感。UI 完全不變，只是背景印刷感更明顯。"
+    },
+    {
+      "id": "background-continuation-notes",
+      "scope": "constrained",
+      "name": "背景 C｜音符延伸",
+      "intent": "最接近目前選定的背景 C。弧線、網點、少量音符延續到內頁下半段，但避開主要文字與按鈕。"
+    }
+  ]
+}

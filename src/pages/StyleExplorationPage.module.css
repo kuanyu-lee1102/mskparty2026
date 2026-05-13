@@ -1,0 +1,1400 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg-white);
+  padding: var(--space-xl) var(--space-md) var(--space-3xl);
+}
+
+.pageHeader {
+  max-width: 880px;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-sm);
+}
+
+.pageHeader p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.pageHeader p:first-child {
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+}
+
+.pageHeader h1 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  letter-spacing: 0.04em;
+}
+
+.pageHeader span {
+  width: 44px;
+  height: 1px;
+  background: var(--color-line-beige);
+}
+
+.variantSection {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.variantSection + .variantSection {
+  margin-top: var(--space-3xl);
+}
+
+.variantSection > h2 {
+  margin: 0 0 var(--space-lg);
+  text-align: center;
+  color: var(--color-vermilion);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+}
+
+.variantList {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.variant {
+  border: 1px solid var(--color-line-beige);
+  border-radius: var(--radius-lg);
+  background: #fffaf2;
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.variantHeader {
+  display: grid;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+
+.variantHeader h2,
+.variantHeader p {
+  margin: 0;
+}
+
+.variantHeader h2 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.variantHeader p {
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+
+.mockupGrid {
+  display: grid;
+  gap: var(--space-md);
+  justify-items: center;
+}
+
+@media (min-width: 760px) {
+  .mockupGrid {
+    grid-template-columns: minmax(0, 430px);
+    justify-content: center;
+  }
+}
+
+.phoneFrame {
+  border-radius: 22px;
+  padding: 10px;
+  background: #1f1b18;
+  width: min(100%, 430px);
+  min-width: 0;
+}
+
+.previewLabel {
+  display: block;
+  color: rgba(255, 253, 248, 0.72);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 0 0 8px;
+}
+
+.homeMockup,
+.eventMockup {
+  position: relative;
+  overflow: hidden;
+  min-height: 470px;
+  border-radius: 14px;
+  background: var(--bg-white);
+  color: var(--color-text);
+  padding: 34px 20px;
+  isolation: isolate;
+}
+
+.eventMockup {
+  min-height: 360px;
+}
+
+.footerMockup {
+  min-height: 430px;
+  padding: 30px 20px 24px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.fullPageMockup {
+  min-height: 640px;
+  padding-bottom: 28px;
+}
+
+.homeMockup::before,
+.eventMockup::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.homeMockup::after,
+.eventMockup::after {
+  content: none;
+}
+
+.kicker,
+.brand,
+.subtitle,
+.date {
+  margin: 0;
+  text-align: center;
+}
+
+.kicker,
+.brand,
+.titleStack,
+.subtitle,
+.actionStack,
+.backLink,
+.eventMockup h3,
+.date,
+.tabBar {
+  position: relative;
+  z-index: 1;
+}
+
+.kicker {
+  color: var(--color-vermilion);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.brand {
+  margin-top: 18px;
+  color: var(--color-text-secondary);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+}
+
+.titleStack {
+  margin: 24px auto 0;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.year {
+  color: var(--color-vermilion);
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  padding-left: 0.16em;
+  line-height: 1;
+}
+
+.titleStack h3,
+.eventMockup h3 {
+  margin: 0;
+  text-align: center;
+  font-size: 2rem;
+  line-height: 1.24;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  max-width: 18rem;
+  margin: 20px auto 0;
+  color: var(--color-text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.actionStack {
+  display: grid;
+  gap: 12px;
+  margin: 30px auto 0;
+}
+
+.actionStack a,
+.backLink,
+.tabBar span {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.actionStack a {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-vermilion);
+  background: var(--color-vermilion);
+  color: #fffdf8;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.actionStack a + a {
+  background: var(--bg-white);
+  color: var(--color-vermilion);
+}
+
+.backLink {
+  width: max-content;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-pill);
+  padding: 0 14px;
+  color: var(--color-vermilion);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.eventMockup .kicker {
+  margin-top: 28px;
+}
+
+.eventMockup h3 {
+  margin-top: 12px;
+}
+
+.date {
+  margin-top: 12px;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.tabBar {
+  position: relative;
+  margin: 22px -20px 0;
+  display: flex;
+  gap: 8px;
+  overflow: hidden;
+  padding: 10px 14px;
+  background: rgba(255, 253, 248, 0.9);
+  border-top: 1px solid rgba(216, 185, 166, 0.72);
+  border-bottom: 1px solid rgba(216, 185, 166, 0.72);
+}
+
+.tabBar span {
+  flex: 0 0 auto;
+  border-radius: var(--radius-pill);
+  padding: 0 13px;
+  color: var(--color-text-secondary);
+  background: var(--bg-warm);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.tabBar span:first-child {
+  background: var(--color-vermilion);
+  color: #fffdf8;
+}
+
+.innerContinuation {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.contentCard {
+  border: 1px solid rgba(216, 185, 166, 0.78);
+  border-radius: 14px;
+  background: rgba(255, 253, 248, 0.84);
+  padding: 14px;
+  box-shadow: 0 8px 18px rgba(31, 27, 24, 0.05);
+}
+
+.contentCard p,
+.contentCard h4 {
+  margin: 0;
+}
+
+.contentCard p {
+  color: #e84971;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.contentCard h4 {
+  margin-top: 6px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.primaryCard {
+  border-color: rgba(35, 169, 150, 0.46);
+  background:
+    radial-gradient(circle at 92% 18%, rgba(35, 169, 150, 0.12), transparent 28%),
+    rgba(255, 253, 248, 0.88);
+}
+
+.primaryCard p {
+  color: #23a996;
+}
+
+.flowCards {
+  margin-top: 18px;
+}
+
+.posterSections {
+  gap: 10px;
+}
+
+.posterSections .contentCard p {
+  display: inline-flex;
+  width: max-content;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: #23a996;
+  color: #fffdf8;
+}
+
+.posterSections .primaryCard p {
+  background: #e84971;
+}
+
+.ribbonPair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ribbonPair .contentCard {
+  min-height: 104px;
+}
+
+.quickPanel {
+  gap: 10px;
+}
+
+.actionPanel {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid rgba(216, 185, 166, 0.72);
+  border-radius: 16px;
+  background: rgba(255, 253, 248, 0.88);
+  box-shadow: 0 8px 18px rgba(31, 27, 24, 0.05);
+}
+
+.actionPanel a {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  background: #23a996;
+  color: #fffdf8;
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.actionPanel a + a {
+  border: 1px solid rgba(232, 73, 113, 0.72);
+  background: rgba(255, 253, 248, 0.9);
+  color: #e84971;
+}
+
+.miniStack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.miniStack .contentCard {
+  min-height: 98px;
+}
+
+.footerPreview {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+
+.footerPreview h3 {
+  margin: 8px 0 0;
+  color: #e84971;
+  font-family: var(--font-body);
+  font-size: 1.45rem;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.footerKicker,
+.footerText {
+  margin: 0;
+}
+
+.footerKicker {
+  color: #2c6f68;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.footerText {
+  color: var(--color-text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.footerDivider {
+  display: block;
+  width: 38px;
+  height: 2px;
+  margin: 16px auto;
+  background: #23a996;
+}
+
+.footerActions,
+.contactGrid,
+.dockActions {
+  display: grid;
+  gap: 10px;
+}
+
+.footerActions {
+  margin-top: 20px;
+}
+
+.footerActions a,
+.contactGrid a,
+.dockActions a,
+.footerGhostAction {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.footerActions a:first-child,
+.contactGrid a:first-child,
+.dockActions a:first-child {
+  background: #23a996;
+  color: #fffdf8;
+}
+
+.footerActions a + a,
+.footerGhostAction {
+  border: 1px solid rgba(232, 73, 113, 0.72);
+  background: rgba(255, 253, 248, 0.82);
+  color: #e84971;
+}
+
+.footerSoft {
+  max-width: 19rem;
+  margin: 0 auto 8px;
+  padding: 22px 18px;
+  border: 1px solid rgba(216, 185, 166, 0.74);
+  border-radius: 18px;
+  background: rgba(255, 253, 248, 0.78);
+  box-shadow: 0 10px 24px rgba(31, 27, 24, 0.06);
+}
+
+.footerContact {
+  padding: 22px 18px 18px;
+  border-radius: 18px;
+  background: rgba(255, 253, 248, 0.84);
+  border: 1px solid rgba(35, 169, 150, 0.32);
+  box-shadow: 0 10px 24px rgba(31, 27, 24, 0.06);
+}
+
+.footerContact .footerText {
+  margin-top: 12px;
+}
+
+.contactGrid {
+  grid-template-columns: 1fr;
+  margin-top: 16px;
+}
+
+.contactGrid a {
+  border: 1px solid rgba(35, 169, 150, 0.38);
+  background: rgba(255, 253, 248, 0.82);
+  color: #2c6f68;
+}
+
+.contactGrid a:first-child {
+  border-color: #23a996;
+}
+
+.footerGhostAction {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.footerDock {
+  padding-top: 118px;
+}
+
+.footerDock .footerText {
+  max-width: 18rem;
+  margin: 12px auto 0;
+}
+
+.dockActions {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 22px -4px 0;
+  padding: 10px;
+  border: 1px solid rgba(216, 185, 166, 0.68);
+  border-radius: 18px;
+  background: rgba(255, 253, 248, 0.88);
+  box-shadow: 0 10px 24px rgba(31, 27, 24, 0.08);
+}
+
+.dockActions a {
+  min-height: 48px;
+  padding: 0 8px;
+  border-radius: 12px;
+  color: #2c6f68;
+  background: rgba(248, 241, 232, 0.9);
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
+.dockActions a:first-child {
+  background: #23a996;
+}
+
+
+.note {
+  position: absolute;
+  color: var(--color-aux-lake);
+  font-size: 1.75rem;
+  font-weight: 800;
+  z-index: 0;
+}
+
+.noteA {
+  top: 42px;
+  left: 26px;
+}
+
+.noteB {
+  right: 30px;
+  bottom: 78px;
+  color: var(--color-aux-yellow);
+}
+
+.noteC {
+  top: 150px;
+  left: 38px;
+  color: #e84971;
+  font-size: 1.25rem;
+}
+
+.noteD {
+  top: 74px;
+  right: 52px;
+  color: #1f8fd4;
+  font-size: 1.2rem;
+}
+
+.spark,
+.spark::before {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: currentColor;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}
+
+.spark {
+  color: #e84971;
+  z-index: 0;
+}
+
+.sparkA {
+  top: 120px;
+  right: 36px;
+}
+
+.sparkB {
+  left: 44px;
+  bottom: 120px;
+  color: var(--color-aux-lake);
+}
+
+.sparkC {
+  right: 52px;
+  top: 132px;
+  color: var(--color-aux-yellow);
+  transform: scale(0.78);
+}
+
+.leafSprig {
+  position: absolute;
+  width: 44px;
+  height: 78px;
+  z-index: 0;
+  opacity: 0.88;
+  pointer-events: none;
+}
+
+.leafSprig::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 4px;
+  width: 1.5px;
+  height: 64px;
+  background: #2ba994;
+  transform: rotate(12deg);
+  transform-origin: bottom;
+}
+
+.leafSprig::after {
+  content: "";
+  position: absolute;
+  inset: 10px 6px 8px;
+  background:
+    radial-gradient(ellipse at 34% 18%, #2ba994 0 18%, transparent 19%),
+    radial-gradient(ellipse at 70% 34%, #6dbd8f 0 17%, transparent 18%),
+    radial-gradient(ellipse at 28% 52%, #2ba994 0 18%, transparent 19%),
+    radial-gradient(ellipse at 72% 68%, #6dbd8f 0 17%, transparent 18%);
+}
+
+.leafA {
+  left: 22px;
+  bottom: 34px;
+}
+
+.leafB {
+  right: 20px;
+  top: 68px;
+  transform: scale(0.72) rotate(-12deg);
+}
+
+.instrument {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  object-fit: contain;
+}
+
+.piano {
+  width: 112px;
+  left: -8px;
+  bottom: 10px;
+}
+
+.drum {
+  width: 112px;
+  right: -18px;
+  top: 26px;
+}
+
+.guitar {
+  width: 132px;
+  right: -24px;
+  bottom: -10px;
+}
+
+.poster-detail-notes .leafSprig,
+.poster-detail-notes .noteC,
+.poster-detail-notes .sparkC {
+  display: none;
+}
+
+.background-soft-frame .note,
+.background-soft-frame .spark,
+.background-dot-corners .note,
+.background-dot-corners .spark,
+.background-continuation-soft .note,
+.background-continuation-soft .spark,
+.background-continuation-dots .note,
+.background-continuation-dots .spark {
+  display: none;
+}
+
+.background-continuation-notes .noteA,
+.background-music-sprinkle .noteA {
+  top: 52px;
+  left: 28px;
+}
+
+.background-continuation-notes .noteB,
+.background-music-sprinkle .noteB {
+  right: 30px;
+  bottom: 84px;
+}
+
+.background-continuation-notes .sparkA,
+.background-music-sprinkle .sparkA {
+  top: 122px;
+  right: 34px;
+}
+
+.background-continuation-notes .sparkB,
+.background-music-sprinkle .sparkB {
+  left: 44px;
+  bottom: 116px;
+}
+
+.footer-soft-close .noteA,
+.footer-contact-band .noteA,
+.footer-action-dock .noteA {
+  top: 44px;
+  left: 26px;
+}
+
+.footer-soft-close .noteB,
+.footer-contact-band .noteB,
+.footer-action-dock .noteB {
+  right: 28px;
+  bottom: 96px;
+}
+
+.footer-soft-close .sparkA,
+.footer-contact-band .sparkA,
+.footer-action-dock .sparkA {
+  top: 86px;
+  right: 34px;
+}
+
+.footer-soft-close .sparkB,
+.footer-contact-band .sparkB,
+.footer-action-dock .sparkB {
+  left: 40px;
+  bottom: 144px;
+}
+
+.footer-contact-band .noteB {
+  bottom: 74px;
+}
+
+.footer-action-dock .noteA {
+  top: 58px;
+}
+
+.footer-action-dock .sparkB {
+  bottom: 170px;
+}
+
+.poster-detail-leaves .noteC,
+.poster-detail-leaves .noteD,
+.poster-detail-leaves .sparkC {
+  display: none;
+}
+
+.poster-detail-balanced .noteC {
+  display: none;
+}
+
+.poster-detail-balanced .leafB {
+  opacity: 0.62;
+}
+
+.poster-mascot-guitar .piano,
+.poster-mascot-guitar .drum {
+  display: none;
+}
+
+.poster-mascot-corners .guitar {
+  display: none;
+}
+
+.poster-mascot-corners .piano {
+  width: 104px;
+  left: -10px;
+  bottom: 20px;
+}
+
+.poster-mascot-corners .drum {
+  width: 108px;
+  right: -20px;
+  top: 28px;
+}
+
+.poster-mascot-guitar .guitar {
+  width: 138px;
+  right: -28px;
+  bottom: 2px;
+}
+
+.poster-mascot-band .piano {
+  width: 92px;
+  left: -6px;
+  bottom: 22px;
+}
+
+.poster-mascot-band .drum {
+  width: 98px;
+  right: -16px;
+  top: 28px;
+}
+
+.poster-mascot-band .guitar {
+  width: 110px;
+  right: -22px;
+  bottom: -2px;
+}
+
+.poster-mascot-corners .leafA,
+.poster-mascot-corners .leafB,
+.poster-mascot-guitar .leafA,
+.poster-mascot-guitar .leafB,
+.poster-mascot-band .leafA,
+.poster-mascot-band .leafB {
+  opacity: 0.58;
+}
+
+.poster-mascot-corners .noteC,
+.poster-mascot-guitar .noteC,
+.poster-mascot-band .noteC {
+  display: none;
+}
+
+.background-soft-frame .homeMockup,
+.background-soft-frame .eventMockup {
+  background:
+    radial-gradient(100% 52% at -24% -16%, #e84971 0 48%, transparent 49%),
+    radial-gradient(112% 48% at 2% 112%, #23a996 0 43%, transparent 44%),
+    radial-gradient(118% 50% at 70% 116%, #f4ad21 0 46%, transparent 47%),
+    radial-gradient(86% 48% at 112% 114%, #e84971 0 42%, transparent 43%),
+    #fff2cf;
+}
+
+.background-continuation-soft .homeMockup,
+.background-continuation-soft .eventMockup {
+  background:
+    radial-gradient(105% 56% at -24% -16%, #e84971 0 48%, rgba(232, 73, 113, 0) 49%),
+    radial-gradient(112% 50% at 2% 112%, #23a996 0 43%, rgba(35, 169, 150, 0) 44%),
+    radial-gradient(118% 54% at 64% 116%, #f4ad21 0 45%, rgba(244, 173, 33, 0) 46%),
+    radial-gradient(92% 54% at 112% 112%, #e84971 0 42%, rgba(232, 73, 113, 0) 43%),
+    #fff2cf;
+}
+
+.background-continuation-dots .homeMockup,
+.background-continuation-dots .eventMockup,
+.background-dot-corners .homeMockup,
+.background-dot-corners .eventMockup,
+.background-music-sprinkle .homeMockup,
+.background-music-sprinkle .eventMockup {
+  background:
+    radial-gradient(105% 56% at -24% -16%, #e84971 0 53%, transparent 54%),
+    radial-gradient(112% 50% at 2% 112%, #23a996 0 49%, transparent 50%),
+    radial-gradient(118% 54% at 64% 116%, #f4ad21 0 50%, transparent 51%),
+    radial-gradient(92% 54% at 112% 112%, #e84971 0 48%, transparent 49%),
+    #fff2cf;
+}
+
+.background-continuation-notes .homeMockup,
+.background-continuation-notes .eventMockup {
+  background: #fff2cf;
+}
+
+.background-continuation-notes .homeMockup::after,
+.background-continuation-notes .eventMockup::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: -1;
+  transform: scale(0.5);
+  transform-origin: top left;
+  background:
+    radial-gradient(105% 56% at -24% -16%, #e84971 0 53%, rgba(232, 73, 113, 0.78) 53.5%, rgba(232, 73, 113, 0) 54%),
+    radial-gradient(112% 50% at 2% 112%, #23a996 0 49%, rgba(35, 169, 150, 0.72) 49.5%, rgba(35, 169, 150, 0) 50%),
+    radial-gradient(118% 54% at 64% 116%, #f4ad21 0 50%, rgba(244, 173, 33, 0.72) 50.5%, rgba(244, 173, 33, 0) 51%),
+    radial-gradient(92% 54% at 112% 112%, #e84971 0 48%, rgba(232, 73, 113, 0.72) 48.5%, rgba(232, 73, 113, 0) 49%),
+    #fff2cf;
+}
+
+.poster-detail-notes .homeMockup,
+.poster-detail-notes .eventMockup,
+.background-soft-frame .homeMockup,
+.background-soft-frame .eventMockup,
+.background-dot-corners .homeMockup,
+.background-dot-corners .eventMockup,
+.background-music-sprinkle .homeMockup,
+.background-music-sprinkle .eventMockup,
+.inner-notes-airy .homeMockup,
+.inner-notes-airy .eventMockup,
+.inner-notes-ribbon .homeMockup,
+.inner-notes-ribbon .eventMockup,
+.inner-notes-card .homeMockup,
+.inner-notes-card .eventMockup,
+.poster-detail-leaves .homeMockup,
+.poster-detail-leaves .eventMockup,
+.poster-detail-balanced .homeMockup,
+.poster-detail-balanced .eventMockup,
+.poster-mascot-corners .homeMockup,
+.poster-mascot-corners .eventMockup,
+.poster-mascot-guitar .homeMockup,
+.poster-mascot-guitar .eventMockup,
+.poster-mascot-band .homeMockup,
+.poster-mascot-band .eventMockup,
+.poster-arc-poster .homeMockup,
+.poster-arc-poster .eventMockup {
+  background:
+    radial-gradient(105% 56% at -24% -16%, #e84971 0 53%, transparent 54%),
+    radial-gradient(112% 50% at 2% 112%, #23a996 0 49%, transparent 50%),
+    radial-gradient(118% 54% at 64% 116%, #f4ad21 0 50%, transparent 51%),
+    radial-gradient(92% 54% at 112% 112%, #e84971 0 48%, transparent 49%),
+    #fff2cf;
+}
+
+.background-music-sprinkle .homeMockup,
+.background-music-sprinkle .eventMockup {
+  background: #fff2cf;
+}
+
+.background-music-sprinkle .homeMockup::after,
+.background-music-sprinkle .eventMockup::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: -1;
+  transform: scale(0.5);
+  transform-origin: top left;
+  background:
+    radial-gradient(105% 56% at -24% -16%, #e84971 0 53%, rgba(232, 73, 113, 0.78) 53.5%, rgba(232, 73, 113, 0) 54%),
+    radial-gradient(112% 50% at 2% 112%, #23a996 0 49%, rgba(35, 169, 150, 0.72) 49.5%, rgba(35, 169, 150, 0) 50%),
+    radial-gradient(118% 54% at 64% 116%, #f4ad21 0 50%, rgba(244, 173, 33, 0.72) 50.5%, rgba(244, 173, 33, 0) 51%),
+    radial-gradient(92% 54% at 112% 112%, #e84971 0 48%, rgba(232, 73, 113, 0.72) 48.5%, rgba(232, 73, 113, 0) 49%),
+    #fff2cf;
+}
+
+.background-music-sprinkle .homeMockup::before,
+.background-music-sprinkle .eventMockup::before {
+  z-index: 0;
+}
+
+.background-continuation-notes .homeMockup::before,
+.background-continuation-notes .eventMockup::before {
+  z-index: 0;
+}
+
+.poster-detail-notes .homeMockup::before,
+.poster-detail-notes .eventMockup::before,
+.background-continuation-dots .homeMockup::before,
+.background-continuation-dots .eventMockup::before,
+.background-continuation-notes .homeMockup::before,
+.background-continuation-notes .eventMockup::before,
+.background-dot-corners .homeMockup::before,
+.background-dot-corners .eventMockup::before,
+.background-music-sprinkle .homeMockup::before,
+.background-music-sprinkle .eventMockup::before,
+.inner-notes-airy .homeMockup::before,
+.inner-notes-airy .eventMockup::before,
+.inner-notes-ribbon .homeMockup::before,
+.inner-notes-ribbon .eventMockup::before,
+.inner-notes-card .homeMockup::before,
+.inner-notes-card .eventMockup::before,
+.poster-detail-leaves .homeMockup::before,
+.poster-detail-leaves .eventMockup::before,
+.poster-detail-balanced .homeMockup::before,
+.poster-detail-balanced .eventMockup::before,
+.poster-mascot-corners .homeMockup::before,
+.poster-mascot-corners .eventMockup::before,
+.poster-mascot-guitar .homeMockup::before,
+.poster-mascot-guitar .eventMockup::before,
+.poster-mascot-band .homeMockup::before,
+.poster-mascot-band .eventMockup::before,
+.poster-arc-soft .homeMockup::before,
+.poster-arc-soft .eventMockup::before,
+.poster-arc-poster .homeMockup::before,
+.poster-arc-poster .eventMockup::before,
+.poster-arc-stage .homeMockup::before,
+.poster-arc-stage .eventMockup::before,
+.poster-frame .homeMockup::before,
+.poster-frame .eventMockup::before,
+.quiet-retro .homeMockup::before,
+.quiet-retro .eventMockup::before {
+  background:
+    radial-gradient(circle at 12px 12px, rgba(216, 185, 166, 0.34) 0 2px, transparent 2.6px) 0 0 / 14px 14px,
+    radial-gradient(circle at center, rgba(242, 182, 50, 0.12), transparent 58%);
+  mask-image: linear-gradient(120deg, #000 0 22%, transparent 42% 62%, #000 84%);
+}
+
+.poster-arc-soft .homeMockup,
+.poster-arc-soft .eventMockup {
+  background:
+    radial-gradient(88% 48% at -18% -10%, #e84971 0 48%, transparent 49%),
+    radial-gradient(110% 45% at 6% 116%, #23a996 0 45%, transparent 46%),
+    radial-gradient(120% 50% at 72% 118%, #f4ad21 0 48%, transparent 49%),
+    radial-gradient(86% 48% at 114% 116%, #e84971 0 45%, transparent 46%),
+    #fff2cf;
+}
+
+.poster-arc-poster .homeMockup,
+.poster-arc-poster .eventMockup {
+  background:
+    radial-gradient(105% 56% at -24% -16%, #e84971 0 53%, transparent 54%),
+    radial-gradient(112% 50% at 2% 112%, #23a996 0 49%, transparent 50%),
+    radial-gradient(118% 54% at 64% 116%, #f4ad21 0 50%, transparent 51%),
+    radial-gradient(92% 54% at 112% 112%, #e84971 0 48%, transparent 49%),
+    #fff2cf;
+}
+
+.poster-arc-stage .homeMockup,
+.poster-arc-stage .eventMockup {
+  background:
+    radial-gradient(96% 52% at -18% -10%, #e84971 0 50%, transparent 51%),
+    radial-gradient(145% 58% at -8% 108%, #23a996 0 44%, transparent 45%),
+    radial-gradient(132% 62% at 58% 115%, #f4ad21 0 51%, transparent 52%),
+    radial-gradient(106% 62% at 116% 112%, #e84971 0 50%, transparent 51%),
+    #fff2cf;
+}
+
+.poster-frame .homeMockup,
+.poster-frame .eventMockup {
+  background:
+    linear-gradient(156deg, #e84971 0 12%, transparent 12.3%),
+    linear-gradient(166deg, transparent 0 77%, #23a996 77.3% 86%, #f4ad21 86.2% 93%, #e84971 93.3%),
+    #fff2cf;
+}
+
+.poster-arc-soft .titleStack h3,
+.poster-arc-soft .eventMockup h3,
+.poster-detail-notes .titleStack h3,
+.poster-detail-notes .eventMockup h3,
+.background-soft-frame .titleStack h3,
+.background-soft-frame .eventMockup h3,
+.background-dot-corners .titleStack h3,
+.background-dot-corners .eventMockup h3,
+.background-music-sprinkle .titleStack h3,
+.background-music-sprinkle .eventMockup h3,
+.inner-notes-airy .titleStack h3,
+.inner-notes-airy .eventMockup h3,
+.inner-notes-ribbon .titleStack h3,
+.inner-notes-ribbon .eventMockup h3,
+.inner-notes-card .titleStack h3,
+.inner-notes-card .eventMockup h3,
+.poster-detail-leaves .titleStack h3,
+.poster-detail-leaves .eventMockup h3,
+.poster-detail-balanced .titleStack h3,
+.poster-detail-balanced .eventMockup h3,
+.poster-mascot-corners .titleStack h3,
+.poster-mascot-corners .eventMockup h3,
+.poster-mascot-guitar .titleStack h3,
+.poster-mascot-guitar .eventMockup h3,
+.poster-mascot-band .titleStack h3,
+.poster-mascot-band .eventMockup h3,
+.poster-arc-poster .titleStack h3,
+.poster-arc-poster .eventMockup h3,
+.poster-arc-stage .titleStack h3,
+.poster-arc-stage .eventMockup h3,
+.poster-frame .titleStack h3,
+.poster-frame .eventMockup h3,
+.ribbon-program .titleStack h3,
+.ribbon-program .eventMockup h3,
+.full-poster .titleStack h3,
+.full-poster .eventMockup h3 {
+  color: #e84971;
+  font-family: var(--font-body);
+  font-weight: 900;
+}
+
+.poster-arc-soft .actionStack a,
+.poster-detail-notes .actionStack a,
+.background-soft-frame .actionStack a,
+.background-dot-corners .actionStack a,
+.background-music-sprinkle .actionStack a,
+.inner-notes-airy .actionStack a,
+.inner-notes-ribbon .actionStack a,
+.inner-notes-card .actionStack a,
+.poster-detail-leaves .actionStack a,
+.poster-detail-balanced .actionStack a,
+.poster-mascot-corners .actionStack a,
+.poster-mascot-guitar .actionStack a,
+.poster-mascot-band .actionStack a,
+.poster-arc-poster .actionStack a,
+.poster-arc-stage .actionStack a {
+  border-color: #23a996;
+  background: #23a996;
+}
+
+.poster-arc-soft .actionStack a + a,
+.poster-detail-notes .actionStack a + a,
+.background-soft-frame .actionStack a + a,
+.background-dot-corners .actionStack a + a,
+.background-music-sprinkle .actionStack a + a,
+.inner-notes-airy .actionStack a + a,
+.inner-notes-ribbon .actionStack a + a,
+.inner-notes-card .actionStack a + a,
+.poster-detail-leaves .actionStack a + a,
+.poster-detail-balanced .actionStack a + a,
+.poster-mascot-corners .actionStack a + a,
+.poster-mascot-guitar .actionStack a + a,
+.poster-mascot-band .actionStack a + a,
+.poster-arc-poster .actionStack a + a,
+.poster-arc-stage .actionStack a + a {
+  border-color: #e84971;
+  background: #fff7dc;
+  color: #e84971;
+}
+
+.poster-arc-poster .brand,
+.poster-arc-poster .subtitle,
+.poster-detail-notes .brand,
+.poster-detail-notes .subtitle,
+.background-soft-frame .brand,
+.background-soft-frame .subtitle,
+.background-dot-corners .brand,
+.background-dot-corners .subtitle,
+.background-music-sprinkle .brand,
+.background-music-sprinkle .subtitle,
+.inner-notes-airy .brand,
+.inner-notes-airy .subtitle,
+.inner-notes-ribbon .brand,
+.inner-notes-ribbon .subtitle,
+.inner-notes-card .brand,
+.inner-notes-card .subtitle,
+.poster-detail-leaves .brand,
+.poster-detail-leaves .subtitle,
+.poster-detail-balanced .brand,
+.poster-detail-balanced .subtitle,
+.poster-mascot-corners .brand,
+.poster-mascot-corners .subtitle,
+.poster-mascot-guitar .brand,
+.poster-mascot-guitar .subtitle,
+.poster-mascot-band .brand,
+.poster-mascot-band .subtitle,
+.poster-arc-stage .brand,
+.poster-arc-stage .subtitle {
+  color: #2c6f68;
+  font-weight: 700;
+}
+
+.poster-arc-stage .actionStack {
+  margin-top: 48px;
+}
+
+.poster-arc-stage .tabBar {
+  background: rgba(255, 242, 207, 0.92);
+}
+
+.inner-notes-airy .eventMockup {
+  padding-top: 36px;
+}
+
+.inner-notes-airy .previewSection {
+  margin-top: 22px;
+}
+
+.inner-notes-ribbon .tabBar {
+  width: calc(100% + 8px);
+  margin: 22px -24px 0;
+  padding-inline: 20px;
+  background: #23a996;
+  border-color: transparent;
+  box-shadow: 0 6px 12px rgba(35, 169, 150, 0.18);
+}
+
+.inner-notes-ribbon .tabBar span {
+  background: rgba(255, 253, 248, 0.18);
+  color: #fffdf8;
+}
+
+.inner-notes-ribbon .tabBar span:first-child {
+  background: #fffdf8;
+  color: #23a996;
+}
+
+.inner-notes-ribbon .previewSection {
+  border-color: rgba(35, 169, 150, 0.38);
+}
+
+.inner-notes-ribbon .previewSection span {
+  background: #23a996;
+}
+
+.inner-notes-card .eventMockup {
+  padding-top: 30px;
+}
+
+.inner-notes-card .tabBar {
+  margin-top: 18px;
+  border-bottom: 0;
+}
+
+.inner-notes-card .previewSection {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-color: rgba(232, 73, 113, 0.34);
+  background:
+    radial-gradient(circle at 94% 16%, rgba(232, 73, 113, 0.12), transparent 26%),
+    rgba(255, 253, 248, 0.9);
+}
+
+.inner-notes-card .previewSection h4 {
+  color: #e84971;
+}
+
+.ribbon-program .homeMockup,
+.ribbon-program .eventMockup {
+  background:
+    linear-gradient(150deg, #e84971 0 11%, transparent 11.4%),
+    linear-gradient(168deg, transparent 0 82%, #23a996 82.2% 91%, #f4ad21 91.2%),
+    var(--bg-white);
+}
+
+.ribbon-program .kicker {
+  display: inline-flex;
+  justify-self: center;
+  margin-inline: auto;
+  padding: 8px 26px;
+  color: #fffdf8;
+  background: #23a996;
+  clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%);
+}
+
+.ribbon-program .actionStack a:first-child,
+.paper-ticket .actionStack a:first-child {
+  background: #23a996;
+  border-color: #23a996;
+}
+
+.instrument-corners .homeMockup,
+.instrument-corners .eventMockup {
+  background: var(--bg-white);
+}
+
+.instrument-corners .titleStack,
+.instrument-corners .eventMockup h3 {
+  margin-top: 34px;
+}
+
+.paper-ticket .homeMockup,
+.paper-ticket .eventMockup {
+  background:
+    linear-gradient(90deg, rgba(216, 185, 166, 0.42) 50%, transparent 0) 0 88px / 14px 1px repeat-x,
+    linear-gradient(90deg, rgba(216, 185, 166, 0.42) 50%, transparent 0) 0 calc(100% - 74px) / 14px 1px repeat-x,
+    #fffaf2;
+}
+
+.paper-ticket .homeMockup::before,
+.paper-ticket .eventMockup::before {
+  inset: 18px;
+  border: 1px solid rgba(217, 54, 22, 0.34);
+  border-radius: 16px;
+}
+
+.paper-ticket .actionStack a {
+  border-style: dashed;
+}
+
+.quiet-retro .homeMockup,
+.quiet-retro .eventMockup {
+  background: #fff4d8;
+}
+
+.quiet-retro .titleStack h3,
+.quiet-retro .eventMockup h3 {
+  color: var(--color-vermilion);
+}
+
+.full-poster .homeMockup,
+.full-poster .eventMockup {
+  background:
+    linear-gradient(150deg, #e84971 0 18%, transparent 18.2%),
+    linear-gradient(166deg, transparent 0 70%, #21a895 70.2% 80%, #f5ab19 80.2% 91%, #e84971 91.2%),
+    #fff0c5;
+}
+
+.full-poster .homeMockup::before,
+.full-poster .eventMockup::before,
+.stage-map .homeMockup::before,
+.stage-map .eventMockup::before {
+  background:
+    radial-gradient(circle at 8px 8px, rgba(221, 134, 87, 0.34) 0 2px, transparent 2.6px) 0 0 / 12px 12px,
+    radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.72), transparent 56%);
+}
+
+.full-poster .brand,
+.full-poster .subtitle,
+.stage-map .brand,
+.stage-map .subtitle {
+  color: #2c6f68;
+  font-weight: 700;
+}
+
+.stage-map .homeMockup,
+.stage-map .eventMockup {
+  background:
+    linear-gradient(160deg, transparent 0 64%, #1ea68f 64.3% 73%, #f3a916 73.2% 88%, #e84971 88.2%),
+    #fff1cb;
+}
+
+.stage-map .actionStack {
+  margin-top: 54px;
+}
+
+.stage-map .actionStack a {
+  border-color: #1ea68f;
+  background: #1ea68f;
+}
+
+.stage-map .actionStack a + a {
+  color: #e84971;
+  border-color: #e84971;
+  background: #fff7dc;
+}
+
+.program-zine .homeMockup,
+.program-zine .eventMockup {
+  background:
+    linear-gradient(164deg, transparent 0 72%, rgba(95, 154, 74, 0.22) 72.2%),
+    #fbf6ef;
+}
+
+.program-zine .homeMockup::before,
+.program-zine .eventMockup::before {
+  inset: 16px;
+  border: 1px solid rgba(216, 185, 166, 0.85);
+  background:
+    linear-gradient(90deg, rgba(232, 91, 27, 0.2) 0 40px, transparent 40px) 20px 26px / 86px 12px no-repeat,
+    linear-gradient(90deg, rgba(75, 154, 170, 0.22) 0 42px, transparent 42px) calc(100% - 104px) calc(100% - 44px) / 86px 12px no-repeat;
+  transform: rotate(-0.5deg);
+}
+
+.program-zine .titleStack h3,
+.program-zine .eventMockup h3 {
+  color: var(--color-text);
+}
+
+.program-zine .actionStack a {
+  border-radius: var(--radius-sm);
+}

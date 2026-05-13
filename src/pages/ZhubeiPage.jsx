@@ -4,6 +4,7 @@ import ZhubeiVenueSection from '../components/ZhubeiVenueSection.jsx'
 import ZhubeiScheduleSection from '../components/ZhubeiScheduleSection.jsx'
 import ZhubeiProgramSection from '../components/ZhubeiProgramSection.jsx'
 import ContactSection from '../components/ContactSection.jsx'
+import pageStyles from './EventPage.module.css'
 
 const ZHUBEI_TABS = [
   { id: 'venue', label: '場地資訊' },
@@ -14,13 +15,20 @@ const ZHUBEI_TABS = [
 
 export default function ZhubeiPage() {
   return (
-    <>
-      <EventHero eventId="zhubei" />
-      <SectionNav tabs={ZHUBEI_TABS} />
-      <ZhubeiVenueSection id="venue" />
-      <ZhubeiScheduleSection id="schedule" />
-      <ZhubeiProgramSection id="program" />
-      <ContactSection id="contact" />
-    </>
+    <div className={pageStyles.page}>
+      <span className={`${pageStyles.note} ${pageStyles.noteA}`} aria-hidden="true">♪</span>
+      <span className={`${pageStyles.note} ${pageStyles.noteB}`} aria-hidden="true">♫</span>
+      <span className={`${pageStyles.note} ${pageStyles.noteD}`} aria-hidden="true">♬</span>
+      <span className={`${pageStyles.spark} ${pageStyles.sparkA}`} aria-hidden="true" />
+      <span className={`${pageStyles.spark} ${pageStyles.sparkD}`} aria-hidden="true" />
+      <div className={pageStyles.content}>
+        <EventHero eventId="zhubei" />
+        <SectionNav tabs={ZHUBEI_TABS} />
+        <ZhubeiVenueSection id="venue" />
+        <ZhubeiScheduleSection id="schedule" />
+        <ZhubeiProgramSection id="program" />
+        <ContactSection id="contact" />
+      </div>
+    </div>
   )
 }
