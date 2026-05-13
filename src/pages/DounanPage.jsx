@@ -5,6 +5,7 @@ import DounanScheduleSection from '../components/DounanScheduleSection.jsx'
 import DounanProgramSection from '../components/DounanProgramSection.jsx'
 import MarketSection from '../components/MarketSection.jsx'
 import ContactSection from '../components/ContactSection.jsx'
+import pageStyles from './EventPage.module.css'
 
 const DOUNAN_TABS = [
   { id: 'venue', label: '場地資訊' },
@@ -16,14 +17,21 @@ const DOUNAN_TABS = [
 
 export default function DounanPage() {
   return (
-    <>
-      <EventHero eventId="dounan" />
-      <SectionNav tabs={DOUNAN_TABS} />
-      <DounanVenueSection id="venue" />
-      <DounanScheduleSection id="schedule" />
-      <DounanProgramSection id="program" />
-      <MarketSection id="market" />
-      <ContactSection id="contact" />
-    </>
+    <div className={pageStyles.page}>
+      <span className={`${pageStyles.note} ${pageStyles.noteA}`} aria-hidden="true">♪</span>
+      <span className={`${pageStyles.note} ${pageStyles.noteB}`} aria-hidden="true">♫</span>
+      <span className={`${pageStyles.note} ${pageStyles.noteC}`} aria-hidden="true">♪</span>
+      <span className={`${pageStyles.spark} ${pageStyles.sparkA}`} aria-hidden="true" />
+      <span className={`${pageStyles.spark} ${pageStyles.sparkB}`} aria-hidden="true" />
+      <div className={pageStyles.content}>
+        <EventHero eventId="dounan" />
+        <SectionNav tabs={DOUNAN_TABS} />
+        <DounanVenueSection id="venue" />
+        <DounanScheduleSection id="schedule" />
+        <DounanProgramSection id="program" />
+        <MarketSection id="market" />
+        <ContactSection id="contact" />
+      </div>
+    </div>
   )
 }

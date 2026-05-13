@@ -42,6 +42,11 @@ export default function HomePage() {
 
   return (
     <main className={styles.page}>
+      <span className={`${styles.musicNote} ${styles.musicNoteA}`} aria-hidden="true">♪</span>
+      <span className={`${styles.musicNote} ${styles.musicNoteB}`} aria-hidden="true">♫</span>
+      <span className={`${styles.musicSpark} ${styles.musicSparkA}`} aria-hidden="true" />
+      <span className={`${styles.musicSpark} ${styles.musicSparkB}`} aria-hidden="true" />
+
       {/* 角落細線植物裝飾（左上）— 規格依據 visual-style-guide §八 */}
       <img
         src={PLANT_ORNAMENT_URL}

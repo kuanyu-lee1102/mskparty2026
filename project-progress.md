@@ -245,6 +245,13 @@
     - `06-Linda.png` 目前缺圖，先保留序號空位，避免後續接入前端時與節目表順序錯位。
     - 這批仍是 source material，若未來要接入前端，需先複製到 `public/assets/` 並透過資料檔引用，不可直接從 `source-materials/` 作為公開前端資產路徑。
 
+18. **Formal Background Application（2026-05-14）**
+    - 已將 `/style-exploration` 選定的背景 C 語言套用到正式首頁、斗南場、竹北場。
+    - 首頁 `HomePage` 改為暖黃底 + 彩色弧形 + 網點紙感 + 少量音符 / 星芒；保留既有植物與品牌 logo 裝飾、資料仍全部來自 `data/events.json`。
+    - 斗南 / 竹北頁新增共用 `EventPage.module.css`，只包住頁面背景與裝飾層，不改 `Venue` / `Schedule` / `Program` / `Contact` 等內容元件結構。
+    - `EventHero` 背景改透明，讓頁面背景從頁首延續到導覽與內文；sticky nav 與各內容卡仍保留原本半透明暖白 / 白底可讀性。
+    - 原因 / 風險：這是把已選定的背景探索落到正式頁，目標是統一首頁與內頁的活動紙本感；目前未更動任何文案、資料結構或前端資產來源。
+
 ## Do Not Override
 
 - 不要把「時間表圖片」拿來替代「場地資訊」。
@@ -295,8 +302,8 @@
 
 ## Next Suggested Action
 
-1. 請使用者查看 `/style-exploration` 八種方案，選定要延伸的方向或指定混搭元素。
-2. 若使用者選定新方向，先更新 `visual-style-guide.md` 與 `project-progress.md`，再把正式首頁 / 場次頁頂部套用。
+1. 請使用者在 `http://localhost:5176/` 實際查看首頁、斗南場、竹北場背景套用後的視覺比例。
+2. 若背景比例確認，下一步可整理 `/style-exploration` 是否保留為內部 preview route，或移除避免正式 QR code 誤用。
 
 ## Verification Notes
 
@@ -348,4 +355,8 @@
 - 2026-05-13：已建立並切換到 branch `codex-background-c-music-sprinkle`；再度調整背景 C 左上弧線鋸齒，將 radial-gradient 橢圓尺寸放大並使用同色半透明短漸層。`npm run build` 成功、`npx vitest run` 25/25 通過；dev server 重新啟動於 `http://127.0.0.1:5175/style-exploration`，HTTP 200。
 - 2026-05-13：依使用者要求維持 B 的色塊大小，修正 `background-music-sprinkle`：元素本身只保留底色，色塊改由 2x pseudo-layer 繪製後縮回，gradient 尺寸/位置回到 B 的參數並用同色半透明短漸層平滑邊緣。`npm run build` 成功、`npx vitest run` 25/25 通過；`http://127.0.0.1:5175/style-exploration` HTTP 200。
 - 2026-05-13：依使用者再次澄清「不要改 UI，只換背景」，`/style-exploration` 改為同一套內頁示意 UI，只比較背景 A 柔弧延伸、背景 B 網點延伸、背景 C 音符延伸；`npm run build` 成功、`npx vitest run` 25/25 通過（新 worktree 需 escalated 寫入 `node_modules/.vite-temp`），dev server 目前在 `http://127.0.0.1:5175/style-exploration` HTTP 200。
+- 2026-05-14：正式套用背景 C 到首頁與斗南 / 竹北內頁；新增 `src/pages/EventPage.module.css`，更新 `HomePage` / `DounanPage` / `ZhubeiPage` / `EventHero`。`npx vitest run` 25/25 通過、`npm run build` 成功；dev server 目前在 `http://localhost:5176/`，已用 in-app browser 檢查首頁、斗南、竹北第一屏與斗南中段捲動，未見文字或 sticky nav 被背景裝飾遮擋。
+- 2026-05-14：依 browser comment 修正正式內頁背景：`EventPage` 從 `overflow: hidden` 改為只限制橫向 overflow，解決無法捲到底；左上角粉紅弧形放大。`npx vitest run` 25/25 通過、`npm run build` 成功；已用 in-app browser 確認 `/dounan` 可捲到「聯絡我們」底部。
+- 2026-05-14：依使用者回饋將正式首頁 / 內頁背景底色由偏黃 `#fff2cf` 調白為 `#fff8ea`，保留背景 C 的弧形、網點、音符語言但降低整體黃感。`npx vitest run` 25/25 通過、`npm run build` 成功；已用 in-app browser 檢查 `/` 與 `/dounan` 第一屏。
+- 2026-05-14：依使用者回饋調淡內頁方形點點：`EventPage` 的點點 opacity 降低，遮罩改為水平中央閱讀欄淡出，讓中間內容區接近無點點、左右邊角保留紙感。`npx vitest run` 25/25 通過、`npm run build` 成功；已用 in-app browser 檢查 `/dounan` 第一屏與中段。
 - 最近一次 commit 後工作樹曾確認乾淨。
