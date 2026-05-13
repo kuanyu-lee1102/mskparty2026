@@ -20,9 +20,9 @@ export default function DounanPage() {
     <div className={pageStyles.page}>
       <span className={`${pageStyles.note} ${pageStyles.noteA}`} aria-hidden="true">♪</span>
       <span className={`${pageStyles.note} ${pageStyles.noteB}`} aria-hidden="true">♫</span>
-      <span className={`${pageStyles.note} ${pageStyles.noteC}`} aria-hidden="true">♪</span>
+      <span className={`${pageStyles.note} ${pageStyles.noteD}`} aria-hidden="true">♬</span>
       <span className={`${pageStyles.spark} ${pageStyles.sparkA}`} aria-hidden="true" />
-      <span className={`${pageStyles.spark} ${pageStyles.sparkB}`} aria-hidden="true" />
+      <span className={`${pageStyles.spark} ${pageStyles.sparkD}`} aria-hidden="true" />
       <div className={pageStyles.content}>
         <EventHero eventId="dounan" />
         <SectionNav tabs={DOUNAN_TABS} />

@@ -359,4 +359,7 @@
 - 2026-05-14：依 browser comment 修正正式內頁背景：`EventPage` 從 `overflow: hidden` 改為只限制橫向 overflow，解決無法捲到底；左上角粉紅弧形放大。`npx vitest run` 25/25 通過、`npm run build` 成功；已用 in-app browser 確認 `/dounan` 可捲到「聯絡我們」底部。
 - 2026-05-14：依使用者回饋將正式首頁 / 內頁背景底色由偏黃 `#fff2cf` 調白為 `#fff8ea`，保留背景 C 的弧形、網點、音符語言但降低整體黃感。`npx vitest run` 25/25 通過、`npm run build` 成功；已用 in-app browser 檢查 `/` 與 `/dounan` 第一屏。
 - 2026-05-14：依使用者回饋調淡內頁方形點點：`EventPage` 的點點 opacity 降低，遮罩改為水平中央閱讀欄淡出，讓中間內容區接近無點點、左右邊角保留紙感。`npx vitest run` 25/25 通過、`npm run build` 成功；已用 in-app browser 檢查 `/dounan` 第一屏與中段。
+- 2026-05-14：依使用者回饋調整內頁頁首裝飾：`EventPage` 保留少量不同色音符與一顆較厚、圓角的十字星，減少裝飾數量並避開返回首頁按鈕、場次標題、日期與 sticky nav。`npx vitest run` 25/25 通過、`npm run build` 成功；已用 in-app browser 檢查 `/dounan` 第一屏。
+- 2026-05-14：依設計平衡原則微調內頁頁首裝飾位置：左上紅色塊視為主要視覺重量，右上厚十字星與右側綠音符作不對稱平衡，左下粉音符接回紅色塊與日期區，避免平均散點造成平板。`npx vitest run` 25/25 通過、`npm run build` 成功；已用 in-app browser 檢查 `/dounan` 第一屏。
+- 2026-05-14：依使用者要求新增第二顆十字星：新增小型低透明度黃色星於左側中上空白處，色彩比右上黃星更淡，避免紫色造成畫面往左偏；尺寸與透明度低於右上黃星，避免搶主視覺重量。`npx vitest run` 25/25 通過、`npm run build` 成功；已用 in-app browser 檢查 `/dounan` 第一屏。
 - 最近一次 commit 後工作樹曾確認乾淨。
