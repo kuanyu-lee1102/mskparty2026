@@ -1,0 +1,46 @@
+{
+  "pageTitle": "01-B1 音符輕點版：只改背景",
+  "pageIntro": "取消內頁元件調整，這輪只比較背景。元件維持目前網站的閱讀節奏與導覽形式，僅在背後加入 01-B1 的弧線色塊、半色調與少量音符。",
+  "constrainedTitle": "背景三種樣式參考",
+  "freeTitle": "",
+  "homeLabel": "首頁第一屏",
+  "eventLabel": "內頁背景",
+  "ctaPrimary": "斗南場",
+  "ctaSecondary": "竹北場",
+  "backLabel": "返回首頁",
+  "dateLabel": "2026 年 5 月 24 日（週日）",
+  "navLabels": ["場地資訊", "流程表", "節目表", "小市集"],
+  "sectionEyebrow": "VENUE GUIDE",
+  "sectionTitle": "場地資訊",
+  "sectionBody": "虎尾建國眷村｜已棟蓄水池周邊草地",
+  "sectionAction": "用 Google 地圖帶我去會場",
+  "variants": [
+    {
+      "id": "background-soft-frame",
+      "scope": "constrained",
+      "name": "背景 A｜柔弧邊框",
+      "intent": "最保守：只在左上與底部邊緣加入弧線色塊，中央保持乾淨。適合直接套在現有內頁而不影響任何元件。",
+      "homeKicker": "MUSEEKSOUL MUSIC RECITAL",
+      "eventKicker": "MUSEEKSOUL 音樂會",
+      "eventTitle": "斗南場"
+    },
+    {
+      "id": "background-dot-corners",
+      "scope": "constrained",
+      "name": "背景 B｜網點角落",
+      "intent": "在柔弧邊框上增加更明顯的半色調網點，讓海報印刷感提高，但仍不改元件位置與樣式。",
+      "homeKicker": "MUSEEKSOUL MUSIC RECITAL",
+      "eventKicker": "MUSEEKSOUL 音樂會",
+      "eventTitle": "斗南場"
+    },
+    {
+      "id": "background-music-sprinkle",
+      "scope": "constrained",
+      "name": "背景 C｜音符輕撒",
+      "intent": "保留背景弧線與網點，少量增加音符和星芒作為背景裝飾。這版最接近 01-B1，但裝飾仍避開文字和按鈕。",
+      "homeKicker": "MUSEEKSOUL MUSIC RECITAL",
+      "eventKicker": "MUSEEKSOUL 音樂會",
+      "eventTitle": "斗南場"
+    }
+  ]
+}

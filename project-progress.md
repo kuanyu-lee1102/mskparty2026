@@ -34,6 +34,7 @@
 - `data/programs.dounan.json`：斗南場節目表資料
 - `data/market.json`：斗南場小市集擺攤店家資料
 - `data/schedules.public.json`：斗南 / 竹北公開版時間表圖片設定
+- `data/style-explorations.json`：風格重新對焦 preview 頁的八種方案文案與分組
 - `visual-style-guide.md`：最新視覺方向與 UI 設計規範
 - `ZHUBEI_VENUE_UX_HANDOFF.md`：竹北場場地資訊 UX、接待流程、停車資訊與圖片對應的詳細交接文件
 - `gemini-visual-prompt.md`：依最新視覺方向整理的視覺生成提示
@@ -218,6 +219,20 @@
     - 資料來源：`data/market.json`，`vendors[]` 順序即為前端顯示順序。
     - 視覺為左 logo 方塊 + 右店名 + 聯絡圖示列，每家店之間以細線分隔。
     - 缺 logo 時顯示 placeholder「Logo 待補」，不可隱藏 logo 欄位。
+
+17. **Style Exploration Preview（2026-05-13）**
+   - 新增 `/style-exploration` 作為風格重新對焦比較頁，不改正式 `/`、`/dounan`、`/zhubei` 版面。
+   - 前五案遵守使用者本輪限制：「背景維持現況，只小幅調整首頁與內頁最上方」；後三案解除限制，示範更完整的結構型轉向。
+   - 文案與方案說明放在 `data/style-explorations.json`，避免在頁面元件中建立第二份顯示文案。
+   - 方案可引用 `public/assets/music-components/` 的樂器 PNG，但目前只用於 preview；不得視為正式主視覺已切換。
+   - 原因 / 風險：這是決策前的視覺探索，目的是讓使用者比較方向；若要採用其中一案，需再明確指定並回寫 `visual-style-guide.md`，再套到正式頁面。
+   - **本輪修正**：使用者選定 01 方向，但指出參考海報的色塊邊界是弧線而非直線；`/style-exploration` 已改為只呈現 01-A / 01-B / 01-C 三個弧線版本，背景色塊改用橢圓/radial 層疊表現左上大弧與底部波浪。
+   - **第二輪修正**：使用者選定 01-B 參考海報版；`/style-exploration` 已改為六個 01-B 延伸版本，前三個只少量增加音符 / 植物 / 星芒，後三個加入 `public/assets/music-components/` 的去背樂器元件比較。
+   - **第三輪修正**：使用者確認植物不要、採用 01-B1 音符輕點版；`/style-exploration` 已改為只檢視內頁三案（A 留白導覽 / B 緞帶導覽 / C 資訊卡前導），不顯示植物或去背元件。
+   - **第四輪修正**：使用者指出內頁 UI 參考歪得太嚴重，取消內頁元件調整；`/style-exploration` 改為只比較背景三案（柔弧邊框 / 網點角落 / 音符輕撒），元件維持原本 top/nav 示意，不再加資訊卡或改 nav 樣式。
+   - **第五輪修正**：使用者選定背景 C，但指出左上方色塊分界邊緣模糊；已針對 `background-music-sprinkle` 把 radial-gradient 色塊過渡改為同色透明且縮短停止點，讓弧線邊界更乾淨。
+   - **第六輪修正**：使用者要求先切 branch 再修背景 C 鋸齒；已切到 `codex-background-c-music-sprinkle`，並把 `background-music-sprinkle` 的色塊橢圓放大、邊界改為同色半透明短漸層，降低鋸齒感。
+   - **第七輪修正**：使用者指出第六輪讓 C 色塊跑太遠、變太小；已將 C 的色塊尺寸與位置恢復為 B 的參數，改用 2x pseudo-layer 縮放 + 同色短漸層來提高邊緣平滑度。
     - `links[].type` 支援 facebook / instagram / line / note；type=note 用於 IG 私訊等無連結的訂購說明。
     - 第一家「國柱食作所」logo 已放在 `public/assets/dounan/market/guozhu-logo.jpg`；其他店家 logo 待補。
 
@@ -255,6 +270,7 @@
 - 不要把團班 / 多人合奏顯示拆成另一份資料結構；前端應從 `performer` 字串的 `(團名) 名1、名2` 約定解析。
 - 不要把小市集區塊放到竹北場；小市集只屬於斗南場。
 - 不要把店家 logo 直接從 `Downloads/` 或其他本機路徑引用；統一放 `public/assets/dounan/market/`，並透過 `data/market.json` 的 `logo` 欄位走 `assetUrl()`。
+- 不要把 `/style-exploration` 當成正式網站頁面；它是本輪風格比較用 preview route，不應出現在正式導覽或 QR code。
 
 ## Next Open Questions
 
@@ -278,7 +294,8 @@
 
 ## Next Suggested Action
 
-1. 依 `ZHUBEI_VENUE_UX_HANDOFF.md` 實作竹北場場地資訊 UX。
+1. 請使用者查看 `/style-exploration` 八種方案，選定要延伸的方向或指定混搭元素。
+2. 若使用者選定新方向，先更新 `visual-style-guide.md` 與 `project-progress.md`，再把正式首頁 / 場次頁頂部套用。
 
 ## Verification Notes
 
@@ -321,4 +338,12 @@
 - 2026-05-12：已依師資圖中文字辨識並重新命名 `source-materials/dounan/teacher-portraits/` 12 張 PNG：Ben / Candy / Kevin / Khristin / Lucy / Nick / Orange / Stone / Vincent / Vivian / Wanda / Yang。此輪只整理 source material，未改前端程式，未跑 Vitest。
 - 2026-05-12：已依 `data/programs.dounan.json` 老師排序為師資圖檔名加上兩位數序號；因 `Miss. Linda` 圖片尚未提供，保留 `06-Linda.png` 空位，現有檔案為 01、02、03、04、05、07、08、09、10、11、12、13。此輪只整理 source material，未改前端程式，未跑 Vitest。
 - 2026-05-12：已依 `programs.dounan-6.csv` 遷移跨老師插入演出順序，`data/programs.dounan.json` 新增兩筆 `ownerTeacherDisplayName`；`ProgramAccordion` 顯示原指導老師 badge，`programSearch` 納入該欄位搜尋，`scripts/programs-to-csv.mjs` 匯出欄位改為 `場次 / 顯示於老師 / 指導老師 / 時段 / 序號 / 演出者 / 曲目`。已產出 Google Sheets 用中介檔 `exports/programs.dounan.csv`（81 data rows + header）。`node ./node_modules/vitest/vitest.mjs run` 25/25 通過、`node ./node_modules/vite/bin/vite.js build` 成功。
+- 2026-05-13：新增 `/style-exploration` 風格 preview route、`StyleExplorationPage.jsx` / `.module.css`、`data/style-explorations.json`，共 5 個維持現況小調方案 + 3 個解除限制結構方案。`npm run build` 成功、`npx vitest run` 25/25 通過；本機 Vite server 因 sandbox 需 escalated 啟動，已於 `http://127.0.0.1:5174/style-exploration` 回傳 HTTP 200。
+- 2026-05-13：依使用者回饋把 `/style-exploration` 收斂為 01 海報邊框版的三個弧線版本（01-A 柔弧保守版、01-B 參考海報版、01-C 舞台波浪版），移除直線切割感；`npm run build` 成功、`npx vitest run` 25/25 通過，`http://127.0.0.1:5174/style-exploration` 回傳 HTTP 200。
+- 2026-05-13：依使用者選定 01-B 參考海報版，`/style-exploration` 改為六版：01-B1 音符輕點、01-B2 植物角落、01-B3 平衡裝飾、01-B4 吉祥物角落、01-B5 吉他重點、01-B6 小樂團；已確認去背元件在 `public/assets/music-components/`。`npm run build` 成功、`npx vitest run` 25/25 通過，`http://127.0.0.1:5174/style-exploration` 回傳 HTTP 200。
+- 2026-05-13：依使用者採用 01-B1 音符輕點版並移除植物需求，`/style-exploration` 改為內頁三案 preview，只呈現場次 hero / nav / 場地資訊起始卡；`npm run build` 成功、`npx vitest run` 25/25 通過，`http://127.0.0.1:5174/style-exploration` 回傳 HTTP 200。
+- 2026-05-13：依使用者取消內頁元件調整，`/style-exploration` 改為只看背景三案；移除 preview 中新增的資訊卡，nav/hero 示意回到基本結構，只改背景弧線、網點與少量音符。`npm run build` 成功、`npx vitest run` 25/25 通過，`http://127.0.0.1:5174/style-exploration` 回傳 HTTP 200。
+- 2026-05-13：依使用者選定背景 C 並要求修正左上弧線模糊，調整 `background-music-sprinkle` 的 radial-gradient stops，改用同色透明極短過渡；`npm run build` 成功、`npx vitest run` 25/25 通過，`http://127.0.0.1:5174/style-exploration` 回傳 HTTP 200。
+- 2026-05-13：已建立並切換到 branch `codex-background-c-music-sprinkle`；再度調整背景 C 左上弧線鋸齒，將 radial-gradient 橢圓尺寸放大並使用同色半透明短漸層。`npm run build` 成功、`npx vitest run` 25/25 通過；dev server 重新啟動於 `http://127.0.0.1:5175/style-exploration`，HTTP 200。
+- 2026-05-13：依使用者要求維持 B 的色塊大小，修正 `background-music-sprinkle`：元素本身只保留底色，色塊改由 2x pseudo-layer 繪製後縮回，gradient 尺寸/位置回到 B 的參數並用同色半透明短漸層平滑邊緣。`npm run build` 成功、`npx vitest run` 25/25 通過；`http://127.0.0.1:5175/style-exploration` HTTP 200。
 - 最近一次 commit 後工作樹曾確認乾淨。
