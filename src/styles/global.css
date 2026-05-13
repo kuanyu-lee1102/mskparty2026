@@ -127,6 +127,14 @@ button {
   padding: 0;
 }
 
+/* 移除 iOS Safari 點擊時出現的半透明黑色 tap highlight
+ * 我們已用 :hover / :focus-visible / active state 自行表達點擊反饋，
+ * 預設的灰黑色 overlay 跟視覺風格不符。 */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 img {
   max-width: 100%;
   height: auto;
