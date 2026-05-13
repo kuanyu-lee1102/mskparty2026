@@ -233,6 +233,7 @@
    - **第五輪修正**：使用者選定背景 C，但指出左上方色塊分界邊緣模糊；已針對 `background-music-sprinkle` 把 radial-gradient 色塊過渡改為同色透明且縮短停止點，讓弧線邊界更乾淨。
    - **第六輪修正**：使用者要求先切 branch 再修背景 C 鋸齒；已切到 `codex-background-c-music-sprinkle`，並把 `background-music-sprinkle` 的色塊橢圓放大、邊界改為同色半透明短漸層，降低鋸齒感。
    - **第七輪修正**：使用者指出第六輪讓 C 色塊跑太遠、變太小；已將 C 的色塊尺寸與位置恢復為 B 的參數，改用 2x pseudo-layer 縮放 + 同色短漸層來提高邊緣平滑度。
+   - **第八輪修正**：使用者要求接續製作內頁下半段，且延續「背景 C｜音符輕撒」呈現；曾誤做成謝幕 footer、再誤做成 UI 版型差異；已改為「同一套內頁 UI，只比較背景」三案（柔弧延伸 / 網點延伸 / 音符延伸），不套用正式頁。
     - `links[].type` 支援 facebook / instagram / line / note；type=note 用於 IG 私訊等無連結的訂購說明。
     - 第一家「國柱食作所」logo 已放在 `public/assets/dounan/market/guozhu-logo.jpg`；其他店家 logo 待補。
 
@@ -346,4 +347,5 @@
 - 2026-05-13：依使用者選定背景 C 並要求修正左上弧線模糊，調整 `background-music-sprinkle` 的 radial-gradient stops，改用同色透明極短過渡；`npm run build` 成功、`npx vitest run` 25/25 通過，`http://127.0.0.1:5174/style-exploration` 回傳 HTTP 200。
 - 2026-05-13：已建立並切換到 branch `codex-background-c-music-sprinkle`；再度調整背景 C 左上弧線鋸齒，將 radial-gradient 橢圓尺寸放大並使用同色半透明短漸層。`npm run build` 成功、`npx vitest run` 25/25 通過；dev server 重新啟動於 `http://127.0.0.1:5175/style-exploration`，HTTP 200。
 - 2026-05-13：依使用者要求維持 B 的色塊大小，修正 `background-music-sprinkle`：元素本身只保留底色，色塊改由 2x pseudo-layer 繪製後縮回，gradient 尺寸/位置回到 B 的參數並用同色半透明短漸層平滑邊緣。`npm run build` 成功、`npx vitest run` 25/25 通過；`http://127.0.0.1:5175/style-exploration` HTTP 200。
+- 2026-05-13：依使用者再次澄清「不要改 UI，只換背景」，`/style-exploration` 改為同一套內頁示意 UI，只比較背景 A 柔弧延伸、背景 B 網點延伸、背景 C 音符延伸；`npm run build` 成功、`npx vitest run` 25/25 通過（新 worktree 需 escalated 寫入 `node_modules/.vite-temp`），dev server 目前在 `http://127.0.0.1:5175/style-exploration` HTTP 200。
 - 最近一次 commit 後工作樹曾確認乾淨。

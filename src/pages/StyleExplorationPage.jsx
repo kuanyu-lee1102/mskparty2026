@@ -17,20 +17,42 @@ function VariantPreview({ variant }) {
       <div className={styles.mockupGrid}>
         <section className={styles.phoneFrame} aria-label={`${variant.name} ${exploration.eventLabel}`}>
           <span className={styles.previewLabel}>{exploration.eventLabel}</span>
-          <div className={styles.eventMockup}>
+          <div className={`${styles.eventMockup} ${styles.fullPageMockup}`}>
             <Decor variantId={variant.id} compact />
             <a className={styles.backLink}>{exploration.backLabel}</a>
-            <p className={styles.kicker}>{variant.eventKicker}</p>
-            <h3>{variant.eventTitle}</h3>
+            <p className={styles.kicker}>{exploration.eventKicker}</p>
+            <h3>{exploration.eventTitle}</h3>
             <p className={styles.date}>{exploration.dateLabel}</p>
             <nav className={styles.tabBar} aria-label="示意導覽列">
               {navLabels.map((label) => (
                 <span key={label}>{label}</span>
               ))}
             </nav>
+            <InnerContinuation />
           </div>
         </section>
       </div>
+    </article>
+  )
+}
+
+function InnerContinuation() {
+  return (
+    <section className={`${styles.innerContinuation} ${styles.flowCards}`}>
+      <ContentCard title={exploration.venueTitle} text={exploration.venueText} tone="primary" />
+      <ContentCard title={exploration.scheduleTitle} text={exploration.scheduleText} />
+      <ContentCard title={exploration.programTitle} text={exploration.programText} />
+      <ContentCard title={exploration.marketTitle} text={exploration.marketText} />
+      <ContentCard title={exploration.contactTitle} text={exploration.contactText} />
+    </section>
+  )
+}
+
+function ContentCard({ title, text, tone = 'default' }) {
+  return (
+    <article className={`${styles.contentCard} ${tone === 'primary' ? styles.primaryCard : ''}`}>
+      <p>{title}</p>
+      <h4>{text}</h4>
     </article>
   )
 }
