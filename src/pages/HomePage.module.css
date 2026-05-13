@@ -7,20 +7,52 @@
  */
 
 .page {
+  --poster-bg: #fff8ea;
+  --poster-pink: #e84971;
+  --poster-teal: #23a996;
+  --poster-yellow: #f4ad21;
+
   position: relative;
   flex: 1 0 auto;
   width: 100%;
   min-height: 100vh;
   padding: var(--space-2xl) var(--space-md) var(--space-2xl);
-  background-color: var(--bg-white);
+  background: var(--poster-bg);
   overflow: hidden; /* 防止角落裝飾在小螢幕產生橫向捲軸 */
   display: flex;
   flex-direction: column;
+  isolation: isolate;
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.page::before {
+  z-index: -2;
+  background:
+    radial-gradient(105% 56% at -24% -16%, var(--poster-pink) 0 53%, rgba(232, 73, 113, 0.78) 53.5%, transparent 54%),
+    radial-gradient(112% 50% at 2% 112%, var(--poster-teal) 0 49%, rgba(35, 169, 150, 0.72) 49.5%, transparent 50%),
+    radial-gradient(118% 54% at 64% 116%, var(--poster-yellow) 0 50%, rgba(244, 173, 33, 0.72) 50.5%, transparent 51%),
+    radial-gradient(92% 54% at 112% 112%, var(--poster-pink) 0 48%, rgba(232, 73, 113, 0.72) 48.5%, transparent 49%),
+    var(--poster-bg);
+}
+
+.page::after {
+  z-index: -1;
+  background:
+    radial-gradient(circle at 12px 12px, rgba(216, 185, 166, 0.36) 0 2px, transparent 2.6px) 0 0 / 14px 14px,
+    radial-gradient(circle at center, rgba(242, 182, 50, 0.12), transparent 58%);
+  mask-image: linear-gradient(120deg, #000 0 22%, transparent 42% 62%, #000 84%);
 }
 
 .inner {
   position: relative;
-  z-index: 1; /* 保證內容永遠在角落裝飾之上、可點擊 */
+  z-index: 2; /* 保證內容永遠在角落裝飾之上、可點擊 */
   margin: 0 auto;
   width: 100%;
   max-width: var(--max-content);
@@ -34,7 +66,7 @@
 .cornerOrnament {
   position: absolute;
   pointer-events: none; /* 確保不擋住任何按鈕 */
-  z-index: 0;
+  z-index: 1;
   display: block;
   height: auto; /* 由 width 主導，img 自動維持原始長寬比 */
   user-select: none;
@@ -60,6 +92,51 @@
   opacity: 0.92;
   /* 因為 logo 為 jpg 白底，視覺上會多一個方塊；用 mix-blend-mode 讓白底融入暖白頁面 */
   mix-blend-mode: multiply;
+}
+
+.musicNote,
+.musicSpark {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  color: rgba(232, 73, 113, 0.62);
+}
+
+.musicNote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 6vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.musicSpark {
+  width: 0.65rem;
+  height: 0.65rem;
+  transform: rotate(45deg);
+  background: currentColor;
+}
+
+.musicNoteA {
+  top: 8.25rem;
+  left: max(1.1rem, calc(50% - 18rem));
+}
+
+.musicNoteB {
+  right: max(1.5rem, calc(50% - 18rem));
+  bottom: 7.75rem;
+  color: rgba(35, 169, 150, 0.52);
+}
+
+.musicSparkA {
+  top: 12.5rem;
+  right: max(2rem, calc(50% - 19rem));
+}
+
+.musicSparkB {
+  left: max(2rem, calc(50% - 17rem));
+  bottom: 10rem;
+  color: rgba(244, 173, 33, 0.52);
 }
 
 @media (min-width: 640px) {

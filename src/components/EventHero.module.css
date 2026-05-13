@@ -9,7 +9,7 @@
 .hero {
   position: relative;
   width: 100%;
-  background-color: var(--bg-white);
+  background-color: transparent;
   /* 上方用較大留白；下方刻意縮小，讓 SectionNav 緊貼大標 */
   padding: var(--space-xl) var(--space-md) var(--space-md);
   text-align: center;
@@ -120,4 +120,3 @@
     font-size: 1rem;
   }
 }
-
