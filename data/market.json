@@ -7,6 +7,7 @@
     {
       "id": "guozhu",
       "name": "國柱食作所",
+      "tagline": "來自職人手作的真材實料，讓每一口都吃得到用心與溫度。",
       "logo": "source-materials/dounan/market/guozhu-logo.jpg",
       "links": [
         {
@@ -57,12 +58,14 @@
     {
       "id": "cc-cafe-cookies",
       "name": "Cc Cafe & Cookies",
+      "tagline": "今天的咖啡與甜點，正在幫 Cc 完成一個小小生日旅行夢想 ✨",
       "logo": "source-materials/dounan/market/cc-cafe-cookies-logo.jpg",
       "links": []
     },
     {
       "id": "ooh-studio",
       "name": "O'OH 手作",
+      "tagline": "以毛料與樹脂為主素材，打造溫柔清新的手作小物，簡約中帶點可愛，收藏生活裡的小浪漫♡",
       "logo": "source-materials/dounan/market/ooh-logo.jpg",
       "links": [
         {
@@ -76,6 +79,7 @@
     {
       "id": "daily-kids",
       "name": "小日常童裝",
+      "tagline": "用溫柔日常感，陪伴孩子每一天的穿搭時光。",
       "logo": "source-materials/dounan/market/daily-kids-logo.jpg",
       "links": [
         {
@@ -93,8 +97,16 @@
       ]
     },
     {
+      "id": "green",
+      "name": "Green 植間",
+      "tagline": "用綠意點綴生活的植栽空間。",
+      "logo": "source-materials/dounan/market/green-logo.jpg",
+      "links": []
+    },
+    {
       "id": "miao-shop",
       "name": "MiAo.Shop",
+      "tagline": "用韓系簡約與溫柔質感，穿出剛剛好的生活氛圍。",
       "logo": "source-materials/dounan/market/miao-shop-logo.jpg",
       "links": [
         {
@@ -114,6 +126,7 @@
     {
       "id": "aura",
       "name": "AURA",
+      "tagline": "以細膩光澤與韓系質感，點亮每個溫柔瞬間。",
       "logo": "source-materials/dounan/market/aura-logo.jpg",
       "links": [
         {
@@ -127,6 +140,7 @@
     {
       "id": "yuni-meeting",
       "name": "渝你相遇 Yuni_Meeting",
+      "tagline": "我們以女兒名字其中一字命名。品牌帶來的溫暖連結，希望為客戶提供永恆且無限的美好經驗，打造難忘的互動。",
       "logo": "source-materials/dounan/market/yuni-meeting-logo.jpg",
       "links": [
         {

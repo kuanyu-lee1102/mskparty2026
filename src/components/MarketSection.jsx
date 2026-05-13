@@ -77,6 +77,9 @@ function VendorRow({ vendor, logoPendingLabel }) {
 
       <div className={styles.body}>
         <h3 className={styles.vendorName}>{vendor.name}</h3>
+        {vendor?.tagline ? (
+          <p className={styles.vendorTagline}>{vendor.tagline}</p>
+        ) : null}
 
         {links.length > 0 ? (
           <ul className={styles.linkList}>
