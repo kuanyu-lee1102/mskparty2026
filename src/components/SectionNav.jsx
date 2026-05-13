@@ -84,19 +84,18 @@ export default function SectionNav({
         behavior: 'smooth',
       })
 
-      // 捲動完成後解鎖：smooth scroll 通常 < 600ms，給 800ms buffer。
-      // 部分瀏覽器（Chrome 114+ / Safari 18+）支援 'scrollend' 事件，可更精準解鎖。
-      const onScrollEnd = () => {
-        programmaticScrollRef.current = false
-        window.removeEventListener('scrollend', onScrollEnd)
-      }
-      if ('onscrollend' in window) {
-        window.addEventListener('scrollend', onScrollEnd, { once: true })
-      }
+      // 用單一固定計時器（1200ms）解鎖；不接 'scrollend' event。
+      //
+      // 原本同時掛 scrollend + 800ms timeout，但 scrollend 跟
+      // IntersectionObserver 的微任務在 race condition 下會出問題：
+      // scrollend 先觸發 → 解鎖 → 接著一個來自 smooth scroll 倒數第二幀
+      // 的 IO callback fire（拿到中間幀的 entries），把 active 覆蓋成
+      // 目標 section 上方那一個。1200ms 對任何合理 smooth scroll 都夠等
+      // 完整個動畫尾段，且解鎖前我們會 re-assert clicked id 作雙保險。
       unlockTimerRef.current = window.setTimeout(() => {
+        if (!isControlled) setInternalActiveId(id)
         programmaticScrollRef.current = false
-        window.removeEventListener('scrollend', onScrollEnd)
-      }, 800)
+      }, 1200)
     },
     [isControlled, onTabChange, scrollOffset],
   )
