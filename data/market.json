@@ -101,7 +101,14 @@
       "name": "Green 植間",
       "tagline": "用綠意點綴生活的植栽空間。",
       "logo": "source-materials/dounan/market/green-logo.jpg",
-      "links": []
+      "links": [
+        {
+          "type": "instagram",
+          "label": "Instagram 粉專",
+          "value": "@green_202605",
+          "href": "https://www.instagram.com/green_202605"
+        }
+      ]
     },
     {
       "id": "miao-shop",
@@ -154,6 +161,26 @@
           "label": "LINE 訂購",
           "value": "baba3001",
           "href": "https://line.me/ti/p/~baba3001"
+        }
+      ]
+    },
+    {
+      "id": "baiyi-coffee",
+      "name": "BAI YI COFFEE",
+      "tagline": "純淨特別的咖啡豆，挑戰您的味蕾！",
+      "logo": "source-materials/dounan/market/baiyi-coffee-logo.jpg",
+      "links": [
+        {
+          "type": "facebook",
+          "label": "Facebook 粉專",
+          "value": "前往粉專",
+          "href": "https://www.facebook.com/share/17Eqx2cSAR/"
+        },
+        {
+          "type": "line",
+          "label": "LINE 訂購",
+          "value": "ken08576",
+          "href": "https://line.me/ti/p/~ken08576"
         }
       ]
     }
