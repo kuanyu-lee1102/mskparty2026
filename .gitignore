@@ -18,3 +18,7 @@ secrets/
 # 工具產出（由 scripts/ 重新產生即可）
 exports/
 
+# 內部工作檔案 — 含學生 / 老師個資、繳費狀態等，禁止 commit 到 public repo
+*.xlsx
+*.xls
+
