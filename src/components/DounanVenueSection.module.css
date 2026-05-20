@@ -356,12 +356,42 @@
   }
 }
 
-/* ===== 地圖按鈕群組（單顆 Google Maps，置中） ===== */
+/* ===== 地圖按鈕群組（兩行：第一行去會場滿版；第二行停機車 / 停汽車並排）
+ *  寬度與上方 .locationImageButton 對齊（max-width 480px），桌機不超過圖片寬度，
+ *  手機則隨外層 section padding 自然留邊。
+ * ===== */
 .mapButtonGroup {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
   gap: var(--space-sm);
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mapButtonRow {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.mapButtonRow > .mapButtonFull {
+  flex: 1 1 0;
+  min-width: 0;
+  /* 縮減左右內距，讓「帶我停機車 / 帶我停汽車」+ 外連 icon 不換行；
+     按鈕外框寬度由 flex 控制，維持不變 */
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+  gap: 6px;
+}
+
+/* 讓 MapButton 從 inline-flex 變成滿版的 flex 區塊 */
+.mapButtonFull {
+  display: flex;
+  width: 100%;
 }
 
 /* ===== 補充圖片格子 ===== */

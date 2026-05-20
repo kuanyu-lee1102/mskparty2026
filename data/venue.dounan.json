@@ -13,7 +13,9 @@
     "lng": 120.421611
   },
   "mapLinks": {
-    "googleMaps": "https://www.google.com/maps?q=23.713806,120.421611"
+    "googleMaps": "https://www.google.com/maps?q=23.713806,120.421611",
+    "parkingMotorcycle": "https://maps.app.goo.gl/ZHk3E6n7ZeARwjB77",
+    "parkingCar": "https://maps.app.goo.gl/eZkDxUQj9ar6VbKh7"
   },
   "heroImages": [
     {
@@ -23,11 +25,11 @@
   ],
   "guideImage": {
     "status": "ready",
-    "path": "source-materials/dounan/venue/dounan-venue-area-circled.jpg",
-    "alt": "虎尾建國眷村文化園區會場位置示意圖（紅圈為已棟蓄水池周邊草地）",
+    "path": "source-materials/dounan/venue/dounan-venue-map-2026.jpg",
+    "alt": "虎尾建國眷村文化園區會場位置示意圖（星星為已棟蓄水池周邊草地）",
     "captionLines": [
-      "紅圈處即為會場：已棟蓄水池周邊草地。",
-      "可點擊下方引導按鈕。"
+      "星星處即為會場：已棟蓄水池周邊草地。",
+      "可點擊下方引導按鈕，帶你去 活動會場/停車場。"
     ]
   },
   "supportingImages": [

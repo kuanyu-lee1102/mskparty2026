@@ -174,16 +174,46 @@ export default function DounanVenueSection({
         </div>
       ) : null}
 
-      {/* ===== 地圖按鈕（Google Maps 單顆，置中） ===== */}
-      {mapLinks?.googleMaps ? (
+      {/* ===== 地圖按鈕（第一行：去會場滿版；第二行：停機車 / 停汽車） ===== */}
+      {mapLinks?.googleMaps || mapLinks?.parkingMotorcycle || mapLinks?.parkingCar ? (
         <div className={styles.mapButtonGroup}>
-          <MapButton
-            provider="google"
-            href={mapLinks.googleMaps}
-            variant="primary"
-          >
-            用 Google 地圖帶我去會場！
-          </MapButton>
+          {mapLinks?.googleMaps ? (
+            <MapButton
+              provider="google"
+              href={mapLinks.googleMaps}
+              variant="primary"
+              className={styles.mapButtonFull}
+              aria-label="使用 Google 地圖帶我去會場"
+            >
+              用 google map 帶我去會場
+            </MapButton>
+          ) : null}
+          {mapLinks?.parkingMotorcycle || mapLinks?.parkingCar ? (
+            <div className={styles.mapButtonRow}>
+              {mapLinks?.parkingMotorcycle ? (
+                <MapButton
+                  provider="google"
+                  href={mapLinks.parkingMotorcycle}
+                  variant="secondary"
+                  className={styles.mapButtonFull}
+                  aria-label="使用 Google 地圖帶我去機車停車區"
+                >
+                  帶我停機車
+                </MapButton>
+              ) : null}
+              {mapLinks?.parkingCar ? (
+                <MapButton
+                  provider="google"
+                  href={mapLinks.parkingCar}
+                  variant="secondary"
+                  className={styles.mapButtonFull}
+                  aria-label="使用 Google 地圖帶我去汽車停車區"
+                >
+                  帶我停汽車
+                </MapButton>
+              ) : null}
+            </div>
+          ) : null}
         </div>
       ) : null}
 
