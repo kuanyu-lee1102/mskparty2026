@@ -42,8 +42,7 @@ export default function ZhubeiScheduleSection({
   const eventConfig = schedules?.events?.zhubei ?? {}
   const rawImages = Array.isArray(eventConfig.images) ? eventConfig.images : []
 
-  // 雙重保險：只讓參加者版進入 gallery（excludedImages 中的老師版另存於 JSON
-  // 的 excludedImages 欄位，本來就不會出現在 images，但仍守住 audience filter）
+  // 只渲染 audience === 'participant'（或未標）的圖；老師版時間表不放在 repo 內
   const galleryImages = rawImages
     .filter((img) => !img.audience || img.audience === 'participant')
     .map((img) => ({

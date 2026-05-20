@@ -37,17 +37,10 @@
           "caption": "斗南場參加者流程與注意事項"
         }
       ],
-      "excludedImages": [
-        {
-          "id": "dounan-schedule-teacher",
-          "audience": "teacher",
-          "path": "source-materials/dounan/schedule/dounan-schedule-teacher.png",
-          "reason": "老師版時間表不顯示於公開網站。"
-        }
-      ],
       "publicNotes": [
         "工作人員與老師內部流程會在工作 LINE 群發布，不另外轉成網站文字區塊。",
-        "若圖片內容後續更新，請替換圖片檔或新增新版圖片，不要在網站另建一份平行時間表資料。"
+        "若圖片內容後續更新，請替換圖片檔或新增新版圖片，不要在網站另建一份平行時間表資料。",
+        "老師版時間表為內部素材，不放在 public repo；如需參考請另循內部管道取得。"
       ],
       "excludedInternalItems": [
         "樂器裝車",
@@ -76,17 +69,10 @@
           "caption": "竹北場參加者流程與注意事項"
         }
       ],
-      "excludedImages": [
-        {
-          "id": "zhubei-schedule-teacher",
-          "audience": "teacher",
-          "path": "source-materials/zhubei/schedule/zhubei-schedule-teacher.jpg",
-          "reason": "老師版時間表不顯示於公開網站。"
-        }
-      ],
       "publicNotes": [
         "工作人員與老師內部流程會在工作 LINE 群發布，不另外轉成網站文字區塊。",
-        "若圖片內容後續更新，請替換圖片檔或新增新版圖片，不要在網站另建一份平行時間表資料。"
+        "若圖片內容後續更新，請替換圖片檔或新增新版圖片，不要在網站另建一份平行時間表資料。",
+        "老師版時間表為內部素材，不放在 public repo；如需參考請另循內部管道取得。"
       ],
       "excludedInternalItems": [
         "樂器裝車",
