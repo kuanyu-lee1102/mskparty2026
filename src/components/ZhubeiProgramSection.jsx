@@ -50,6 +50,18 @@ function findZhubeiProgramImagePath() {
   return ZHUBEI_PROGRAM_FALLBACK_PATH
 }
 
+// 節目表下方說明文字：優先讀 events.json#routes.events[id=zhubei].programNote，
+// 有值時顯示正式說明（如節目異動公告），無值則 fallback 至「節目表說明待補」placeholder。
+function findZhubeiProgramNote() {
+  const list = Array.isArray(events?.routes?.events) ? events.routes.events : []
+  const entry = list.find((e) => e?.id === 'zhubei')
+  const candidate = entry?.programNote
+  if (typeof candidate === 'string' && candidate.trim().length > 0) {
+    return candidate.trim()
+  }
+  return ''
+}
+
 export default function ZhubeiProgramSection({
   id = 'program',
   title = '節目表',
@@ -59,6 +71,7 @@ export default function ZhubeiProgramSection({
 
   const imagePath = findZhubeiProgramImagePath()
   const imageUrl = assetUrl(imagePath)
+  const programNote = findZhubeiProgramNote()
 
   const handleOpen = useCallback(() => setLightboxOpen(true), [])
   const handleClose = useCallback(() => setLightboxOpen(false), [])
@@ -95,10 +108,14 @@ export default function ZhubeiProgramSection({
         </button>
       </figure>
 
-      {/* 第一版說明文字：使用 PlaceholderBox 顯示「節目表說明待補」
-          規格明定為「節目表說明待補」，待後續補上正式說明文字 */}
+      {/* 圖片下方說明區：programNote 有值時顯示正式說明（如節目異動公告），
+          無值則 fallback 至「節目表說明待補」placeholder（規格第一版預設）。 */}
       <div className={styles.descriptionWrap}>
-        <PlaceholderBox label={ZHUBEI_PROGRAM_DESCRIPTION_PENDING} tone="info" />
+        {programNote ? (
+          <p className={styles.note}>{programNote}</p>
+        ) : (
+          <PlaceholderBox label={ZHUBEI_PROGRAM_DESCRIPTION_PENDING} tone="info" />
+        )}
       </div>
 
       <ImageLightbox

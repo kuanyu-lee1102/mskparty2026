@@ -102,7 +102,22 @@
   pointer-events: none;
 }
 
-/* ===== 圖片下方說明區（第一版顯示「節目表說明待補」） ===== */
+/* ===== 圖片下方說明區（有 programNote 時顯示正式說明，否則顯示「節目表說明待補」） ===== */
 .descriptionWrap {
   width: 100%;
+}
+
+/* 正式說明 / 節目異動公告：朱紅左側強調條，與整體米色卡片語言一致 */
+.note {
+  margin: 0;
+  padding: var(--space-md);
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-line-beige);
+  border-left: 3px solid var(--color-vermilion);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
 }

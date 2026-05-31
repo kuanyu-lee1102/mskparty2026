@@ -41,6 +41,7 @@
         "venueData": "data/venue.zhubei.json",
         "scheduleData": "data/schedules.public.json#events.zhubei",
         "programImage": "source-materials/zhubei/programs/zhubei-program-sheet-01.png",
+        "programNote": "節目異動：12 傅郁芳、19 傅名宏 × Ms. Dayna 取消演出。",
         "hasLostSection": false
       }
     ]
