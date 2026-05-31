@@ -149,6 +149,7 @@
    - 竹北節目表圖片需可點擊放大，並預留少量文字說明空間。
    - 竹北場節目表說明文字第一版顯示「節目表說明待補」。
    - **節目異動說明（2026-05-31）**：說明文字改由 `events.json#routes.events[id=zhubei].programNote` 提供；有值時 `ZhubeiProgramSection` 渲染正式說明（朱紅左條 `.note` 樣式），無值才 fallback 回「節目表說明待補」placeholder。目前內容為節目異動公告「12 傅郁芳、19 傅名宏 × Ms. Dayna 取消演出。」。仍不建立 programs JSON / accordion / 搜尋（符合 Do Not Override）。
+   - **開場演出區塊（2026-05-31）**：節目表標題與圖片之間插入「開場演出」，資料由 `events.json#routes.events[id=zhubei].programOpenings`（`title` / `summary` / `items[].performer/piece/pieceLocal`）提供；視覺沿用竹北 venue「入場方式」的米色色塊（`--bg-warm`）＋ 朱紅圓形編號白卡語言（樣式自建於 `ZhubeiProgramSection.module.css`，未跨 CSS module 共用）。無 items 時整塊不渲染。仍不建 programs JSON / accordion / 搜尋。
    - **節目資料編輯流程（2026-05-10）**：
      - 由 `scripts/programs-to-csv.mjs` 將 JSON 攤平成 6 欄 CSV（場次 / 老師 / 時段 / 序號 / 演出者 / 曲目）給曲目表負責人在 Google Sheets 編輯。
      - 「老師」欄（`teacherDisplayName`）為定位 key，13 位皆唯一；items[] 順序 = CSV 列順序。

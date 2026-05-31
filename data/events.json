@@ -42,6 +42,25 @@
         "scheduleData": "data/schedules.public.json#events.zhubei",
         "programImage": "source-materials/zhubei/programs/zhubei-program-sheet-01.png",
         "programNote": "節目異動：12 傅郁芳、19 傅名宏 × Ms. Dayna 取消演出。",
+        "programOpenings": {
+          "title": "開場演出",
+          "summary": "正式節目開始前，由老師們帶來的開場曲目。",
+          "items": [
+            {
+              "performer": "Miss Wei-Yu",
+              "piece": "C. Saint-Saëns: The Swan",
+              "pieceLocal": "天鵝（選自動物狂歡節）"
+            },
+            {
+              "performer": "Mr. Jun",
+              "piece": "Romantic Piece No.1, Op.75, Mov.I"
+            },
+            {
+              "performer": "Miss. Eve × Miss. Candy",
+              "piece": "四手聯彈－望春風"
+            }
+          ]
+        },
         "hasLostSection": false
       }
     ]

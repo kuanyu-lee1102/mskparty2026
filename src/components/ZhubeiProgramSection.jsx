@@ -62,6 +62,82 @@ function findZhubeiProgramNote() {
   return ''
 }
 
+// 開場演出：讀 events.json#routes.events[id=zhubei].programOpenings。
+// 視覺沿用竹北 venue「入場方式」的米色色塊區塊 + 朱紅編號白卡語言。
+// 無 items 時不渲染整塊（不放 placeholder，避免無資料時佔版面）。
+function findZhubeiProgramOpenings() {
+  const list = Array.isArray(events?.routes?.events) ? events.routes.events : []
+  const entry = list.find((e) => e?.id === 'zhubei')
+  const openings = entry?.programOpenings
+  const items = Array.isArray(openings?.items) ? openings.items.filter((it) => it && it.performer) : []
+  if (items.length === 0) return null
+  return {
+    title: typeof openings.title === 'string' ? openings.title : '開場演出',
+    summary: typeof openings.summary === 'string' ? openings.summary : '',
+    items,
+  }
+}
+
+function MusicNoteIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+    </svg>
+  )
+}
+
+function OpeningPerformances({ data }) {
+  return (
+    <div className={styles.openingBanner}>
+      <header className={styles.openingHeader}>
+        <span className={styles.openingHeaderIcon} aria-hidden="true">
+          <MusicNoteIcon />
+        </span>
+        <span className={styles.openingHeaderText}>
+          <span className={styles.openingHeaderTitle}>{data.title}</span>
+          {data.summary ? (
+            <span className={styles.openingHeaderSummary}>{data.summary}</span>
+          ) : null}
+        </span>
+      </header>
+      <ol className={styles.openingList}>
+        {data.items.map((item, index) => (
+          <li key={`${item.performer}-${index}`} className={styles.openingCard}>
+            <span className={styles.openingNumber} aria-hidden="true">
+              {index + 1}
+            </span>
+            <div className={styles.openingTextWrap}>
+              <p className={styles.openingPerformer}>{item.performer}</p>
+              {item.piece || item.pieceLocal ? (
+                <p className={styles.openingPiece}>
+                  {item.piece ? (
+                    <span className={styles.openingPieceMain}>{item.piece}</span>
+                  ) : null}
+                  {item.pieceLocal ? (
+                    <span className={styles.openingPieceLocal}>{item.pieceLocal}</span>
+                  ) : null}
+                </p>
+              ) : null}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}
+
 export default function ZhubeiProgramSection({
   id = 'program',
   title = '節目表',
@@ -72,6 +148,7 @@ export default function ZhubeiProgramSection({
   const imagePath = findZhubeiProgramImagePath()
   const imageUrl = assetUrl(imagePath)
   const programNote = findZhubeiProgramNote()
+  const openings = findZhubeiProgramOpenings()
 
   const handleOpen = useCallback(() => setLightboxOpen(true), [])
   const handleClose = useCallback(() => setLightboxOpen(false), [])
@@ -88,6 +165,8 @@ export default function ZhubeiProgramSection({
         </h2>
         <span className={styles.divider} aria-hidden="true" />
       </header>
+
+      {openings ? <OpeningPerformances data={openings} /> : null}
 
       <figure className={styles.figure}>
         <button
